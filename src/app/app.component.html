@@ -1,1 +1,31 @@
-<button mat-button>botao</button>
+<mat-toolbar class="toolbar" color="primary">
+  <img src="assets/nav.png" alt="Logo" width="80" height="80">
+  <span>Sistema de Monitoramento</span>
+  <span class="toolbar-spacer"></span>
+
+  <a (click)="aboutUs()" style="cursor: pointer">
+    <span class="menu">AboutUs</span>
+  </a>
+  <a (click)="contactUs()" style="cursor: pointer">
+    <span class="menu">ContactUs</span>
+  </a>
+
+  <a (click)="sair()" style="cursor: pointer"
+     alt="Sair" title="Sair"
+     *ngIf="autenticado()">
+    <mat-icon class="toolbar-icon"
+              matTooltip="Sair">exit_to_app
+    </mat-icon>
+  </a>
+
+  <a (click)="logar()" style="cursor: pointer"
+     *ngIf="!autenticado()">
+    <mat-icon class="toolbar-icon"
+              matTooltip="SignIn">exit_to_app
+    </mat-icon>
+  </a>
+
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>
