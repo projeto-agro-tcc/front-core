@@ -1,1 +1,112 @@
-<p>cadastrar-pj works!</p>
+
+<div class="container">
+  <h2>Cadastro Empresa</h2>
+  <div class="formulario">
+    <form [formGroup]="form" fxLayoutAlign="center" novalidate>
+      <mat-list style="margin-top: 20px">
+        <mat-list-item>
+          <mat-form-field style="width: 300px; padding-right: 20px">
+            <input matInput placeholder="Razão Social" formControlName="razao_social">
+          </mat-form-field>
+          <mat-form-field style="width: 300px">
+            <input matInput placeholder="Nome fantasia" formControlName="nome">
+          </mat-form-field>
+        </mat-list-item>
+
+        <mat-list-item>
+          <mat-form-field style="width: 300px; padding-right: 20px">
+            <input matInput placeholder="Email"
+                   formControlName="email">
+          </mat-form-field>
+          <mat-form-field style="width: 300px">
+            <input matInput placeholder="web site"
+                   formControlName="web_site">
+          </mat-form-field>
+        </mat-list-item>
+
+        <mat-list-item>
+          <mat-form-field>
+            <input matInput placeholder="00.000.000/0000-00" formControlName="cnpj">
+          </mat-form-field>
+        </mat-list-item>
+
+        <mat-list-item style="width: 500px">
+          <div class="telefones">
+            <h3>Telefones</h3>
+            <mat-list>
+              <mat-list-item>
+                <mat-form-field style="width: 180px; padding-right: 20px">
+                  <input matInput placeholder="residencial"
+                         formControlName="residencial">
+                </mat-form-field>
+                <mat-form-field style="width: 180px; padding-right: 20px">
+                  <input matInput placeholder="celular"
+                         formControlName="celular">
+                </mat-form-field>
+                <mat-form-field style="width: 180px; padding-right: 20px">
+                  <input matInput placeholder="outro"
+                         formControlName="outro">
+                </mat-form-field>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </mat-list-item>
+
+        <mat-list-item>
+          <div class="endereco">
+            <h3>Endereço</h3>
+            <mat-list>
+              <mat-list-item>
+                <mat-form-field style="width: 140px; padding-right: 20px">
+                  <input matInput placeholder="88.888.888-888"
+                         formControlName="cep">
+                </mat-form-field>
+                <mat-form-field style="width: 300px; padding-right: 20px">
+                  <input matInput placeholder="Logradouro"
+                         formControlName="logradouro">
+                </mat-form-field>
+                <mat-form-field style="width: 100px;">
+                  <input matInput placeholder="Cidade"
+                         formControlName="cidade">
+                </mat-form-field>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-form-field style="width: 150px; padding-right: 20px">
+                  <input matInput placeholder="Complemento"
+                         formControlName="complemento">
+                </mat-form-field>
+                <mat-form-field style="width: 50px; padding-right: 20px">
+                  <input matInput placeholder="Bairro"
+                         formControlName="bairro">
+                </mat-form-field>
+                <mat-form-field style="width: 30px; padding-right: 20px">
+                  <input matInput placeholder="UF"
+                         formControlName="uf">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Número"
+                         formControlName="numero">
+                </mat-form-field>
+
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </mat-list-item>
+
+        <mat-list-item style="margin-top: 222px; margin-left: 250px;">
+          <mat-list-item fxLayoutAlign="center">
+            <button mat-raised-button color="primary" [disabled]="form.invalid"
+                    (click)="cadastrarPj()">Cadastrar</button>
+          </mat-list-item>
+        </mat-list-item>
+
+      </mat-list>
+    </form>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
