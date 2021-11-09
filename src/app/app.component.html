@@ -1,13 +1,13 @@
 <mat-toolbar class="toolbar" color="primary">
-  <img src="assets/nav.png" alt="Logo" width="80" height="80">
-  <span>Sistema de Monitoramento</span>
+  <img style="margin-left: 30px" src="assets/nav.png" alt="Logo" width="50" height="50">
+  <span style="margin-left: 25px; font-size: 1.75rem">Sistema de Monitoramento</span>
   <span class="toolbar-spacer"></span>
 
-  <a (click)="aboutUs()" style="cursor: pointer">
-    <span class="menu">AboutUs</span>
+  <a>
+    <span (click)="aboutUs()" class="menu" style="cursor: pointer">AboutUs</span>
   </a>
-  <a (click)="contactUs()" style="cursor: pointer">
-    <span class="menu">ContactUs</span>
+  <a>
+    <span (click)="contactUs()" style="cursor: pointer" class="menu">ContactUs</span>
   </a>
 
   <a (click)="sair()" style="cursor: pointer"
@@ -24,8 +24,12 @@
               matTooltip="SignIn">exit_to_app
     </mat-icon>
   </a>
-
-
 </mat-toolbar>
 
 <router-outlet></router-outlet>
+
+<footer class="footer">
+  <p>
+    © 2021 Copyright: Sistema de Monitoramento
+  </p>
+</footer>
