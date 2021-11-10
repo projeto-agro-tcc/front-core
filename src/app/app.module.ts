@@ -10,6 +10,9 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatIconModule } from "@angular/material/icon";
 import { CadastroPjModule } from "./cadastro-pj";
 import { CadastroPjRoutingModule } from "./cadastro-pj";
+import { NgxMaskModule } from "ngx-mask";
+import {CadastroUsuarioModule, CadastroUsuarioRoutes, CadastroUsuarioRoutingModule} from "./cadastro-usuario";
+
 
 @NgModule({
   declarations: [
@@ -27,10 +30,13 @@ import { CadastroPjRoutingModule } from "./cadastro-pj";
     CadastroPjModule,
     CadastroPjRoutingModule,
     LoginRoutingModule,
-
+    NgxMaskModule.forRoot(),
+    CadastroUsuarioModule,
+    CadastroUsuarioRoutingModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

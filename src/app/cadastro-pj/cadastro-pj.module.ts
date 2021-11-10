@@ -9,9 +9,10 @@ import { MatInputModule } from "@angular/material/input";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-import { BrMaskerModule } from "br-mask";
 import { MatButtonModule } from "@angular/material/button";
 import { MatListModule } from "@angular/material/list";
+import { ViaCepService } from "../utils";
+import { NgxMaskModule } from "ngx-mask";
 
 
 @NgModule({
@@ -29,9 +30,12 @@ import { MatListModule } from "@angular/material/list";
     MatTooltipModule,
     MatIconModule,
     MatSnackBarModule,
-    BrMaskerModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxMaskModule
+  ],
+  providers: [
+    ViaCepService
   ]
 })
 export class CadastroPjModule { }

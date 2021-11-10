@@ -31,3 +31,13 @@ h3{
 .endereco{
   margin-top: 300px;
 }
+
+::ng-deep .danger {
+  background: #f36a21 !important;
+  color: black;
+  justify-content: center;
+}
+
+::ng-deep .danger .mat-simple-snackbar-action {
+  color: black;
+}
