@@ -4,6 +4,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { CnpjValidator, EnderecoDto, ViaCepService } from "../../../utils";
 import { CadastroPj } from "../models";
+import { CadastroPJService } from "../../services";
 
 @Component({
   selector: 'app-cadastrar-pj',
@@ -20,6 +21,7 @@ export class CadastrarPjComponent {
     private snackBar: MatSnackBar,
     private router: Router,
     private viacepService: ViaCepService,
+    private cadastroPjService: CadastroPJService
 
   ) {
     this.form = this.fb.group({
@@ -46,6 +48,17 @@ export class CadastrarPjComponent {
       return
     }
     const cadastropf: CadastroPj = this.form.value
+
+    this.cadastroPjService.cadastrarpj(cadastropf)
+      .subscribe( res => {
+        this.openSnackBar("Cadastro realizado com sucesso", 'success')
+      },
+      error => {
+        console.log(error)
+      })
+
+
+
     console.log(cadastropf)
   }
 

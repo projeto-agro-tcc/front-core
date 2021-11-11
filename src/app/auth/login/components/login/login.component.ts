@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { LoginService } from "../../service";
+import {Login} from "../../models";
 
 @Component({
   selector: 'app-login',
@@ -20,8 +21,8 @@ export class LoginComponent {
     private loginService: LoginService,
   ) {
     this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required, Validators.minLength(6)]]
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     })
   }
 
@@ -31,7 +32,18 @@ export class LoginComponent {
         "Dados inválidos", "Erro", {duration: 5000})
       return
     }
-    console.log(this.form.value)
+    const login: Login = this.form.value
+    console.log(login)
+
+    this.loginService.logar(login)
+      .subscribe(response => {
+        console.log(response.body)
+        this.loginService.successfulLogin(response.body)
+      },
+        error => {
+        console.log("Erro")
+        })
+
   }
 
 }

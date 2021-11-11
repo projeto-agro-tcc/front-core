@@ -1,7 +1,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8080/',
+  baseUrl: 'http://localhost:8000/',
   viacepURL: 'https://viacep.com.br/ws/',
   json: '/json'
 };

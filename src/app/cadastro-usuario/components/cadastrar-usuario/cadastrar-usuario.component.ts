@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { EnderecoDto, ViaCepService, CpfValidator, passwordMatchValidator } from "../../../utils";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
-import {CadastroUsuario} from "../models";
+import { CadastroUsuario } from "../models";
+import { CadastroUsuarioService } from "../../services";
 
 @Component({
   selector: 'app-cadastrar-usuario',
@@ -22,6 +23,7 @@ export class CadastrarUsuarioComponent {
     private snackBar: MatSnackBar,
     private router: Router,
     private viacepService: ViaCepService,
+    private cadastroUsuarioService: CadastroUsuarioService
   ) {
     this.formUser = this.fb.group({
       first_name: ['', [Validators.required]],
@@ -80,9 +82,16 @@ export class CadastrarUsuarioComponent {
   }
 
   cadastrarUsuario(){
-    const cadastropf: CadastroUsuario = {...this.formUser.value, ...this.formUsername.value, ...this.formDetail.value}
+    const cadastroUsuario: CadastroUsuario = {...this.formUser.value, ...this.formUsername.value, ...this.formDetail.value}
 
-    console.log(cadastropf)
+    this.cadastroUsuarioService.cadastrarUsuario(cadastroUsuario)
+      .subscribe( res => {
+          this.openSnackBar("Cadastro realizado com sucesso", 'success')
+        },
+        error => {
+          console.log(error)
+        })
+
   }
 
 }

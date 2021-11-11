@@ -13,7 +13,8 @@ import { MatButtonModule } from "@angular/material/button";
 import { NgxMaskModule } from "ngx-mask";
 import { ViaCepService } from "../utils";
 import { CadastroUsuarioComponent, CadastrarUsuarioComponent } from "./components";
-import {MatStepperModule} from "@angular/material/stepper";
+import { MatStepperModule } from "@angular/material/stepper";
+import { CadastroUsuarioService } from "./services";
 
 
 
@@ -38,7 +39,8 @@ import {MatStepperModule} from "@angular/material/stepper";
     NgxMaskModule
   ],
   providers: [
-    ViaCepService
+    ViaCepService,
+    CadastroUsuarioService
   ]
 })
 export class CadastroUsuarioModule { }

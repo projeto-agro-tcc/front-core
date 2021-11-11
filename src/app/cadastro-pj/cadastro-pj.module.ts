@@ -13,6 +13,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatListModule } from "@angular/material/list";
 import { ViaCepService } from "../utils";
 import { NgxMaskModule } from "ngx-mask";
+import { CadastroPJService } from "./services";
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { NgxMaskModule } from "ngx-mask";
     NgxMaskModule
   ],
   providers: [
-    ViaCepService
+    ViaCepService,
+    CadastroPJService
   ]
 })
 export class CadastroPjModule { }

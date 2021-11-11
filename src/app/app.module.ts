@@ -11,7 +11,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { CadastroPjModule } from "./cadastro-pj";
 import { CadastroPjRoutingModule } from "./cadastro-pj";
 import { NgxMaskModule } from "ngx-mask";
-import {CadastroUsuarioModule, CadastroUsuarioRoutes, CadastroUsuarioRoutingModule} from "./cadastro-usuario";
+import {CadastroUsuarioModule, CadastroUsuarioRoutingModule} from "./cadastro-usuario";
+import { AuthInterceptorProviders, LocalstorageService } from "./utils";
 
 
 @NgModule({
@@ -36,6 +37,8 @@ import {CadastroUsuarioModule, CadastroUsuarioRoutes, CadastroUsuarioRoutingModu
     AppRoutingModule
   ],
   providers: [
+    LocalstorageService,
+    AuthInterceptorProviders,
   ],
   bootstrap: [AppComponent]
 })
