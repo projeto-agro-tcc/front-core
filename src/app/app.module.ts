@@ -13,29 +13,34 @@ import { CadastroPjRoutingModule } from "./cadastro-pj";
 import { NgxMaskModule } from "ngx-mask";
 import {CadastroUsuarioModule, CadastroUsuarioRoutingModule} from "./cadastro-usuario";
 import { AuthInterceptorProviders, LocalstorageService } from "./utils";
+import {DashboardModule} from "./dashboard";
+import {DashboardRoutingModule} from "./dashboard/dashboard-routing.module";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    LoginModule,
-    MatToolbarModule,
-    FlexLayoutModule,
-    MatIconModule,
-    CadastroPjModule,
-    CadastroPjRoutingModule,
-    LoginRoutingModule,
-    NgxMaskModule.forRoot(),
-    CadastroUsuarioModule,
-    CadastroUsuarioRoutingModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        LoginModule,
+        MatToolbarModule,
+        FlexLayoutModule,
+        MatIconModule,
+        CadastroPjModule,
+        DashboardModule,
+        CadastroPjRoutingModule,
+        LoginRoutingModule,
+        NgxMaskModule.forRoot(),
+        CadastroUsuarioModule,
+        CadastroUsuarioRoutingModule,
+        DashboardRoutingModule,
+        AppRoutingModule,
+    ],
   providers: [
     LocalstorageService,
     AuthInterceptorProviders,

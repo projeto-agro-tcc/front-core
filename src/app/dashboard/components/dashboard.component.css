@@ -1,0 +1,70 @@
+.sidenav{
+  width: 200px;
+  height: 400px;
+  background: #263e1d;
+}
+
+.container{
+  display: flex;
+}
+
+mat-sidenav {
+  margin: 16px;
+  width: 200px;
+  border-right: none;
+  background: #143b14;
+  color: white;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.content {
+  height: calc(100vh - 98px);
+  border-radius: 10px;
+  margin: 16px;
+  margin-left: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 65px);
+  background: transparent;
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+  margin-top: 15px;
+  background-color: #457434;
+  border-radius: 10px;
+  color: #000000;
+}
+
+.avatar /deep/ .avatar-content {
+  margin-top: 10px;
+  background-color : #a39f23 !important;
+}
+
+.name {
+  margin-top: -35px;
+  font-weight: normal;
+  margin-left: 20px;
+}
+
+.designation {
+  margin-top: 2px;
+  font-size: 0.7rem;
+  color: lightgrey;
+}
+
+mat-divider {
+  margin-top: 26px;
+  margin-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
+}

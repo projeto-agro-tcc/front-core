@@ -12,6 +12,8 @@ import {MatListModule} from "@angular/material/list";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatIconModule} from "@angular/material/icon";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {LocalstorageService} from "../../utils";
 
 
 @NgModule({
@@ -30,10 +32,12 @@ import {MatIconModule} from "@angular/material/icon";
     MatTooltipModule,
     MatIconModule,
     MatSnackBarModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatProgressSpinnerModule,
   ],
   providers:[
     LoginService,
+    LocalstorageService,
   ]
 })
 export class LoginModule { }

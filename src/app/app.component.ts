@@ -11,9 +11,6 @@ export class AppComponent {
   constructor(private router: Router) {
   }
 
-  ngOnInit(): void {
-  }
-
   sair(){
     delete localStorage['token']
     this.router.navigate(['/'])

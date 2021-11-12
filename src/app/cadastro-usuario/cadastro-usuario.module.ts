@@ -19,28 +19,31 @@ import { CadastroUsuarioService } from "./services";
 
 
 @NgModule({
-  declarations: [
-    CadastrarUsuarioComponent,
-    CadastroUsuarioComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatInputModule,
-    MatTooltipModule,
-    MatIconModule,
-    MatSnackBarModule,
-    MatListModule,
-    MatButtonModule,
-    MatStepperModule,
-    NgxMaskModule
-  ],
-  providers: [
-    ViaCepService,
-    CadastroUsuarioService
-  ]
+    declarations: [
+        CadastrarUsuarioComponent,
+        CadastroUsuarioComponent
+    ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatInputModule,
+        MatTooltipModule,
+        MatIconModule,
+        MatSnackBarModule,
+        MatListModule,
+        MatButtonModule,
+        MatStepperModule,
+        NgxMaskModule
+    ],
+    exports: [
+        CadastrarUsuarioComponent
+    ],
+    providers: [
+        ViaCepService,
+        CadastroUsuarioService
+    ]
 })
 export class CadastroUsuarioModule { }

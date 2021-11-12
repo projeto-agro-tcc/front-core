@@ -91,7 +91,6 @@ export class CadastrarUsuarioComponent {
         error => {
           console.log(error)
         })
-
   }
 
 }

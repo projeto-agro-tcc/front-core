@@ -13,10 +13,8 @@
   align-items: center;
 }
 
-.formulario{
-
-}
-
-.imagem{
-
+::ng-deep .danger {
+  background: #f36a21 !important;
+  color: black;
+  justify-content: center;
 }
