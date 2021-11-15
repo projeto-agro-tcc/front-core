@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent, DashComponent } from "./components";
 import { RouterModule } from "@angular/router";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { ReactiveFormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatIconModule } from "@angular/material/icon";
@@ -15,12 +15,22 @@ import {LocalstorageService} from "../utils";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {DashboardService} from "./services/dashboard.service";
 import {CadastroUsuarioModule} from "../cadastro-usuario";
+import { ProfileComponent } from './components/profile/profile.component';
+import { ListUsersComponent } from './components/list-users/list-users.component';
+import { ListEmpresasComponent } from './components/list-empresas/list-empresas.component';
+import {MatInputModule} from "@angular/material/input";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    DashComponent
+    DashComponent,
+    ProfileComponent,
+    ListUsersComponent,
+    ListEmpresasComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +46,11 @@ import {CadastroUsuarioModule} from "../cadastro-usuario";
     AvatarModule,
     MatProgressSpinnerModule,
     CadastroUsuarioModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatTableModule
   ],
   providers: [
     LocalstorageService,

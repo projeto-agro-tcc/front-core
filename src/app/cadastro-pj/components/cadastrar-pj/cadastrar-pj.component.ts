@@ -56,9 +56,6 @@ export class CadastrarPjComponent {
       error => {
         console.log(error)
       })
-
-
-
     console.log(cadastropf)
   }
 

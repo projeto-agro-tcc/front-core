@@ -37,8 +37,6 @@ export class LoginComponent implements OnInit{
     }
     this.showSpinner = true
     const login: Login = this.form.value
-    console.log(login)
-
     this.loginService.logar(login)
       .subscribe(response => {
         this.loginService.successfulLogin(response.body)
@@ -48,6 +46,7 @@ export class LoginComponent implements OnInit{
         error => {
         console.log(error)
           this.openSnackBar("Usuário ou senha inválidos", "danger")
+          this.showSpinner = false
         })
   }
 

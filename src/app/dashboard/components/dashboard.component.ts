@@ -1,8 +1,9 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
-import {MatSidenav} from "@angular/material/sidenav";
-import {BreakpointObserver} from "@angular/cdk/layout";
-import {delay} from "rxjs/operators";
-import {LocalstorageService} from "../../utils";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { MatSidenav } from "@angular/material/sidenav";
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { delay } from "rxjs/operators";
+import { LocalstorageService } from "../../utils";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-dash',
@@ -16,9 +17,11 @@ export class DashboardComponent implements OnInit{
   showSpinner = false
   username: string = ""
 
+
   constructor(
     private observer: BreakpointObserver,
-    private localStorageService: LocalstorageService
+    private localStorageService: LocalstorageService,
+    private router: Router,
   ) {}
 
   ngAfterViewInit() {
@@ -37,7 +40,15 @@ export class DashboardComponent implements OnInit{
   }
 
   profile(){
+    this.router.navigateByUrl('/dashboard/profile')
+  }
 
+  pageUsers(){
+    this.router.navigateByUrl('/dashboard/users')
+  }
+
+  pageEmpresas(){
+    this.router.navigateByUrl('/dashboard/empresas')
   }
 
   ngOnInit(): void {

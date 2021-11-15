@@ -12,7 +12,7 @@ export class AppComponent {
   }
 
   sair(){
-    delete localStorage['token']
+    delete localStorage['localUserMonitoramento']
     this.router.navigate(['/'])
   }
 
@@ -21,7 +21,7 @@ export class AppComponent {
   }
 
   autenticado(): boolean {
-    return localStorage['token']
+    return localStorage['localUserMonitoramento']
   }
 
   aboutUs(){
