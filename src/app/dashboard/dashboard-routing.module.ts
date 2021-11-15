@@ -5,6 +5,7 @@ import { DashboardComponent, DashComponent } from "./components";
 import {ProfileComponent} from "./components/profile/profile.component";
 import {ListUsersComponent} from "./components/list-users/list-users.component";
 import {ListEmpresasComponent} from "./components/list-empresas/list-empresas.component";
+import {CadastroEmpresaComponent} from "./components/cadastro-empresa";
 
 export const DashRoutes: Routes = [
   {
@@ -14,9 +15,9 @@ export const DashRoutes: Routes = [
       { path: 'dash', component: DashComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'users', component: ListUsersComponent },
-      { path: 'empresas', component: ListEmpresasComponent }
+      { path: 'empresas', component: ListEmpresasComponent },
+      { path: 'cadastro-empresa', component: CadastroEmpresaComponent }
     ]
-
   }
 ]
 

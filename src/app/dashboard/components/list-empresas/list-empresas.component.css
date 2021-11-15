@@ -20,6 +20,12 @@ mat-header-cell, mat-cell {
   justify-content: center;
 }
 
+.button{
+  position: absolute;
+  right: 15px;
+  padding: 20px;
+}
+
 ::ng-deep .danger {
   background: #f36a21 !important;
   color: black;

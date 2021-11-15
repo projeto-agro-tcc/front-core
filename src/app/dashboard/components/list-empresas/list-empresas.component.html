@@ -35,3 +35,7 @@
   <mat-header-row *matHeaderRowDef="displayColums"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayColums;"></mat-row>
 </mat-table>
+
+<a class="button">
+  <button mat-raised-button style="background-color: limegreen;" (click)="adicionarEmpresa()">Adicionar empresa</button>
+</a>

@@ -13,7 +13,7 @@ import { MatListModule } from "@angular/material/list";
 import { AvatarModule } from "ngx-avatar";
 import {LocalstorageService} from "../utils";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {DashboardService} from "./services/dashboard.service";
+import {DashboardService} from "./services";
 import {CadastroUsuarioModule} from "../cadastro-usuario";
 import { ProfileComponent } from './components/profile/profile.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
@@ -22,6 +22,9 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
+import { CadastroEmpresaComponent } from './components/cadastro-empresa/cadastro-empresa.component';
+import {NgxMaskModule} from "ngx-mask";
 
 
 @NgModule({
@@ -30,7 +33,8 @@ import {MatTableModule} from "@angular/material/table";
     DashComponent,
     ProfileComponent,
     ListUsersComponent,
-    ListEmpresasComponent
+    ListEmpresasComponent,
+    CadastroEmpresaComponent,
   ],
   imports: [
     CommonModule,
@@ -50,7 +54,9 @@ import {MatTableModule} from "@angular/material/table";
     FormsModule,
     MatInputModule,
     MatSnackBarModule,
-    MatTableModule
+    MatButtonModule,
+    MatTableModule,
+    NgxMaskModule
   ],
   providers: [
     LocalstorageService,

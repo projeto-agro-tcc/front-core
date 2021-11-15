@@ -4,6 +4,7 @@ import {DashboardService} from "../../services";
 import {Empresa} from "../../models";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatTableDataSource} from "@angular/material/table";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-empresas',
@@ -22,6 +23,7 @@ export class ListEmpresasComponent implements OnInit {
     private fb: FormBuilder,
     private dashService: DashboardService,
     private snackBar: MatSnackBar,
+    private router: Router,
   ) {
     this.form = this.fb.group({
       findby: ['', [Validators.required]]
@@ -35,13 +37,12 @@ export class ListEmpresasComponent implements OnInit {
         this.empresas = res
         this.showSpinner = false
           this.openSnackBar("Empresas carregadas com sucesso", "success")
-        console.log(this.empresas)
       },
         error => {
           this.openSnackBar("Problemas ao carregar empresas", "danger")
+          this.showSpinner = false
         })
   }
-
 
   searchBy(){
     this.form.valueChanges.subscribe(val=> {
@@ -54,7 +55,7 @@ export class ListEmpresasComponent implements OnInit {
       horizontalPosition: "center",
       verticalPosition: "bottom",
       panelClass: [classe],
-      duration: 3000,
+      duration: 2000,
     });
   }
 
@@ -67,7 +68,16 @@ export class ListEmpresasComponent implements OnInit {
   }
 
   deleteEmpresa(id: string){
-    console.log(id)
+    this.dashService.deletarEmpresa(id)
+      .subscribe(res => {
+        this.openSnackBar("Empresas deletada com sucesso", "success")
+      }, error => {
+        this.openSnackBar("Problemas ao deletar empresa", "danger")
+      })
+  }
+
+  adicionarEmpresa(){
+    this.router.navigateByUrl('/dashboard/cadastro-empresa')
   }
 
 }
