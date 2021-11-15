@@ -1,0 +1,37 @@
+<h1 style="margin-left: 50px; padding-top: 50px">Empresas</h1>
+
+<form [formGroup]="form" class="form" fxLayoutAlign="center">
+  <mat-form-field class="full-width">
+    <input (change)="searchBy()" matInput placeholder="Pesquisa" formControlName="findby">
+  </mat-form-field>
+</form>
+
+<mat-spinner *ngIf="showSpinner"></mat-spinner>
+
+<mat-table #table [dataSource]="empresas" class="mat-elevation-z6 table">
+
+  <ng-container matColumnDef="nome">
+    <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <a>
+        <span (click)="viewEmpresa(element.id)" style="cursor: pointer" class="menu">{{element.nome}}</span>
+      </a>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="cidade">
+    <mat-header-cell *matHeaderCellDef>Cidade</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.endereco.cidade}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <mat-icon (click)="deleteEmpresa(element.id)" style="color: red; cursor: pointer; margin-right: 20px">delete</mat-icon>
+      <mat-icon (click)="editEmpresa(element.id)" style="color: cornflowerblue; cursor: pointer">edit</mat-icon>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayColums"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayColums;"></mat-row>
+</mat-table>

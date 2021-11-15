@@ -1,0 +1,33 @@
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-left: 50px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.table{
+  background-color: transparent;
+  border-radius: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+mat-header-cell, mat-cell {
+  justify-content: center;
+}
+
+::ng-deep .danger {
+  background: #f36a21 !important;
+  color: black;
+  justify-content: center;
+}
+
+::ng-deep .success {
+  background: #60f321 !important;
+  color: black;
+  justify-content: center;
+}
