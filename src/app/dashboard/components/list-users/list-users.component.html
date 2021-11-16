@@ -1,1 +1,46 @@
-<p>list-users works!</p>
+<h1 style="margin-left: 50px; padding-top: 50px">Usuários</h1>
+
+<mat-form-field style="margin-left: 20px">
+  <input (keyup)="searchBy($event.target.value)" matInput placeholder="Pesquisa">
+</mat-form-field>
+
+<mat-spinner *ngIf="showSpinner"></mat-spinner>
+
+<div class="container-table">
+  <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z6 table">
+
+    <ng-container matColumnDef="nome">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Nome</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          <span (click)="viewUsuario(element.id)" style="cursor: pointer" class="menu">{{element.first_name}} {{element.last_name}}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="empresa">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Empresa</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <div *ngIf="element.empresas">
+          <div *ngFor="let item of element.empresas">
+            {{item.nome}}
+          </div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon (click)="deleteUsuario(element.id)" style="color: red; cursor: pointer; margin-right: 20px">delete</mat-icon>
+        <mat-icon (click)="editUsuario(element.id)" style="color: cornflowerblue; cursor: pointer">edit</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayColums"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayColums;"></mat-row>
+  </mat-table>
+</div>

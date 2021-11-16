@@ -37,3 +37,9 @@ mat-header-cell, mat-cell {
   color: black;
   justify-content: center;
 }
+
+.econtainer {
+  height: 400px;
+  max-width: 100%;
+  overflow: auto;
+}

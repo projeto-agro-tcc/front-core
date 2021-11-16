@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {DashboardService} from "../../services";
 import {Empresa} from "../../models";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {MatTableDataSource} from "@angular/material/table";
 import {Router} from "@angular/router";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-list-empresas',
@@ -14,27 +14,24 @@ import {Router} from "@angular/router";
 export class ListEmpresasComponent implements OnInit {
 
   empresas: Empresa[]
-  form: FormGroup
   showSpinner: boolean = false
-
   displayColums: string[] = ['nome', 'cidade', 'action']
+  dataSource: any
+
+  @ViewChild(MatSort) sort: MatSort
 
   constructor(
-    private fb: FormBuilder,
     private dashService: DashboardService,
     private snackBar: MatSnackBar,
     private router: Router,
-  ) {
-    this.form = this.fb.group({
-      findby: ['', [Validators.required]]
-    })
-  }
+  ) {}
 
   ngOnInit(): void {
     this.showSpinner = true
     this.dashService.getEmpresas()
       .subscribe(res => {
         this.empresas = res
+        this.dataSource = new MatTableDataSource(this.empresas)
         this.showSpinner = false
           this.openSnackBar("Empresas carregadas com sucesso", "success")
       },
@@ -44,10 +41,9 @@ export class ListEmpresasComponent implements OnInit {
         })
   }
 
-  searchBy(){
-    this.form.valueChanges.subscribe(val=> {
-      console.log(val)
-    })
+  searchBy(textFilter: string){
+    console.log(textFilter)
+    this.dataSource.filter = textFilter.trim().toLowerCase()
   }
 
   openSnackBar(msg: string, classe: string) {

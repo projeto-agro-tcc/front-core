@@ -1,17 +1,15 @@
 <h1 style="margin-left: 50px; padding-top: 50px">Empresas</h1>
 
-<form [formGroup]="form" class="form" fxLayoutAlign="center">
-  <mat-form-field class="full-width">
-    <input (change)="searchBy()" matInput placeholder="Pesquisa" formControlName="findby">
-  </mat-form-field>
-</form>
+<mat-form-field style="margin-left: 20px" >
+  <input (keyup)="searchBy($event.target.value)" matInput placeholder="Pesquisa">
+</mat-form-field>
 
 <mat-spinner *ngIf="showSpinner"></mat-spinner>
 
-<mat-table #table [dataSource]="empresas" class="mat-elevation-z6 table">
+<mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z6 table">
 
   <ng-container matColumnDef="nome">
-    <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+    <mat-header-cell mat-sort-header *matHeaderCellDef>Nome</mat-header-cell>
     <mat-cell *matCellDef="let element">
       <a>
         <span (click)="viewEmpresa(element.id)" style="cursor: pointer" class="menu">{{element.nome}}</span>
@@ -20,7 +18,7 @@
   </ng-container>
 
   <ng-container matColumnDef="cidade">
-    <mat-header-cell *matHeaderCellDef>Cidade</mat-header-cell>
+    <mat-header-cell mat-sort-header *matHeaderCellDef>Cidade</mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.endereco.cidade}} </mat-cell>
   </ng-container>
 

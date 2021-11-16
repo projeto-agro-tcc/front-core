@@ -77,7 +77,7 @@ export class CadastrarUsuarioComponent {
       horizontalPosition: "center",
       verticalPosition: "bottom",
       panelClass: [classe],
-      duration: 3000,
+      duration: 2000,
     });
   }
 
@@ -87,9 +87,10 @@ export class CadastrarUsuarioComponent {
     this.cadastroUsuarioService.cadastrarUsuario(cadastroUsuario)
       .subscribe( res => {
           this.openSnackBar("Cadastro realizado com sucesso", 'success')
+          this.router.navigateByUrl('/')
         },
         error => {
-          console.log(error)
+          this.openSnackBar("Erro ao cadastrar usuário, username ja existente", 'danger')
         })
   }
 

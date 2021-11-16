@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { Router } from "@angular/router";
-import { CnpjValidator, EnderecoDto, ViaCepService } from "../../../utils";
-import { CadastroPj } from "../models";
-import { CadastroPJService } from "../../services";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {CnpjValidator, EnderecoDto, ViaCepService} from "../../../utils";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
+import {DashboardService} from "../../services";
+import {CadastroPj} from "../../models/cadastro-pj.models";
 
 @Component({
-  selector: 'app-cadastrar-pj',
-  templateUrl: './cadastrar-pj.component.html',
-  styleUrls: ['./cadastrar-pj.component.css']
+  selector: 'app-cadastro-empresa',
+  templateUrl: './cadastro-empresa.component.html',
+  styleUrls: ['./cadastro-empresa.component.css']
 })
-export class CadastrarPjComponent {
+export class CadastroEmpresaComponent {
 
   form: FormGroup
   enderecoDto: EnderecoDto = {}
@@ -21,9 +21,8 @@ export class CadastrarPjComponent {
     private snackBar: MatSnackBar,
     private router: Router,
     private viacepService: ViaCepService,
-    private cadastroPjService: CadastroPJService
-
-  ) {
+    private dashboardService: DashboardService
+    ) {
     this.form = this.fb.group({
       logradouro: ['', [Validators.required]],
       numero: ['', [Validators.required]],
@@ -40,25 +39,24 @@ export class CadastrarPjComponent {
       residencial: ['', [Validators.required]],
       celular: ['', []],
       outro: ['', []]
-    })
-  }
+    })}
 
-  cadastrarPj(){
+  cadastrarEmpresa(){
     if(this.form.invalid){
       return
     }
     const cadastropf: CadastroPj = this.form.value
 
-    this.cadastroPjService.cadastrarpj(cadastropf)
-      .subscribe( res => {
-        this.openSnackBar("Cadastro realizado com sucesso", 'success')
-      },
-      error => {
-        console.log(error)
-      })
-    console.log(cadastropf)
+    this.dashboardService.cadastrarEmpresa(cadastropf)
+        .subscribe( res => {
+            this.openSnackBar("Cadastro realizado com sucesso", 'success')
+            this.router.navigateByUrl('/dashboard/empresas')
+          },
+          error => {
+            this.openSnackBar("Problemas ao realizar cadatro", 'danger')
+            this.router.navigateByUrl('/dashboard/empresas')
+          })
   }
-
   verificaCep(){
     if(this.form.value.cep.length === 8) {
       this.viacepService.getAdress(this.form.value.cep)

@@ -26,15 +26,15 @@
         <mat-list-item>
           <a mat-button color="primary" routerLink="/">forgot password?</a>
         </mat-list-item>
+
         <mat-list-item fxLayoutAlign="center">
           <button mat-raised-button color="primary" [disabled]="form.invalid"
                   (click)="logar()">Entrar</button>
+          <button mat-raised-button color="primary" style="margin-left: 15px;"
+                  (click)="cadastroUsuario()">Cadastrar</button>
         </mat-list-item>
-
         <mat-spinner *ngIf="showSpinner"></mat-spinner>
-
       </mat-list>
     </form>
   </div>
-
 </div>

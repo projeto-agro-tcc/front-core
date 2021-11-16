@@ -66,4 +66,8 @@ export class LoginComponent implements OnInit{
     }
   }
 
+  cadastroUsuario(){
+    this.router.navigateByUrl('/cadastrousuario')
+  }
+
 }

@@ -25,6 +25,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import { CadastroEmpresaComponent } from './components/cadastro-empresa/cadastro-empresa.component';
 import {NgxMaskModule} from "ngx-mask";
+import {MatSortModule} from "@angular/material/sort";
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import {NgxMaskModule} from "ngx-mask";
     MatSnackBarModule,
     MatButtonModule,
     MatTableModule,
-    NgxMaskModule
+    NgxMaskModule,
+    MatSortModule
   ],
   providers: [
     LocalstorageService,

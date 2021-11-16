@@ -25,4 +25,8 @@ export class DashboardService {
     return this.http.delete(`${env.baseUrl}empresas/${id}`)
   }
 
+  getUsuarios(): Observable<any>{
+    return this.http.get(`${env.baseUrl}usuarios/`)
+  }
+
 }

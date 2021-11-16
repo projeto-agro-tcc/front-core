@@ -1,3 +1,5 @@
 export * from './empresa.models'
 export * from './endereco.models'
 export * from './telefone.models'
+export * from './cadastro-pj.models'
+export * from './usuarios.models'
