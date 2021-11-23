@@ -1,7 +1,7 @@
-export class Telefone{
-  constructor(
-    public residencial: string,
-    public celular: string,
-    public outro: string,
-  ) {}
+import {Endereco} from "./endereco.models";
+
+export interface Telefone{
+    residencial: string,
+    celular: string,
+    outro: string,
 }

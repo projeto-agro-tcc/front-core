@@ -43,3 +43,11 @@ mat-header-cell, mat-cell {
   max-width: 100%;
   overflow: auto;
 }
+
+.mat-header-row{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-radius: 15px;
+  background: #e6fff5;
+}

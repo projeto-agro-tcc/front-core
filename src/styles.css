@@ -11,3 +11,7 @@ html, body {
   background-position: center;
   background-attachment: fixed;
 }
+.font{
+  font-family: 'Roboto', sans-serif;
+}
+

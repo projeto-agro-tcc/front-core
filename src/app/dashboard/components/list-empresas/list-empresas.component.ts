@@ -5,6 +5,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
+import {LocalstorageService, LocalUser, DialogDeleteEmpresaComponent} from "../../../utils";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-list-empresas',
@@ -17,6 +19,7 @@ export class ListEmpresasComponent implements OnInit {
   showSpinner: boolean = false
   displayColums: string[] = ['nome', 'cidade', 'action']
   dataSource: any
+  localUser : LocalUser
 
   @ViewChild(MatSort) sort: MatSort
 
@@ -24,10 +27,13 @@ export class ListEmpresasComponent implements OnInit {
     private dashService: DashboardService,
     private snackBar: MatSnackBar,
     private router: Router,
+    private localStorageService: LocalstorageService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.showSpinner = true
+    this.localUser = this.localStorageService.getLocalUser()
     this.dashService.getEmpresas()
       .subscribe(res => {
         this.empresas = res
@@ -42,7 +48,6 @@ export class ListEmpresasComponent implements OnInit {
   }
 
   searchBy(textFilter: string){
-    console.log(textFilter)
     this.dataSource.filter = textFilter.trim().toLowerCase()
   }
 
@@ -55,21 +60,32 @@ export class ListEmpresasComponent implements OnInit {
     });
   }
 
-  viewEmpresa(id: string){
-    console.log(id)
+  viewEmpresa(empresa: Empresa){
+      console.log(empresa.endereco)
+    this.router.navigate(['/dashboard/profile-empresa', empresa])
   }
 
-  editEmpresa(id: string){
-    console.log(id)
+  editEmpresa(empresa: Empresa){
+    console.log(empresa)
   }
 
-  deleteEmpresa(id: string){
-    this.dashService.deletarEmpresa(id)
-      .subscribe(res => {
-        this.openSnackBar("Empresas deletada com sucesso", "success")
-      }, error => {
-        this.openSnackBar("Problemas ao deletar empresa", "danger")
+  deleteEmpresa(empresa: Empresa){
+    let dialogRef = this.dialog.open(DialogDeleteEmpresaComponent,
+      {
+        data: empresa,
+        width: "500px",
+        height: "200px"
       })
+    dialogRef.afterClosed().subscribe(result => {
+      if(result=='true'){
+        this.dashService.deletarEmpresa(empresa.id)
+          .subscribe(res => {
+            this.openSnackBar("Empresas deletada com sucesso", "success")
+          }, error => {
+            this.openSnackBar("Problemas ao deletar empresa", "danger")
+          })
+      }
+    })
   }
 
   adicionarEmpresa(){

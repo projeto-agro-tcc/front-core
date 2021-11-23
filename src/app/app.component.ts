@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {LocalstorageService, LocalUser} from "./utils";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
-  constructor(private router: Router) {
-  }
+  localUser: LocalUser
+
+  constructor(
+    private router: Router,
+    private localStorageService: LocalstorageService)
+  {}
 
   sair(){
     delete localStorage['localUserMonitoramento']
@@ -21,6 +26,7 @@ export class AppComponent {
   }
 
   autenticado(): boolean {
+    this.localUser = this.localStorageService.getLocalUser()
     return localStorage['localUserMonitoramento']
   }
 
@@ -30,6 +36,10 @@ export class AppComponent {
 
   contactUs(){
     console.log("Contact us")
+  }
+
+  ngOnInit(): void {
+    this.localUser = this.localStorageService.getLocalUser()
   }
 
 }

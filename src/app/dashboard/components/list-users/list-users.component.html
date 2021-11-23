@@ -35,8 +35,8 @@
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <mat-icon (click)="deleteUsuario(element.id)" style="color: red; cursor: pointer; margin-right: 20px">delete</mat-icon>
-        <mat-icon (click)="editUsuario(element.id)" style="color: cornflowerblue; cursor: pointer">edit</mat-icon>
+        <mat-icon (click)="deleteUsuario(element)" style="color: red; cursor: pointer; margin-right: 20px">delete</mat-icon>
+        <mat-icon (click)="editUsuario(element)" style="color: cornflowerblue; cursor: pointer">edit</mat-icon>
       </mat-cell>
     </ng-container>
 

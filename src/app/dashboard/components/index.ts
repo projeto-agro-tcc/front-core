@@ -1,2 +1,7 @@
 export * from './dashboard.component'
 export * from './dash'
+export * from './cadastro-empresa'
+export * from './profile-empresa'
+export * from './list-empresas'
+export * from './list-users'
+export * from './profile'

@@ -1,6 +1,6 @@
 <h1 style="margin-left: 50px; padding-top: 50px">Empresas</h1>
 
-<mat-form-field style="margin-left: 20px" >
+<mat-form-field style="margin-left: 20px" *ngIf="localUser.groups.includes('admin') || localUser.groups.includes('super_user')">
   <input (keyup)="searchBy($event.target.value)" matInput placeholder="Pesquisa">
 </mat-form-field>
 
@@ -11,8 +11,15 @@
   <ng-container matColumnDef="nome">
     <mat-header-cell mat-sort-header *matHeaderCellDef>Nome</mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <a>
-        <span (click)="viewEmpresa(element.id)" style="cursor: pointer" class="menu">{{element.nome}}</span>
+      <a *ngIf="localUser.groups.includes('admin')
+          || localUser.groups.includes('super_user')
+          || localUser.groups.includes('high_user')">
+        <span (click)="viewEmpresa(element)" style="cursor: pointer" class="menu">{{element.nome}}</span>
+      </a>
+      <a *ngIf="!localUser.groups.includes('admin')
+          || !localUser.groups.includes('super_user')
+          || !localUser.groups.includes('high_user')">
+        <span class="menu">{{element.nome}}</span>
       </a>
     </mat-cell>
   </ng-container>
@@ -25,8 +32,19 @@
   <ng-container matColumnDef="action">
     <mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <mat-icon (click)="deleteEmpresa(element.id)" style="color: red; cursor: pointer; margin-right: 20px">delete</mat-icon>
-      <mat-icon (click)="editEmpresa(element.id)" style="color: cornflowerblue; cursor: pointer">edit</mat-icon>
+      <mat-icon  *ngIf="localUser.groups.includes('admin') || localUser.groups.includes('super_user')"
+                        (click)="deleteEmpresa(element)"
+                        style="color: red; cursor: pointer;
+                        margin-right: 20px">
+        delete
+      </mat-icon>
+      <mat-icon  *ngIf="localUser.groups.includes('admin') ||
+                        localUser.groups.includes('super_user') ||
+                        localUser.groups.includes('high_user')"
+                        (click)="editEmpresa(element)"
+                        style="color: cornflowerblue; cursor: pointer">
+        edit
+      </mat-icon>
     </mat-cell>
   </ng-container>
 
@@ -34,6 +52,6 @@
   <mat-row *matRowDef="let row; columns: displayColums;"></mat-row>
 </mat-table>
 
-<a class="button">
+<a class="button" *ngIf="localUser.groups.includes('admin') || localUser.groups.includes('super_user')">
   <button mat-raised-button style="background-color: limegreen;" (click)="adicionarEmpresa()">Adicionar empresa</button>
 </a>

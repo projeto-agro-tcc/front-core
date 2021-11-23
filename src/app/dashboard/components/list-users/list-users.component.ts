@@ -5,6 +5,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
+import {DialogDeleteUsuarioComponent} from "../../../utils";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-list-users',
@@ -24,6 +26,7 @@ export class ListUsersComponent implements OnInit {
     private dashService: DashboardService,
     private snackBar: MatSnackBar,
     private router: Router,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -59,8 +62,27 @@ export class ListUsersComponent implements OnInit {
     console.log(id)
   }
 
-  deleteUsuario(id){
-    console.log(id)
+  deleteUsuario(usuario: Usuario){
+    let dialogRef = this.dialog.open(DialogDeleteUsuarioComponent,
+      {
+        data: usuario,
+        width: "500px",
+        height: "200px"
+      })
+    dialogRef.afterClosed().subscribe(result => {
+      this.showSpinner = true
+      if(result=='true'){
+        this.dashService.deleteUsuario(usuario.id)
+          .subscribe(res => {
+            this.showSpinner = false
+            this.openSnackBar("Usuário deletado com sucesso", "success")
+          }, error => {
+            this.showSpinner = false
+            this.openSnackBar("Problemas ao deletar usuário", "danger")
+          })
+      }
+    })
+
   }
 
   editUsuario(id){

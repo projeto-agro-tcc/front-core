@@ -9,12 +9,14 @@
 }
 
 .name{
-  font-size: 1.25rem;
+  font-size: 1.75rem;
+  color: black;
 }
 
 mat-sidenav {
   margin: 16px;
-  width: 180px;
+  width: 250px;
+  height: 850px;
   border-right: none;
   background: #549b54;
   color: white;
@@ -31,7 +33,7 @@ mat-sidenav {
 }
 
 mat-sidenav-container {
-  height: calc(100vh - 65px);
+  height: calc(100vh - 100px);
   background: transparent;
 }
 
@@ -48,16 +50,30 @@ mat-sidenav-container {
   cursor: pointer;
 }
 
+.menu {
+  width: 100%;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.75rem;
+  color: #000000;
+  cursor: pointer;
+  margin-left: -40px;
+  margin-top: 50px;
+}
+
 .avatar /deep/ .avatar-content {
+  margin-top: 30px;
   height: 45px;
   width: 45px;
   background-color: #000000 !important;
 }
 
 .name {
-  margin-top: -35px;
+  margin-top: -45px;
   font-weight: bold;
-  margin-left: 30px;
+  margin-left: 35px;
 }
 
 .designation {

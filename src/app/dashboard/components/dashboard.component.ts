@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatSidenav } from "@angular/material/sidenav";
 import { BreakpointObserver } from "@angular/cdk/layout";
 import { delay } from "rxjs/operators";
-import { LocalstorageService } from "../../utils";
+import {LocalstorageService, LocalUser} from "../../utils";
 import { Router } from "@angular/router";
 
 @Component({
@@ -15,8 +15,7 @@ export class DashboardComponent implements OnInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   showSpinner = false
-  username: string = ""
-
+  localUser: LocalUser
 
   constructor(
     private observer: BreakpointObserver,
@@ -53,7 +52,7 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit(): void {
     this.showSpinner = true
-    this.username = this.localStorageService.getLocalUser().username
+    this.localUser = this.localStorageService.getLocalUser()
     this.showSpinner = false
   }
 

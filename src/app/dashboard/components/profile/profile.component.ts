@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LocalstorageService, LocalUser} from "../../../utils";
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  localUser: LocalUser
+
+  constructor(
+    private locasStorageService: LocalstorageService
+  ) { }
 
   ngOnInit(): void {
+    this.localUser = this.locasStorageService.getLocalUser()
+
   }
 
 }

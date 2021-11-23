@@ -38,3 +38,8 @@
   font-size: 1rem;
 }
 
+.avatar /deep/ .avatar-content {
+  height: 45px;
+  width: 45px;
+  background-color: #031844 !important;
+}

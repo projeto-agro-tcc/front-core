@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit{
   ngOnInit(): void {
     if(this.localStorageService.getLocalUser()){
       this.showSpinner = true
-      this.router.navigateByUrl('/dashboard')
+      this.router.navigateByUrl('/dashboard/profile')
     }
   }
 
