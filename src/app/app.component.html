@@ -7,14 +7,14 @@
     <span (click)="aboutUs()" class="menu" style="cursor: pointer">Sobre</span>
   </a>
   <a>
-    <span (click)="contactUs()" style="cursor: pointer" class="menu">ContactUs</span>
+    <span (click)="contactUs()" style="cursor: pointer" class="menu">Contato</span>
   </a>
 
   <a (click)="sair()" style="cursor: pointer"
      alt="Sair" title="Sair"
      *ngIf="autenticado()">
     <a>
-      <span style="cursor: pointer" class="menu">LogOut</span>
+      <span style="cursor: pointer" class="menu">Sair</span>
     </a>
   </a>
   <a *ngIf="autenticado()">
@@ -24,7 +24,7 @@
   <a (click)="logar()" style="cursor: pointer"
      *ngIf="!autenticado()">
     <a>
-      <span style="cursor: pointer" class="menu">LogIn</span>
+      <span style="cursor: pointer" class="menu">Entrar</span>
     </a>
   </a>
 </mat-toolbar>

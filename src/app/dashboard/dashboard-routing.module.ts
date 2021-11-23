@@ -7,6 +7,8 @@ import {ListUsersComponent} from "./components/list-users/list-users.component";
 import {ListEmpresasComponent} from "./components/list-empresas/list-empresas.component";
 import {CadastroEmpresaComponent} from "./components/cadastro-empresa";
 import {ProfileEmpresaComponent} from "./components/profile-empresa";
+import {ListaEstacoesComponent} from "./components/lista-estacoes/lista-estacoes.component";
+import {InfoEstacaoComponent} from "./components/info-estacao/info-estacao.component";
 
 export const DashRoutes: Routes = [
   {
@@ -18,7 +20,9 @@ export const DashRoutes: Routes = [
       { path: 'users', component: ListUsersComponent },
       { path: 'empresas', component: ListEmpresasComponent },
       { path: 'cadastro-empresa', component: CadastroEmpresaComponent },
-      { path: 'profile-empresa', component: ProfileEmpresaComponent}
+      { path: 'profile-empresa', component: ProfileEmpresaComponent},
+      { path: 'lista-estacoes', component: ListaEstacoesComponent},
+      { path: 'info-estacoes', component: InfoEstacaoComponent}
     ]
   }
 ]

@@ -24,6 +24,7 @@ import { DialogDeleteEmpresaComponent,
 import { AvatarModule } from "ngx-avatar";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

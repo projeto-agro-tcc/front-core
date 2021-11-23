@@ -2,8 +2,10 @@
   <mat-sidenav-container>
     <mat-sidenav class="mat-elevation-z8">
       <a (click)="profile()" style="cursor: pointer">
-        <ngx-avatar class="avatar" name="{{localUser.username}}"></ngx-avatar>
-        <h4 class="mat-h1 name">{{localUser.username}}</h4>
+        <mat-list-item>
+          <ngx-avatar class="avatar" name="{{localUser.username}}"></ngx-avatar>
+        </mat-list-item>
+        <h3>{{localUser.username}}</h3>
       </a>
 
       <mat-divider></mat-divider>
@@ -23,7 +25,7 @@
       </ul>
 
       <ul>
-        <a class="menu">
+        <a (click)="pageDash()" class="menu">
           <mat-icon>home</mat-icon>
           <div class="mat-h1" style="margin-left: 10px; margin-top: 15px">Dashboard</div>
         </a>

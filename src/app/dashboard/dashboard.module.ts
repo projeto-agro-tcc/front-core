@@ -24,10 +24,13 @@ import { CadastroEmpresaComponent,
   ListEmpresasComponent,
   DashboardComponent,
   DashComponent,
-  ProfileComponent} from './components';
+  ProfileComponent,
+  ListaEstacoesComponent,
+  InfoEstacaoComponent} from './components';
 import { NgxMaskModule } from "ngx-mask";
 import { MatSortModule } from "@angular/material/sort";
 import { MatDialogModule } from "@angular/material/dialog";
+
 
 
 @NgModule({
@@ -39,7 +42,9 @@ import { MatDialogModule } from "@angular/material/dialog";
     ListEmpresasComponent,
     CadastroEmpresaComponent,
     ProfileEmpresaComponent,
-    ProfileEmpresaComponent
+    ProfileEmpresaComponent,
+    ListaEstacoesComponent,
+    InfoEstacaoComponent
   ],
   imports: [
     CommonModule,

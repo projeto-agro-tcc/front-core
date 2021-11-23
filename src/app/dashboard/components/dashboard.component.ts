@@ -50,6 +50,10 @@ export class DashboardComponent implements OnInit{
     this.router.navigateByUrl('/dashboard/empresas')
   }
 
+  pageDash(){
+    this.router.navigateByUrl('/dashboard/dash')
+  }
+
   ngOnInit(): void {
     this.showSpinner = true
     this.localUser = this.localStorageService.getLocalUser()

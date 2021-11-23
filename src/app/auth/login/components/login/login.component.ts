@@ -70,4 +70,8 @@ export class LoginComponent implements OnInit{
     this.router.navigateByUrl('/cadastrousuario')
   }
 
+  esqueceuSenha(){
+    this.openSnackBar("Funcionalidade ainda não implementada ;)", "danger")
+  }
+
 }
