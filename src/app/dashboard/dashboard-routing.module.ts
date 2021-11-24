@@ -22,7 +22,7 @@ export const DashRoutes: Routes = [
       { path: 'cadastro-empresa', component: CadastroEmpresaComponent },
       { path: 'profile-empresa', component: ProfileEmpresaComponent},
       { path: 'lista-estacoes', component: ListaEstacoesComponent},
-      { path: 'info-estacoes', component: InfoEstacaoComponent}
+      { path: 'info-estacao', component: InfoEstacaoComponent}
     ]
   }
 ]

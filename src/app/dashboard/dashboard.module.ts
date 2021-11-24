@@ -33,6 +33,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {NgxChartsModule} from "@swimlane/ngx-charts";
 
 
 
@@ -73,7 +74,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
     MatDialogModule,
     MatCardModule,
     MatProgressBarModule,
-    MatGridListModule
+    MatGridListModule,
+    NgxChartsModule
   ],
   providers: [
     LocalstorageService,
