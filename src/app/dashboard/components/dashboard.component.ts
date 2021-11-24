@@ -50,8 +50,8 @@ export class DashboardComponent implements OnInit{
     this.router.navigateByUrl('/dashboard/empresas')
   }
 
-  pageDash(){
-    this.router.navigateByUrl('/dashboard/dash')
+  pageListaEstacoes(){
+    this.router.navigateByUrl('/dashboard/lista-estacoes')
   }
 
   ngOnInit(): void {

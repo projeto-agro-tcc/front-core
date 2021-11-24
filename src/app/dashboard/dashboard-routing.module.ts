@@ -2,13 +2,13 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { DashboardComponent, DashComponent } from "./components";
-import {ProfileComponent} from "./components/profile/profile.component";
-import {ListUsersComponent} from "./components/list-users/list-users.component";
-import {ListEmpresasComponent} from "./components/list-empresas/list-empresas.component";
-import {CadastroEmpresaComponent} from "./components/cadastro-empresa";
-import {ProfileEmpresaComponent} from "./components/profile-empresa";
-import {ListaEstacoesComponent} from "./components/lista-estacoes/lista-estacoes.component";
-import {InfoEstacaoComponent} from "./components/info-estacao/info-estacao.component";
+import {ProfileComponent} from "./components";
+import {ListUsersComponent} from "./components";
+import {ListEmpresasComponent} from "./components";
+import {CadastroEmpresaComponent} from "./components";
+import {ProfileEmpresaComponent} from "./components";
+import {ListaEstacoesComponent} from "./components";
+import {InfoEstacaoComponent} from "./components";
 
 export const DashRoutes: Routes = [
   {

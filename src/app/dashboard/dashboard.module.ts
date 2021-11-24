@@ -30,6 +30,9 @@ import { CadastroEmpresaComponent,
 import { NgxMaskModule } from "ngx-mask";
 import { MatSortModule } from "@angular/material/sort";
 import { MatDialogModule } from "@angular/material/dialog";
+import {MatCardModule} from "@angular/material/card";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 
 
@@ -67,7 +70,10 @@ import { MatDialogModule } from "@angular/material/dialog";
     MatTableModule,
     NgxMaskModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule,
+    MatProgressBarModule,
+    MatGridListModule
   ],
   providers: [
     LocalstorageService,

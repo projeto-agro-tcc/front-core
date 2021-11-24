@@ -1,6 +1,6 @@
 <h1 style="margin-left: 50px; padding-top: 50px">Empresas</h1>
 
-<mat-form-field style="margin-left: 20px" *ngIf="localUser.groups.includes('admin') || localUser.groups.includes('super_user')">
+<mat-form-field style="margin-left: 50px" *ngIf="localUser.groups.includes('admin') || localUser.groups.includes('super_user')">
   <input (keyup)="searchBy($event.target.value)" matInput placeholder="Pesquisa">
 </mat-form-field>
 
