@@ -1,11 +1,12 @@
 
 <mat-sidenav-container>
   <mat-sidenav class="content mat-elevation-z8">
+
     <a (click)="profile()" style="cursor: pointer">
-      <mat-list-item>
-        <ngx-avatar class="avatar" name="{{localUser.username}}"></ngx-avatar>
-      </mat-list-item>
-      <h3>{{localUser.username}}</h3>
+        <div style="margin-left: 85px">
+          <ngx-avatar class="avatar" name="{{localUser.username}}"></ngx-avatar>
+        </div>
+        <h3>{{localUser.username}}</h3>
     </a>
 
     <mat-divider></mat-divider>
@@ -20,7 +21,7 @@
     <ul *ngIf="localUser.groups.includes('admin') || localUser.groups.includes('super_user')">
       <a (click)="pageUsers()" class="menu">
         <mat-icon>person</mat-icon>
-        <div class="mat-h1" style="margin-left: 10px; margin-top: 10px">Usuarios</div>
+        <div class="mat-h1" style="margin-left: 10px; margin-top: 10px">Usuários</div>
       </a>
     </ul>
 

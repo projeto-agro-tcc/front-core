@@ -1,0 +1,8 @@
+.example-card {
+  max-width: 200px;
+  padding-top: 50px;
+  margin-left: 50px;
+}
+.content {
+  padding: 16px;
+}
