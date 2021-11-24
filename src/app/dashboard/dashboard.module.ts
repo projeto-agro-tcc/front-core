@@ -34,6 +34,8 @@ import {MatCardModule} from "@angular/material/card";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {NgxChartsModule} from "@swimlane/ngx-charts";
+import {BrowserModule} from "@angular/platform-browser";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -75,7 +77,9 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
     MatCardModule,
     MatProgressBarModule,
     MatGridListModule,
-    NgxChartsModule
+    NgxChartsModule,
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [
     LocalstorageService,

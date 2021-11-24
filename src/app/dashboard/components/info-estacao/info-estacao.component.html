@@ -1,18 +1,40 @@
-<p style="margin-left: 50px">info-estacao works!</p>
+<!--<p style="margin-left: 50px">info-estacao works!</p>-->
 
-<!--<ngx-charts-line-chart-->
-<!--  [view]="view"-->
-<!--  [legend]="legend"-->
-<!--  [showXAxisLabel]="showXAxisLabel"-->
-<!--  [showYAxisLabel]="showYAxisLabel"-->
-<!--  [xAxis]="xAxis"-->
-<!--  [yAxis]="yAxis"-->
-<!--  [xAxisLabel]="xAxisLabel"-->
-<!--  [yAxisLabel]="yAxisLabel"-->
-<!--  [timeline]="timeline"-->
-<!--  [results]="multi"-->
-<!--  (select)="onSelect($event)"-->
-<!--  (activate)="onActivate($event)"-->
-<!--  (deactivate)="onDeactivate($event)"-->
-<!--&gt;-->
-<!--</ngx-charts-line-chart>-->
+<div class="div-graficos-dash" fxLayout="row wrap">
+  <div class="div-graficos" *ngFor="let num of [1,2,3,4]">
+    <ngx-charts-line-chart
+      [legend]="legend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [timeline]="timeline"
+      [results]="multi"
+    >
+    </ngx-charts-line-chart>
+    <mat-card class="example-card">
+      <mat-card-subtitle>Previsão</mat-card-subtitle>
+      <mat-card-title style="text-align: center">25.8 °C</mat-card-title>
+      <mat-card-content>
+        <p style="text-align: center">para 25/11/2021</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<!--<div class="div-graficos">-->
+<!--  <ngx-charts-line-chart-->
+<!--    [legend]="legend"-->
+<!--    [showXAxisLabel]="showXAxisLabel"-->
+<!--    [showYAxisLabel]="showYAxisLabel"-->
+<!--    [xAxis]="xAxis"-->
+<!--    [yAxis]="yAxis"-->
+<!--    [xAxisLabel]="xAxisLabel"-->
+<!--    [yAxisLabel]="yAxisLabel"-->
+<!--    [timeline]="timeline"-->
+<!--    [results]="multi"-->
+<!--  >-->
+<!--  </ngx-charts-line-chart>-->
+<!--</div>-->

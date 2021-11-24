@@ -1,0 +1,16 @@
+.div-graficos {
+  height: 280px;
+  width: 1000px;
+  margin: 0 auto;
+}
+.example-card {
+  width: 150px;
+  height: 100px;
+  margin-left: 1000px;
+
+}
+.div-graficos-dash {
+  height: 680px;
+  max-width: 100%;
+  overflow: auto;
+}
