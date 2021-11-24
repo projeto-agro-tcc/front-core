@@ -1,47 +1,149 @@
-<!--<h1 style="margin-left: 50px; padding-top: 50px">Profile Empresas</h1>-->
 
-<!--<mat-form-field style="margin-left: 20px">-->
-<!--  <input (keyup)="searchBy($event.target.value)" matInput placeholder="Pesquisa">-->
-<!--</mat-form-field>-->
+<div class="content mat-h1">
+  <h3 style="margin-left: 20px; margin-top: 20px; padding-top: 20px">Profile Empresa</h3>
+  <div class="formulario mat-elevation-z8">
+    <div class="info">
+      <div class="row_1 mat-h1">
+        <h6>Razão Social: </h6>
+        <h3>{{empresa.razao_social}}</h3>
 
-<!--<mat-spinner *ngIf="showSpinner"></mat-spinner>-->
+        <h6>Nome Fantasia:</h6>
+        <h3>{{empresa.nome}}</h3>
 
-<!--<div class="container-table">-->
-<!--  <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z6 table">-->
+<!--        id: "",-->
+<!--        email: "",-->
+<!--        cnpj: "",-->
+<!--        web_site: "",-->
 
-<!--    <ng-container matColumnDef="nome">-->
-<!--      <mat-header-cell mat-sort-header *matHeaderCellDef>Nome</mat-header-cell>-->
-<!--      <mat-cell *matCellDef="let element">-->
-<!--        <span (click)="viewUsuario(element.id)" style="cursor: pointer" class="menu">{{element.first_name}} {{element.last_name}}</span>-->
-<!--      </mat-cell>-->
-<!--    </ng-container>-->
+      </div>
+      <div>
+        <h6>Nome Fantasia:</h6>
+        <h3>{{empresa.nome}}</h3>
+      </div>
+      <div class="row_2 mat-h1">
+        <h3>Razão Social:</h3>
+        <h4>teste3</h4>
+      </div>
 
-<!--    <ng-container matColumnDef="email">-->
-<!--      <mat-header-cell mat-sort-header *matHeaderCellDef>Email</mat-header-cell>-->
-<!--      <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>-->
-<!--    </ng-container>-->
+    </div>
 
-<!--    <ng-container matColumnDef="empresa">-->
-<!--      <mat-header-cell mat-sort-header *matHeaderCellDef>Empresa</mat-header-cell>-->
-<!--      <mat-cell *matCellDef="let element">-->
-<!--        <div *ngIf="element.empresas">-->
-<!--          <div *ngFor="let item of element.empresas">-->
-<!--            {{item.nome}}-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </mat-cell>-->
-<!--    </ng-container>-->
 
-<!--    <ng-container matColumnDef="action">-->
-<!--      <mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>-->
-<!--      <mat-cell *matCellDef="let element">-->
-<!--        <mat-icon (click)="deleteUsuario(element)" style="color: red; cursor: pointer; margin-right: 20px">delete</mat-icon>-->
-<!--        <mat-icon (click)="editUsuario(element)" style="color: cornflowerblue; cursor: pointer">edit</mat-icon>-->
-<!--      </mat-cell>-->
-<!--    </ng-container>-->
 
-<!--    <mat-header-row *matHeaderRowDef="displayColums"></mat-header-row>-->
-<!--    <mat-row *matRowDef="let row; columns: displayColums;"></mat-row>-->
-<!--  </mat-table>-->
-<!--</div>-->
+
+
+
+<!--          <mat-list-item>-->
+<!--            <div style="width: 250px; padding-right: 20px">-->
+<!--              <div class="title">-->
+<!--                <span>Razão Social:</span>-->
+<!--              </div>-->
+<!--              <div class="name">-->
+<!--                {{empresa.razao_social}}-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div style="width: 250px; padding-right: 20px">-->
+<!--              <div class="title">-->
+<!--                <span>Nome Fantasia: </span>-->
+<!--              </div>-->
+<!--              <div class="name">-->
+<!--                {{empresa.nome}}-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div style="width: 250px">-->
+<!--              <div class="title">-->
+<!--                Email:-->
+<!--              </div>-->
+<!--              <div class="name">-->
+<!--                {{empresa.email}}-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </mat-list-item>-->
+
+<!--          <mat-list-item>-->
+
+<!--            <div style="width: 300px">-->
+<!--              <div class="title" style="margin-top: 100px">-->
+<!--                WebSite:-->
+<!--              </div>-->
+<!--              <div class="name">-->
+<!--                {{empresa.web_site}}-->
+<!--              </div>-->
+
+<!--            </div>-->
+<!--          </mat-list-item>-->
+
+<!--          <mat-list-item>-->
+<!--              {{empresa.cnpj}}-->
+<!--          </mat-list-item>-->
+
+<!--          <mat-list-item style="width: 500px">-->
+<!--            <div class="telefones">-->
+<!--              <h3>Telefones</h3>-->
+<!--              <mat-list>-->
+<!--                <mat-list-item>-->
+<!--                  <div style="width: 180px; padding-right: 20px">-->
+<!--                    {{empresa.telefone.residencial}}-->
+<!--                  </div>-->
+<!--                  <div style="width: 180px; padding-right: 20px">-->
+<!--                    {{empresa.telefone.celular}}-->
+<!--                  </div>-->
+<!--                  <div style="width: 180px; padding-right: 20px">-->
+<!--                    {{empresa.telefone.outro}}-->
+<!--                  </div>-->
+<!--                </mat-list-item>-->
+<!--              </mat-list>-->
+<!--            </div>-->
+<!--          </mat-list-item>-->
+
+  <!--        <mat-list-item>-->
+  <!--          <div class="endereco">-->
+  <!--            <h3>Endereço</h3>-->
+  <!--            <mat-list>-->
+  <!--              <mat-list-item>-->
+  <!--                <mat-form-field style="width: 140px; padding-right: 20px">-->
+  <!--                  <input matInput placeholder="CEP" mask="00.000-000"-->
+  <!--                         formControlName="cep" (ngModelChange)="verificaCep()">-->
+  <!--                </mat-form-field>-->
+  <!--                <mat-form-field style="width: 300px; padding-right: 20px">-->
+  <!--                  <input matInput placeholder="Logradouro"-->
+  <!--                         formControlName="logradouro">-->
+  <!--                </mat-form-field>-->
+  <!--                <mat-form-field style="width: 100px;">-->
+  <!--                  <input matInput placeholder="Cidade"-->
+  <!--                         formControlName="cidade">-->
+  <!--                </mat-form-field>-->
+  <!--              </mat-list-item>-->
+  <!--              <mat-list-item>-->
+  <!--                <mat-form-field style="width: 150px; padding-right: 20px">-->
+  <!--                  <input matInput placeholder="Complemento"-->
+  <!--                         formControlName="complemento">-->
+  <!--                </mat-form-field>-->
+  <!--                <mat-form-field style="width: 130px; padding-right: 20px">-->
+  <!--                  <input matInput placeholder="Bairro"-->
+  <!--                         formControlName="bairro">-->
+  <!--                </mat-form-field>-->
+  <!--                <mat-form-field style="width: 40px; padding-right: 20px">-->
+  <!--                  <input matInput placeholder="UF"-->
+  <!--                         formControlName="uf">-->
+  <!--                </mat-form-field>-->
+  <!--                <mat-form-field>-->
+  <!--                  <input matInput placeholder="Número"-->
+  <!--                           formControlName="numero">-->
+  <!--                </mat-form-field>-->
+
+  <!--              </mat-list-item>-->
+  <!--            </mat-list>-->
+  <!--          </div>-->
+  <!--        </mat-list-item>-->
+
+  <!--        <mat-list-item style="margin-top: 222px; margin-left: 250px;">-->
+  <!--          <mat-list-item fxLayoutAlign="center">-->
+  <!--            <button mat-raised-button color="primary" [disabled]="form.invalid"-->
+  <!--                    (click)="cadastrarEmpresa()">Cadastrar</button>-->
+  <!--          </mat-list-item>-->
+  <!--        </mat-list-item>-->
+  </div>
+</div>
+
+
 

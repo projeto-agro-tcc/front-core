@@ -1,46 +1,49 @@
 
-<mat-sidenav-container>
-  <mat-sidenav class="content mat-elevation-z8">
-
-    <a (click)="profile()" style="cursor: pointer">
-        <div style="margin-left: 85px">
-          <ngx-avatar class="avatar" name="{{localUser.username}}"></ngx-avatar>
-        </div>
-        <h3>{{localUser.username}}</h3>
-    </a>
-
-    <mat-divider></mat-divider>
-
-    <ul>
-      <a (click)="pageEmpresas()" class="menu">
-        <mat-icon>home</mat-icon>
-        <div class="mat-h1" style="margin-left: 10px; margin-top: 15px">Empresas</div>
+  <mat-sidenav-container>
+    <mat-sidenav class="mat-elevation-z8">
+      <a (click)="profile()" style="cursor: pointer">
+        <ngx-avatar class="avatar" name="{{localUser.username}}"></ngx-avatar>
+        <h4 class="mat-h1 name">{{localUser.username}}</h4>
       </a>
-    </ul>
 
-    <ul *ngIf="localUser.groups.includes('admin') || localUser.groups.includes('super_user')">
-      <a (click)="pageUsers()" class="menu">
-        <mat-icon>person</mat-icon>
-        <div class="mat-h1" style="margin-left: 10px; margin-top: 10px">Usuários</div>
-      </a>
-    </ul>
+      <mat-divider></mat-divider>
 
-    <ul>
-      <a (click)="pageListaEstacoes()" class="menu">
-        <mat-icon>show_chart</mat-icon>
-        <div class="mat-h1" style="margin-left: 10px; margin-top: 15px">Monitoramento</div>
-      </a>
-    </ul>
+      <ul>
+        <a (click)="pageEmpresas()" class="menu">
+          <mat-icon>home</mat-icon>
+          <div class="mat-h1" style="margin-left: 10px; margin-top: 15px">Empresas</div>
+        </a>
+      </ul>
 
-  </mat-sidenav>
+      <ul *ngIf="localUser.groups.includes('admin') || localUser.groups.includes('super_user')">
+        <a (click)="pageUsers()" class="menu">
+          <mat-icon>person</mat-icon>
+          <div class="mat-h1" style="margin-left: 10px; margin-top: 10px">Usuarios</div>
+        </a>
+      </ul>
 
-  <mat-sidenav-content>
-    <div class="content mat-elevation-z8">
-      <router-outlet>
-      </router-outlet>
-    </div>
-  </mat-sidenav-content>
+      <ul>
+        <a class="menu">
+          <mat-icon>home</mat-icon>
+          <div class="mat-h1" style="margin-left: 10px; margin-top: 15px">Dashboard</div>
+        </a>
+      </ul>
+      <mat-divider></mat-divider>
 
+      <button mat-button class="menu-button">
+        <mat-icon>info</mat-icon>
+        <span>About</span>
+      </button>
 
-</mat-sidenav-container>
-
+      <button mat-button class="menu-button">
+        <mat-icon>help</mat-icon>
+        <span>Help</span>
+      </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content mat-elevation-z8">
+        <router-outlet>
+        </router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

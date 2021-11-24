@@ -17,8 +17,8 @@
         <span (click)="viewEmpresa(element)" style="cursor: pointer" class="menu">{{element.nome}}</span>
       </a>
       <a *ngIf="!localUser.groups.includes('admin')
-          || !localUser.groups.includes('super_user')
-          || !localUser.groups.includes('high_user')">
+          && !localUser.groups.includes('super_user')
+          && !localUser.groups.includes('high_user')">
         <span class="menu">{{element.nome}}</span>
       </a>
     </mat-cell>
