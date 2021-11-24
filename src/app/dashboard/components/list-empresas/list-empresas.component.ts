@@ -61,8 +61,7 @@ export class ListEmpresasComponent implements OnInit {
   }
 
   viewEmpresa(empresa: Empresa){
-      console.log(empresa.endereco)
-    this.router.navigate(['/dashboard/profile-empresa', empresa])
+    this.router.navigate(['/dashboard/profile-empresa', {id_empresa:empresa.id}])
   }
 
   editEmpresa(empresa: Empresa){

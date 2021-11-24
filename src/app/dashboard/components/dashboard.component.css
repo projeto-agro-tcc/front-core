@@ -4,10 +4,6 @@
   background: #549b54;
 }
 
-.container{
-  display: flex;
-}
-
 .name{
   font-size: 1.75rem;
   color: black;
@@ -27,7 +23,7 @@ mat-sidenav {
 
 .content {
   height: calc(100vh - 180px);
-  border-radius: 10px;
+  border-radius: 15px;
   margin: 16px;
   margin-left: 32px;
 }
