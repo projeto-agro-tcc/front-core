@@ -33,6 +33,10 @@ export class DashboardService {
     return this.http.get(`${env.baseUrl}usuarios/`)
   }
 
+  getEstacoes(): Observable<any>{
+    return this.http.get(`${env.baseUrl}usuarios/`)
+  }
+
   // getUsuarioByUsername(username: string): Observable<any>{
   //   console.log("Get usuário by username " + username)
   // }

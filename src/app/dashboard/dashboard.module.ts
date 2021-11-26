@@ -37,8 +37,6 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {BrowserModule} from "@angular/platform-browser";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -77,7 +75,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     MatProgressBarModule,
     MatGridListModule,
-    NgxChartsModule,
     BrowserModule,
     BrowserAnimationsModule
   ],
