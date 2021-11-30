@@ -1,9 +1,18 @@
+
+.example-button-row {
+  /*display: table-cell;*/
+  width: 490px;
+  margin-right: 50px;
+  display: inline-block;
+}
+
 .example-card {
   width: 150px;
   height: 100px;
-  margin-left: 600px;
-  background-color: #549b54;
-  color: white;
+  /*margin-left: 600px;*/
+  /*background-color: #549b54;*/
+  /*color: white;*/
+  margin: auto;
 }
 .graficos {
   margin-top: 20px;
@@ -19,4 +28,9 @@
   /*margin-top: 30px;*/
 }
 
+.div-estacoes {
+  height: 680px;
+  max-width: 100%;
+  overflow: auto;
+}
 

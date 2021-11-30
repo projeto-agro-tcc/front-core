@@ -12,19 +12,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { multi } from './data';
 import * as L from 'leaflet';
-import { Chart, registerables } from 'chart.js';
+import {Chart, ChartDataSets, ChartType} from 'chart.js';
+import {ChartsModule, Label} from "ng2-charts";
+
 
 @Component({
   selector: 'app-info-estacao',
   templateUrl: './info-estacao.component.html',
   styleUrls: ['./info-estacao.component.css']
 })
-export class InfoEstacaoComponent {
-
+export class InfoEstacaoComponent implements OnInit{
+  showChart: string
+  public chartData: ChartDataSets[] = [{data: [5,20,7,18,20], label: 'Temperatura'}]
+  public chartType: ChartType =   'line'
+  public chartType2: ChartType =   'bar'
+  public chartLabels: Label[] = ['a','b','c','d','e']
 
   constructor() {
-    Chart.register(...registerables);
+
   }
+
+  ngOnInit(): void {
+    this.showChart = 'temp'; // hide chart at the beginning
+  }
+
 
   // async ngAfterViewInit(){
   //   await this.drawTemp()

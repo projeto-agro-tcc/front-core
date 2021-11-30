@@ -37,6 +37,7 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {BrowserModule} from "@angular/platform-browser";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from "@angular/material/tabs";
+import { ChartsModule} from "ng2-charts";
 
 @NgModule({
   declarations: [
@@ -51,35 +52,35 @@ import {MatTabsModule} from "@angular/material/tabs";
     ListaEstacoesComponent,
     InfoEstacaoComponent
   ],
-    imports: [
-        CommonModule,
-        RouterModule,
-        FlexLayoutModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatDividerModule,
-        MatToolbarModule,
-        MatListModule,
-        AvatarModule,
-        MatProgressSpinnerModule,
-        MatFormFieldModule,
-        FormsModule,
-        MatInputModule,
-        MatSnackBarModule,
-        MatButtonModule,
-        MatTableModule,
-        NgxMaskModule,
-        MatSortModule,
-        MatDialogModule,
-        MatCardModule,
-        MatProgressBarModule,
-        MatGridListModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatTabsModule
-    ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatDividerModule,
+    MatToolbarModule,
+    MatListModule,
+    AvatarModule,
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    MatTableModule,
+    NgxMaskModule,
+    MatSortModule,
+    MatDialogModule,
+    MatCardModule,
+    MatProgressBarModule,
+    MatGridListModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ChartsModule
+  ],
   providers: [
     LocalstorageService,
     DashboardService
