@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Chart, ChartDataSets, ChartType} from 'chart.js';
 import {ChartsModule, Label} from "ng2-charts";
+import {ThemePalette} from "@angular/material/core";
 
 @Component({
   selector: 'app-info-estacao',
@@ -9,6 +10,10 @@ import {ChartsModule, Label} from "ng2-charts";
 })
 export class InfoEstacaoComponent implements OnInit{
   showChart: string
+  btnColorTemp: ThemePalette = 'primary';
+  btnColorUmid: ThemePalette = 'primary';
+  btnColorPressao: ThemePalette = 'primary';
+  btnColorVento: ThemePalette = 'primary';
 
   // Grafico Temperatura
   public tempchartData: ChartDataSets[] = [{data: [21,20,18,22,23,24,16], label: 'Temperatura'}]
@@ -17,7 +22,7 @@ export class InfoEstacaoComponent implements OnInit{
   public tempchartLegend: boolean = false
 
   // Grafico Umidade
-  public umidchartData: ChartDataSets[] = [{data: [88,80,90,50,66,90,84], label: 'Temperatura'}]
+  public umidchartData: ChartDataSets[] = [{data: [88,80,90,50,66,90,84], label: 'Umidade'}]
   public umidchartType: ChartType =   'line'
   public umidchartLabels: Label[] = ['01-10-2021','02-10-2021','03-10-2021','04-10-2021','05-10-2021','06-10-2021','07-10-2021']
   public umidchartLegend: boolean = false
@@ -25,9 +30,38 @@ export class InfoEstacaoComponent implements OnInit{
   constructor() {}
 
   ngOnInit(): void {
-    this.showChart = 'temp'; // hide chart at the beginning
+    this.showChart = 'temp';
+    this.btnColorTemp = 'accent';
   }
 
+  choiceVar(v: string) {
+    this.showChart = v
+    if (v == 'temp') {
+      this.btnColorTemp = 'accent'
+      this.btnColorUmid = 'primary';
+      this.btnColorPressao = 'primary';
+      this.btnColorVento = 'primary';
+    }
+    else if (v == 'umid') {
+      this.btnColorTemp = 'primary'
+      this.btnColorUmid = 'accent';
+      this.btnColorPressao = 'primary';
+      this.btnColorVento = 'primary';
+    }
+    else if (v == 'pressao') {
+      this.btnColorTemp = 'primary'
+      this.btnColorUmid = 'primary';
+      this.btnColorPressao = 'accent';
+      this.btnColorVento = 'primary';
+    }
+    else if (v == 'vento') {
+      this.btnColorTemp = 'primary'
+      this.btnColorUmid = 'primary';
+      this.btnColorPressao = 'primary';
+      this.btnColorVento = 'accent';
+    }
+
+  }
 
 
 

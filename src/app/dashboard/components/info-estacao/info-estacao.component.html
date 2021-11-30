@@ -1,41 +1,42 @@
-<div fxLayout="row wrap" fxLayoutAlign="center center">
+<div class="div-graficos-dash">
+  <div fxLayout="row wrap" fxLayoutAlign="center center">
 
-      <span style=" margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button (click)="showChart='temp'">Temperatura</button></span>
-      <span style="margin-left: 10px; margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button (click)="showChart='umid'">Umidade</button></span>
-      <span style="margin-left: 10px; margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button (click)="showChart='pressao'">Pressão</button></span>
-      <span style="margin-left: 10px;  margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button (click)="showChart='vento'">Vento</button></span>
+        <span style=" margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button [color]="btnColorTemp" (click)="choiceVar('temp')">Temperatura</button></span>
+        <span style="margin-left: 10px; margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button [color]="btnColorUmid" (click)="choiceVar('umid')">Umidade</button></span>
+        <span style="margin-left: 10px; margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button [color]="btnColorPressao" (click)="choiceVar('pressao')">Pressão</button></span>
+        <span style="margin-left: 10px;  margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button [color]="btnColorVento" (click)="choiceVar('vento')">Vento</button></span>
 
+  </div>
+
+  <div *ngIf="showChart=='temp'" style="width: 900px; height: 750px; margin: 0 auto; overflow: auto">
+
+    <canvas baseChart [datasets]="tempchartData" [chartType]="tempchartType" [labels]="tempchartLabels" [legend]="tempchartLegend"></canvas>
+
+    <mat-card class="example-card">
+      <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>
+      <mat-card-title style="text-align: center">25.8 °C</mat-card-title>
+      <mat-card-content>
+        <p style="text-align: center">para 25/11/2021</p>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+
+  <div *ngIf="showChart=='umid'" style="width: 900px; height: 750px; margin: 0 auto; overflow: auto">
+
+    <canvas baseChart [datasets]="umidchartData" [chartType]="umidchartType" [labels]="umidchartLabels" [legend]="umidchartLegend"></canvas>
+
+    <mat-card class="example-card">
+      <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>
+      <mat-card-title style="text-align: center">25.8 °C</mat-card-title>
+      <mat-card-content>
+        <p style="text-align: center">para 25/11/2021</p>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
 
 </div>
-
-<div *ngIf="showChart=='temp'" style="width: 900px; height: 750px; margin: 0 auto; overflow: auto">
-
-  <canvas baseChart [datasets]="tempchartData" [chartType]="tempchartType" [labels]="tempchartLabels" [legend]="tempchartLegend"></canvas>
-
-  <mat-card class="example-card">
-    <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>
-    <mat-card-title style="text-align: center">25.8 °C</mat-card-title>
-    <mat-card-content>
-      <p style="text-align: center">para 25/11/2021</p>
-    </mat-card-content>
-  </mat-card>
-
-</div>
-
-<div *ngIf="showChart=='umid'" style="width: 900px; height: 750px; margin: 0 auto; overflow: auto">
-
-  <canvas baseChart [datasets]="umidchartData" [chartType]="umidchartType" [labels]="umidchartLabels" [legend]="umidchartLegend"></canvas>
-
-  <mat-card class="example-card">
-    <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>
-    <mat-card-title style="text-align: center">25.8 °C</mat-card-title>
-    <mat-card-content>
-      <p style="text-align: center">para 25/11/2021</p>
-    </mat-card-content>
-  </mat-card>
-
-</div>
-
 
 
 
