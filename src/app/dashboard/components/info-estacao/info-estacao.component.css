@@ -10,16 +10,11 @@
   width: 150px;
   height: 100px;
   /*margin-left: 600px;*/
-  /*background-color: #549b54;*/
-  /*color: white;*/
+  background-color: #549b54;
+  color: white;
   margin: auto;
 }
-.graficos {
-  margin-top: 20px;
-  margin: 0 auto;
-  height:900px;
-  width:800px;
-}
+
 .div-graficos-dash {
   height: 650px;
   max-width: 100%;

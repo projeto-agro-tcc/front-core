@@ -1,308 +1,42 @@
 <div fxLayout="row wrap" fxLayoutAlign="center center">
 
-      <span style=" margin-top: 5px;"><button mat-raised-button (click)="showChart='temp'">Temperatura</button></span>
-      <span style="margin-left: 10px; margin-top: 5px;"><button mat-raised-button (click)="showChart='umid'">Umidade</button></span>
-      <span style="margin-left: 10px; margin-top: 5px;"><button mat-raised-button (click)="showChart='pressao'">Pressão</button></span>
-      <span style="margin-left: 10px;  margin-top: 5px;"><button mat-raised-button (click)="showChart='vento'">Vento</button></span>
+      <span style=" margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button (click)="showChart='temp'">Temperatura</button></span>
+      <span style="margin-left: 10px; margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button (click)="showChart='umid'">Umidade</button></span>
+      <span style="margin-left: 10px; margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button (click)="showChart='pressao'">Pressão</button></span>
+      <span style="margin-left: 10px;  margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button (click)="showChart='vento'">Vento</button></span>
 
 
 </div>
 
-<!--<div class="example-button-row">-->
-<!--<div style="margin: 0 auto;width: 10%;">-->
-<!--  <button mat-raised-button (click)="showChart='temp'">Temperatura</button>-->
-<!--  <button mat-raised-button (click)="showChart='umid'">Umid</button>-->
-<!--</div>-->
-<!--</div>-->
+<div *ngIf="showChart=='temp'" style="width: 900px; height: 750px; margin: 0 auto; overflow: auto">
 
+  <canvas baseChart [datasets]="tempchartData" [chartType]="tempchartType" [labels]="tempchartLabels" [legend]="tempchartLegend"></canvas>
 
+  <mat-card class="example-card">
+    <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>
+    <mat-card-title style="text-align: center">25.8 °C</mat-card-title>
+    <mat-card-content>
+      <p style="text-align: center">para 25/11/2021</p>
+    </mat-card-content>
+  </mat-card>
 
-
-<div *ngIf="showChart=='temp'">
-  <canvas baseChart [datasets]="chartData" [chartType]="chartType" [labels]="chartLabels"></canvas>
 </div>
 
-<div *ngIf="showChart=='umid'">
-  <canvas baseChart [datasets]="chartData" [chartType]="chartType2" [labels]="chartLabels"></canvas>
+<div *ngIf="showChart=='umid'" style="width: 900px; height: 750px; margin: 0 auto; overflow: auto">
+
+  <canvas baseChart [datasets]="umidchartData" [chartType]="umidchartType" [labels]="umidchartLabels" [legend]="umidchartLegend"></canvas>
+
+  <mat-card class="example-card">
+    <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>
+    <mat-card-title style="text-align: center">25.8 °C</mat-card-title>
+    <mat-card-content>
+      <p style="text-align: center">para 25/11/2021</p>
+    </mat-card-content>
+  </mat-card>
+
 </div>
 
 
 
-<!--<mat-tab-group mat-align-tabs="center">-->
 
-<!--  <mat-tab label="Temperatura">-->
 
-<!--&lt;!&ndash;    <div class="chart-container">&ndash;&gt;-->
-<!--&lt;!&ndash;      <canvas baseChart [datasets]="chartData" [chartType]="chartType" [labels]="chartLabels"></canvas>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-
-<!--  </mat-tab>-->
-
-<!--  <mat-tab label="Umidade">-->
-
-<!--&lt;!&ndash;    <div class="chart-container">&ndash;&gt;-->
-<!--&lt;!&ndash;      <canvas baseChart [datasets]="chartData" [chartType]="chartType" [labels]="chartLabels"></canvas>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-
-<!--  </mat-tab>-->
-<!--</mat-tab-group>-->
-
-
-
-
-<!--<section>-->
-<!--  <div class="example-label">Basic</div>-->
-<!--  <div class="example-button-row">-->
-
-<!--    <button (click)="drawTemp()" mat-button color="primary">  Temp</button>-->
-<!--    <button (click)="drawUmidd()" mat-button color="accent">  umi </button>-->
-<!--    <canvas id="temp"></canvas>-->
-<!--    <canvas id="umidade"></canvas>-->
-
-<!--  </div>-->
-<!--</section>-->
-
-<!--<div class="graficos">-->
-<!--    <button (click)="drawTemp()">temp</button>-->
-<!--    <canvas id="temp"></canvas>-->
-<!--</div>-->
-
-<!--<div class="graficos">-->
-<!--  <button (click)="drawUmidd()">umid</button>-->
-<!--  <canvas id="umidade"></canvas>-->
-<!--</div>-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<mat-tab-group mat-align-tabs="center">-->
-
-<!--  <mat-tab label="Temperatura">-->
-
-<!--    <div class="graficos">-->
-<!--      <canvas id="temp"></canvas>-->
-<!--    </div>-->
-
-<!--  </mat-tab>-->
-
-<!--  <mat-tab label="Umidade">-->
-
-<!--    <div class="graficos">-->
-<!--      <canvas id="umid"></canvas>-->
-<!--      <script src="info-estacao.component.ts"></script>-->
-<!--    </div>-->
-
-<!--  </mat-tab>-->
-
-
-<!--</mat-tab-group>-->
-
-
-
-<!--<mat-tab-group>-->
-<!--  <mat-tab label="First">-->
-<!--    {{drawTemp()}}-->
-<!--    <canvas id="temp"></canvas>-->
-
-<!--  </mat-tab>-->
-<!--  <mat-tab label="Second">-->
-<!--    {{drawUmid()}}-->
-<!--    <canvas id="umid"></canvas>-->
-<!--  </mat-tab>-->
-<!--</mat-tab-group>-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<canvas id="myChart" width="400" height="400"></canvas>-->
-
-<!--<mat-tab label="example">-->
-
-<!--    <div>-->
-<!--      <canvas id="tempMin" width="400" height="400"></canvas>-->
-<!--    </div>-->
-
-<!--</mat-tab>-->
-
-
-<!--<div class="div-graficos-dash" fxLayout="row">-->
-<!--  <div *ngFor="let num of [1,2,3,4]">-->
-<!--    <mat-card class="example-card">-->
-<!--      <mat-card-subtitle>Previsão</mat-card-subtitle>-->
-<!--      <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
-<!--      <mat-card-content>-->
-<!--        <p style="text-align: center">para 25/11/2021</p>-->
-<!--      </mat-card-content>-->
-<!--    </mat-card>-->
-<!--  </div>-->
-
-
-
-
-
-
-
-<!--  <div class="graficos">-->
-<!--    <canvas id="tempMin2"></canvas>-->
-<!--  </div>-->
-
-<!--  <div class="graficos">-->
-<!--    <canvas id="tempMin3"></canvas>-->
-<!--  </div>-->
-
-
-  <!--  <div style="margin-top: 30px; margin-left: 50px">-->
-
-  <!--    <div class="graficos">-->
-  <!--      <canvas id="tempMax"></canvas>-->
-  <!--    </div>-->
-
-  <!--    <div>-->
-  <!--      <mat-card class="example-card">-->
-  <!--        <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
-  <!--        <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
-  <!--        <mat-card-content>-->
-  <!--          <p style="text-align: center">para 25/11/2021</p>-->
-  <!--        </mat-card-content>-->
-  <!--      </mat-card>-->
-  <!--    </div>-->
-
-  <!--  </div>-->
-
-  <!--  <div style="margin-top: 30px; margin-left: 50px">-->
-
-  <!--    <div class="graficos">-->
-  <!--      <canvas id="tempMin"></canvas>-->
-  <!--    </div>-->
-
-  <!--    <div>-->
-  <!--      <mat-card class="example-card">-->
-  <!--        <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
-  <!--        <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
-  <!--        <mat-card-content>-->
-  <!--          <p style="text-align: center">para 25/11/2021</p>-->
-  <!--        </mat-card-content>-->
-  <!--      </mat-card>-->
-  <!--    </div>-->
-
-  <!--  </div>-->
-
-  <!--  <div style="margin-top: 30px; margin-left: 50px">-->
-
-  <!--    <div class="graficos">-->
-  <!--      <canvas id="tempMin2"></canvas>-->
-  <!--    </div>-->
-
-  <!--    <div>-->
-  <!--      <mat-card class="example-card">-->
-  <!--        <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
-  <!--        <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
-  <!--        <mat-card-content>-->
-  <!--          <p style="text-align: center">para 25/11/2021</p>-->
-  <!--        </mat-card-content>-->
-  <!--      </mat-card>-->
-  <!--    </div>-->
-
-  <!--  </div>-->
-
-  <!--  <div style="margin-top: 30px; margin-left: 50px">-->
-
-  <!--    <div class="graficos">-->
-  <!--      <canvas id="tempMin3"></canvas>-->
-  <!--    </div>-->
-
-  <!--    <div>-->
-  <!--      <mat-card class="example-card">-->
-  <!--        <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
-  <!--        <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
-  <!--        <mat-card-content>-->
-  <!--          <p style="text-align: center">para 25/11/2021</p>-->
-  <!--        </mat-card-content>-->
-  <!--      </mat-card>-->
-  <!--    </div>-->
-
-  <!--  </div>-->
-
-
-
-
-
-  <!--</div>-->
-
-
-
-
-
-
-
-
-
-
-
-  <!--<div class="div-graficos-dash" fxLayout="row wrap">-->
-  <!--  <div class="div-graficos" *ngFor="let num of [1,2,3,4]">-->
-
-  <!--    <p style="text-align: center"> Título </p>-->
-
-  <!--    <ngx-charts-line-chart-->
-  <!--      [legend]="legend"-->
-  <!--      [showXAxisLabel]="showXAxisLabel"-->
-  <!--      [showYAxisLabel]="showYAxisLabel"-->
-  <!--      [xAxis]="xAxis"-->
-  <!--      [yAxis]="yAxis"-->
-  <!--      [xAxisLabel]="xAxisLabel"-->
-  <!--      [yAxisLabel]="yAxisLabel"-->
-  <!--      [timeline]="timeline"-->
-  <!--      [results]="multi"-->
-  <!--    >-->
-  <!--    </ngx-charts-line-chart>-->
-  <!--  </div>-->
-  <!--</div>-->
-
-  <!--    <mat-card class="example-card">-->
-  <!--      <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
-  <!--      <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
-  <!--      <mat-card-content>-->
-  <!--        <p style="text-align: center">para 25/11/2021</p>-->
-  <!--      </mat-card-content>-->
-  <!--    </mat-card>-->
-  <!--  </div>-->
-  <!--</div>-->
-
-  <!--<div class="map-container">-->
-  <!--  <div class="map-frame">-->
-  <!--    <div id="map"></div>-->
-  <!--  </div>-->
-  <!--</div>-->

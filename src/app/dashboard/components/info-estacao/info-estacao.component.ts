@@ -1,20 +1,6 @@
-import {
-  Component,
-  OnInit,
-  NgModule,
-  ViewChild,
-  ElementRef,
-  QueryList,
-  ViewChildren,
-  AfterViewInit
-} from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { multi } from './data';
-import * as L from 'leaflet';
+import {Component, OnInit} from '@angular/core';
 import {Chart, ChartDataSets, ChartType} from 'chart.js';
 import {ChartsModule, Label} from "ng2-charts";
-
 
 @Component({
   selector: 'app-info-estacao',
@@ -23,95 +9,23 @@ import {ChartsModule, Label} from "ng2-charts";
 })
 export class InfoEstacaoComponent implements OnInit{
   showChart: string
-  public chartData: ChartDataSets[] = [{data: [5,20,7,18,20], label: 'Temperatura'}]
-  public chartType: ChartType =   'line'
-  public chartType2: ChartType =   'bar'
-  public chartLabels: Label[] = ['a','b','c','d','e']
 
-  constructor() {
+  // Grafico Temperatura
+  public tempchartData: ChartDataSets[] = [{data: [21,20,18,22,23,24,16], label: 'Temperatura'}]
+  public tempchartType: ChartType =   'line'
+  public tempchartLabels: Label[] = ['01-10-2021','02-10-2021','03-10-2021','04-10-2021','05-10-2021','06-10-2021','07-10-2021']
+  public tempchartLegend: boolean = false
 
-  }
+  // Grafico Umidade
+  public umidchartData: ChartDataSets[] = [{data: [88,80,90,50,66,90,84], label: 'Temperatura'}]
+  public umidchartType: ChartType =   'line'
+  public umidchartLabels: Label[] = ['01-10-2021','02-10-2021','03-10-2021','04-10-2021','05-10-2021','06-10-2021','07-10-2021']
+  public umidchartLegend: boolean = false
+
+  constructor() {}
 
   ngOnInit(): void {
     this.showChart = 'temp'; // hide chart at the beginning
-  }
-
-
-  // async ngAfterViewInit(){
-  //   await this.drawTemp()
-  //   await this.drawUmid()
-  // }
-
-  drawTemp() {
-    const tempCanvas = <HTMLCanvasElement> document.getElementById('temp');
-    const tempCtx = tempCanvas.getContext('2d');
-
-    const temp = new Chart(tempCtx, {
-      type: 'line',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'a', 'b'],
-        datasets: [{
-          label: '°C',
-          data: [70, 80, 3, 5, 2, 3, 25, 25],
-          borderColor: '#00AEFF',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          title: {
-            display: false,
-            text: 'Temperatura Mínima'
-          },
-          legend: {
-            display: false,
-            labels: {
-              color: 'rgb(255, 99, 132)'
-            }
-          }
-        }
-      }
-    });
-
-    return true
-
-  }
-
-  drawUmidd() {
-
-    const umidadeCanvas = <HTMLCanvasElement> document.getElementById('umidade');
-    const umidadeCtx = umidadeCanvas.getContext('2d');
-
-    const umidade = new Chart(umidadeCtx, {
-      type: 'line',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'a', 'b'],
-        datasets: [{
-          label: '°C',
-          data: [80, 80, 75, 55, 89, 56, 78, 45],
-          borderColor: '#00AEFF',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          title: {
-            display: false,
-            text: 'Temperatura Mínima'
-          },
-          legend: {
-            display: false,
-            labels: {
-              color: 'rgb(255, 99, 132)'
-            }
-          }
-        }
-      }
-    });
-
-    return true
   }
 
 
