@@ -1,4 +1,13 @@
-import {Component, OnInit, NgModule, ViewChild, ElementRef,QueryList, ViewChildren} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  NgModule,
+  ViewChild,
+  ElementRef,
+  QueryList,
+  ViewChildren,
+  AfterViewInit
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { multi } from './data';
@@ -10,47 +19,29 @@ import { Chart, registerables } from 'chart.js';
   templateUrl: './info-estacao.component.html',
   styleUrls: ['./info-estacao.component.css']
 })
-export class InfoEstacaoComponent implements OnInit{
+export class InfoEstacaoComponent {
+
 
   constructor() {
     Chart.register(...registerables);
   }
 
-  ngOnInit(){
-    const tempMax = new Chart("tempMax", {
-      type: 'line',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '°C',
-          data: [12, 19, 3, 5, 2, 3],
-          borderColor: '#00AEFF',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          title: {
-            display: true,
-            text: 'Temperatura Máxima'
-          },
-          legend: {
-            display: false,
-            labels: {
-              color: 'rgb(255, 99, 132)'
-            }
-          }
-        }
-      }
-    });
-    const tempMin = new Chart("tempMin", {
+  // async ngAfterViewInit(){
+  //   await this.drawTemp()
+  //   await this.drawUmid()
+  // }
+
+  drawTemp() {
+    const tempCanvas = <HTMLCanvasElement> document.getElementById('temp');
+    const tempCtx = tempCanvas.getContext('2d');
+
+    const temp = new Chart(tempCtx, {
       type: 'line',
       data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'a', 'b'],
         datasets: [{
           label: '°C',
-          data: [12, 19, 3, 5, 2, 3, 25, 25],
+          data: [70, 80, 3, 5, 2, 3, 25, 25],
           borderColor: '#00AEFF',
           borderWidth: 1
         }]
@@ -59,7 +50,7 @@ export class InfoEstacaoComponent implements OnInit{
         responsive: true,
         plugins: {
           title: {
-            display: true,
+            display: false,
             text: 'Temperatura Mínima'
           },
           legend: {
@@ -71,9 +62,46 @@ export class InfoEstacaoComponent implements OnInit{
         }
       }
     });
+
+    return true
+
   }
 
+  drawUmidd() {
 
+    const umidadeCanvas = <HTMLCanvasElement> document.getElementById('umidade');
+    const umidadeCtx = umidadeCanvas.getContext('2d');
+
+    const umidade = new Chart(umidadeCtx, {
+      type: 'line',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'a', 'b'],
+        datasets: [{
+          label: '°C',
+          data: [80, 80, 75, 55, 89, 56, 78, 45],
+          borderColor: '#00AEFF',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: false,
+            text: 'Temperatura Mínima'
+          },
+          legend: {
+            display: false,
+            labels: {
+              color: 'rgb(255, 99, 132)'
+            }
+          }
+        }
+      }
+    });
+
+    return true
+  }
 
 
 
@@ -169,5 +197,6 @@ export class InfoEstacaoComponent implements OnInit{
   // onDeactivate(data): void {
   //   console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   // }
+
 
 }

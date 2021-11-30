@@ -1,37 +1,11 @@
+<div class="graficos">
+    <button (click)="drawTemp()">temp</button>
+    <canvas id="temp"></canvas>
+</div>
 
-<div class="div-graficos-dash" fxLayout="column" fxLayoutAlign="space-around start">
-
-  <div>
-    <div style="position: relative; height:15vh; width:35vw; margin-left: 50px">
-      <canvas id="tempMax"></canvas>
-    </div>
-
-    <mat-card class="example-card">
-      <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>
-      <mat-card-title style="text-align: center">25.8 °C</mat-card-title>
-      <mat-card-content>
-        <p style="text-align: center">para 25/11/2021</p>
-      </mat-card-content>
-    </mat-card>
-
-  </div>
-
-
-  <div>
-    <div style="position: relative; height:15vh; width:35vw; margin-left: 50px">
-      <canvas id="tempMin"></canvas>
-    </div>
-
-    <mat-card class="example-card">
-      <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>
-      <mat-card-title style="text-align: center">25.8 °C</mat-card-title>
-      <mat-card-content>
-        <p style="text-align: center">para 25/11/2021</p>
-      </mat-card-content>
-    </mat-card>
-
-  </div>
-
+<div class="graficos">
+  <button (click)="drawUmidd()">umid</button>
+  <canvas id="umidade"></canvas>
 </div>
 
 
@@ -44,38 +18,227 @@
 
 
 
-<!--<div class="div-graficos-dash" fxLayout="row wrap">-->
-<!--  <div class="div-graficos" *ngFor="let num of [1,2,3,4]">-->
 
-<!--    <p style="text-align: center"> Título </p>-->
 
-<!--    <ngx-charts-line-chart-->
-<!--      [legend]="legend"-->
-<!--      [showXAxisLabel]="showXAxisLabel"-->
-<!--      [showYAxisLabel]="showYAxisLabel"-->
-<!--      [xAxis]="xAxis"-->
-<!--      [yAxis]="yAxis"-->
-<!--      [xAxisLabel]="xAxisLabel"-->
-<!--      [yAxisLabel]="yAxisLabel"-->
-<!--      [timeline]="timeline"-->
-<!--      [results]="multi"-->
-<!--    >-->
-<!--    </ngx-charts-line-chart>-->
-<!--  </div>-->
-<!--</div>-->
 
+
+
+
+
+
+
+
+
+
+
+<!--<mat-tab-group mat-align-tabs="center">-->
+
+<!--  <mat-tab label="Temperatura">-->
+
+<!--    <div class="graficos">-->
+<!--      <canvas id="temp"></canvas>-->
+<!--    </div>-->
+
+<!--  </mat-tab>-->
+
+<!--  <mat-tab label="Umidade">-->
+
+<!--    <div class="graficos">-->
+<!--      <canvas id="umid"></canvas>-->
+<!--      <script src="info-estacao.component.ts"></script>-->
+<!--    </div>-->
+
+<!--  </mat-tab>-->
+
+
+<!--</mat-tab-group>-->
+
+
+
+<!--<mat-tab-group>-->
+<!--  <mat-tab label="First">-->
+<!--    {{drawTemp()}}-->
+<!--    <canvas id="temp"></canvas>-->
+
+<!--  </mat-tab>-->
+<!--  <mat-tab label="Second">-->
+<!--    {{drawUmid()}}-->
+<!--    <canvas id="umid"></canvas>-->
+<!--  </mat-tab>-->
+<!--</mat-tab-group>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<canvas id="myChart" width="400" height="400"></canvas>-->
+
+<!--<mat-tab label="example">-->
+
+<!--    <div>-->
+<!--      <canvas id="tempMin" width="400" height="400"></canvas>-->
+<!--    </div>-->
+
+<!--</mat-tab>-->
+
+
+<!--<div class="div-graficos-dash" fxLayout="row">-->
+<!--  <div *ngFor="let num of [1,2,3,4]">-->
 <!--    <mat-card class="example-card">-->
-<!--      <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
+<!--      <mat-card-subtitle>Previsão</mat-card-subtitle>-->
 <!--      <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
 <!--      <mat-card-content>-->
 <!--        <p style="text-align: center">para 25/11/2021</p>-->
 <!--      </mat-card-content>-->
 <!--    </mat-card>-->
 <!--  </div>-->
-<!--</div>-->
 
-<!--<div class="map-container">-->
-<!--  <div class="map-frame">-->
-<!--    <div id="map"></div>-->
+
+
+
+
+
+
+<!--  <div class="graficos">-->
+<!--    <canvas id="tempMin2"></canvas>-->
 <!--  </div>-->
-<!--</div>-->
+
+<!--  <div class="graficos">-->
+<!--    <canvas id="tempMin3"></canvas>-->
+<!--  </div>-->
+
+
+  <!--  <div style="margin-top: 30px; margin-left: 50px">-->
+
+  <!--    <div class="graficos">-->
+  <!--      <canvas id="tempMax"></canvas>-->
+  <!--    </div>-->
+
+  <!--    <div>-->
+  <!--      <mat-card class="example-card">-->
+  <!--        <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
+  <!--        <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
+  <!--        <mat-card-content>-->
+  <!--          <p style="text-align: center">para 25/11/2021</p>-->
+  <!--        </mat-card-content>-->
+  <!--      </mat-card>-->
+  <!--    </div>-->
+
+  <!--  </div>-->
+
+  <!--  <div style="margin-top: 30px; margin-left: 50px">-->
+
+  <!--    <div class="graficos">-->
+  <!--      <canvas id="tempMin"></canvas>-->
+  <!--    </div>-->
+
+  <!--    <div>-->
+  <!--      <mat-card class="example-card">-->
+  <!--        <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
+  <!--        <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
+  <!--        <mat-card-content>-->
+  <!--          <p style="text-align: center">para 25/11/2021</p>-->
+  <!--        </mat-card-content>-->
+  <!--      </mat-card>-->
+  <!--    </div>-->
+
+  <!--  </div>-->
+
+  <!--  <div style="margin-top: 30px; margin-left: 50px">-->
+
+  <!--    <div class="graficos">-->
+  <!--      <canvas id="tempMin2"></canvas>-->
+  <!--    </div>-->
+
+  <!--    <div>-->
+  <!--      <mat-card class="example-card">-->
+  <!--        <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
+  <!--        <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
+  <!--        <mat-card-content>-->
+  <!--          <p style="text-align: center">para 25/11/2021</p>-->
+  <!--        </mat-card-content>-->
+  <!--      </mat-card>-->
+  <!--    </div>-->
+
+  <!--  </div>-->
+
+  <!--  <div style="margin-top: 30px; margin-left: 50px">-->
+
+  <!--    <div class="graficos">-->
+  <!--      <canvas id="tempMin3"></canvas>-->
+  <!--    </div>-->
+
+  <!--    <div>-->
+  <!--      <mat-card class="example-card">-->
+  <!--        <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
+  <!--        <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
+  <!--        <mat-card-content>-->
+  <!--          <p style="text-align: center">para 25/11/2021</p>-->
+  <!--        </mat-card-content>-->
+  <!--      </mat-card>-->
+  <!--    </div>-->
+
+  <!--  </div>-->
+
+
+
+
+
+  <!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+  <!--<div class="div-graficos-dash" fxLayout="row wrap">-->
+  <!--  <div class="div-graficos" *ngFor="let num of [1,2,3,4]">-->
+
+  <!--    <p style="text-align: center"> Título </p>-->
+
+  <!--    <ngx-charts-line-chart-->
+  <!--      [legend]="legend"-->
+  <!--      [showXAxisLabel]="showXAxisLabel"-->
+  <!--      [showYAxisLabel]="showYAxisLabel"-->
+  <!--      [xAxis]="xAxis"-->
+  <!--      [yAxis]="yAxis"-->
+  <!--      [xAxisLabel]="xAxisLabel"-->
+  <!--      [yAxisLabel]="yAxisLabel"-->
+  <!--      [timeline]="timeline"-->
+  <!--      [results]="multi"-->
+  <!--    >-->
+  <!--    </ngx-charts-line-chart>-->
+  <!--  </div>-->
+  <!--</div>-->
+
+  <!--    <mat-card class="example-card">-->
+  <!--      <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
+  <!--      <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
+  <!--      <mat-card-content>-->
+  <!--        <p style="text-align: center">para 25/11/2021</p>-->
+  <!--      </mat-card-content>-->
+  <!--    </mat-card>-->
+  <!--  </div>-->
+  <!--</div>-->
+
+  <!--<div class="map-container">-->
+  <!--  <div class="map-frame">-->
+  <!--    <div id="map"></div>-->
+  <!--  </div>-->
+  <!--</div>-->
