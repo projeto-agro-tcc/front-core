@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Chart, ChartDataSets, ChartType} from 'chart.js';
-import {ChartsModule, Label} from "ng2-charts";
+import {Chart, ChartDataSets, ChartOptions, ChartType} from 'chart.js';
+import {ChartsModule, Label, Color} from "ng2-charts";
 import {ThemePalette} from "@angular/material/core";
 
 @Component({
@@ -20,12 +20,25 @@ export class InfoEstacaoComponent implements OnInit{
   public tempchartType: ChartType =   'line'
   public tempchartLabels: Label[] = ['01-10-2021','02-10-2021','03-10-2021','04-10-2021','05-10-2021','06-10-2021','07-10-2021']
   public tempchartLegend: boolean = false
+  // public tempChartColor: Color[] = [{ backgroundColor: '', borderColor: '#10a514'}]
 
   // Grafico Umidade
   public umidchartData: ChartDataSets[] = [{data: [88,80,90,50,66,90,84], label: 'Umidade'}]
   public umidchartType: ChartType =   'line'
   public umidchartLabels: Label[] = ['01-10-2021','02-10-2021','03-10-2021','04-10-2021','05-10-2021','06-10-2021','07-10-2021']
   public umidchartLegend: boolean = false
+
+  // Grafico Vento Direção
+  public ventoDirchartData: ChartDataSets[] = [{data: [0,0,0,1], label: 'Graus'}]
+  public ventoDirchartType: ChartType =   'radar'
+  public ventoDirchartLabels: Label[] = ['Leste','Sul','Oeste','Norte']
+  public ventoDirchartLegend: boolean = false
+  public ventodirchartOptions: ChartOptions = {
+    responsive: true,
+    legend: {
+      display: false,
+    }
+  };
 
   constructor() {}
 
