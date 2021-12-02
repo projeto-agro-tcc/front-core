@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Chart, ChartDataSets, ChartOptions, ChartType} from 'chart.js';
-import {ChartsModule, Label, Color} from "ng2-charts";
+import {ChartsModule, Label, Color, MultiDataSet} from "ng2-charts";
 import {ThemePalette} from "@angular/material/core";
 
 @Component({
@@ -14,19 +14,21 @@ export class InfoEstacaoComponent implements OnInit{
   btnColorUmid: ThemePalette = 'primary';
   btnColorPressao: ThemePalette = 'primary';
   btnColorVento: ThemePalette = 'primary';
+  tempo: string[] = ['01-10','02-10','03-10','04-10','05-10','06-10','07-10','08-10','09-10','10-10','11-10','12-10','13-10','14-10','15-10','16-10','17-10','18-10','19-10','20-10']
 
-  // Grafico Temperatura
-  public tempchartData: ChartDataSets[] = [{data: [21,20,18,22,23,24,16], label: 'Temperatura'}]
+  // Grafico Temperatura,
+  public tempchartData: ChartDataSets[] = [{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25], label: 'Atual'},{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25,24,22,25], label: 'Previsão'}]
   public tempchartType: ChartType =   'line'
-  public tempchartLabels: Label[] = ['01-10-2021','02-10-2021','03-10-2021','04-10-2021','05-10-2021','06-10-2021','07-10-2021']
-  public tempchartLegend: boolean = false
-  // public tempChartColor: Color[] = [{ backgroundColor: '', borderColor: '#10a514'}]
+  public tempchartLabels: Label[] = this.tempo
+  public tempchartLegend: boolean = true
+  public tempChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
   // Grafico Umidade
-  public umidchartData: ChartDataSets[] = [{data: [88,80,90,50,66,90,84], label: 'Umidade'}]
+  public umidchartData: ChartDataSets[] = [{data: [80,85,82,80,90,80,85,70,92,91,88,85,88,75,89,90,93], label: 'Atual'},{data: [80,85,82,80,90,80,85,70,92,91,88,85,88,75,89,90,93,80,85,82,90], label: 'Previsão'}]
   public umidchartType: ChartType =   'line'
-  public umidchartLabels: Label[] = ['01-10-2021','02-10-2021','03-10-2021','04-10-2021','05-10-2021','06-10-2021','07-10-2021']
-  public umidchartLegend: boolean = false
+  public umidchartLabels: Label[] = this.tempo
+  public umidchartLegend: boolean = true
+  public umidChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
   // Grafico Vento Direção
   public ventoDirchartData: ChartDataSets[] = [{data: [0,0,0,1], label: 'Graus'}]
@@ -39,6 +41,14 @@ export class InfoEstacaoComponent implements OnInit{
       display: false,
     }
   };
+
+  // Grafico velocidade
+  public doughnutChartLabels: Label[] = ['Download Sales', 'In-Store Sales'];
+  public doughnutChartData: MultiDataSet = [
+    [100, 450]
+  ];
+  public doughnutChartType: ChartType = 'doughnut';
+  public doughnutChartOptions: ChartOptions = {rotation: 1 * Math.PI, circumference: 1 * Math.PI}
 
   constructor() {}
 
