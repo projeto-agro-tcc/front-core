@@ -1,7 +1,7 @@
 
 <div class="container">
-  <h2>Cadastro Empresa</h2>
-  <div class="formulario mat-elevation-z8">
+  <h2 style="margin: auto; text-align: center; padding-top: 20px">Cadastro Empresa</h2>
+  <div class="formulario">
     <form [formGroup]="form" fxLayoutAlign="center" novalidate>
       <mat-list style="margin-top: 20px">
         <mat-list-item>
@@ -94,7 +94,7 @@
           </div>
         </mat-list-item>
 
-        <mat-list-item style="margin-top: 222px; margin-left: 250px;">
+        <mat-list-item style="margin-top: 200px; margin-left: 250px;">
           <mat-list-item fxLayoutAlign="center">
             <button mat-raised-button color="primary" [disabled]="form.invalid"
                     (click)="cadastrarEmpresa()">Cadastrar</button>

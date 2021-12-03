@@ -23,7 +23,6 @@ import { CadastroEmpresaComponent,
   ListUsersComponent,
   ListEmpresasComponent,
   DashboardComponent,
-  DashComponent,
   ProfileComponent,
   ListaEstacoesComponent,
   InfoEstacaoComponent} from './components';
@@ -40,7 +39,6 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
 @NgModule({
   declarations: [
     DashboardComponent,
-    DashComponent,
     ProfileComponent,
     ListUsersComponent,
     ListEmpresasComponent,

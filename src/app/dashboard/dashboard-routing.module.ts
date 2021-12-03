@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { DashboardComponent, DashComponent } from "./components";
+import { DashboardComponent } from "./components";
 import {ProfileComponent} from "./components";
 import {ListUsersComponent} from "./components";
 import {ListEmpresasComponent} from "./components";
@@ -15,7 +15,6 @@ export const DashRoutes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     children: [
-      { path: 'dash', component: DashComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'users', component: ListUsersComponent },
       { path: 'empresas', component: ListEmpresasComponent },

@@ -1,31 +1,43 @@
-.info{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.info01{
+  margin-left: 20px;
+}
+
+.formulariodados{
+  margin-top: -40px;
 }
 
 .formulario{
-  margin:0px;
-  margin-left: 20px;
-  border-radius: 20px;
-  height: calc(100vh - 300px);
+  margin-top: -40px;
 }
 
-.row_1{
-  margin-left: 20px;
-  width: 450px;
-}
+/*.info{*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: space-between;*/
+/*}*/
 
-.row_1 h3{
-  margin-top: -30px;
-}
+/*.formulario{*/
+/*  margin:0px;*/
+/*  margin-left: 20px;*/
+/*  border-radius: 20px;*/
+/*  height: calc(100vh - 300px);*/
+/*}*/
 
-.title{
-  margin-top: 50px;
-  font-size: 1.25rem;
-  font-weight: bold;
-}
+/*.row_1{*/
+/*  margin-left: 20px;*/
+/*  width: 450px;*/
+/*}*/
 
-.name{
-  margin-top: 10px;
-}
+/*.row_1 h3{*/
+/*  margin-top: -30px;*/
+/*}*/
+
+/*.title{*/
+/*  margin-top: 50px;*/
+/*  font-size: 1.25rem;*/
+/*  font-weight: bold;*/
+/*}*/
+
+/*.name{*/
+/*  margin-top: 10px;*/
+/*}*/
