@@ -43,12 +43,13 @@ export class InfoEstacaoComponent implements OnInit{
   };
 
   // Grafico velocidade
-  public doughnutChartLabels: Label[] = ['Download Sales', 'In-Store Sales'];
+  public doughnutChartLabels: Label[] = ['Atual', 'Máxima'];
   public doughnutChartData: MultiDataSet = [
     [100, 450]
   ];
   public doughnutChartType: ChartType = 'doughnut';
   public doughnutChartOptions: ChartOptions = {rotation: 1 * Math.PI, circumference: 1 * Math.PI}
+  public velVentochartLegend: boolean = false
 
   constructor() {}
 

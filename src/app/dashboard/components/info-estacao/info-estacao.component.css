@@ -1,10 +1,19 @@
 .example-card {
-  width: 150px;
+  width: 300px;
+  height: 250px;
+  /*margin-left: 600px;*/
+  background-color: whitesmoke;
+  color: white;
+  /*margin: auto;*/
+}
+
+.example-card-2 {
+  width: 100px;
   height: 100px;
   /*margin-left: 600px;*/
-  background-color: #549b54;
+  background-color: green;
   color: white;
-  margin: auto;
+  /*margin: auto;*/
 }
 
 .div-graficos-dash {
@@ -14,4 +23,24 @@
   overflow: auto;
   /*margin-top: 30px;*/
 }
+.grid-container {
+  margin: 20px;
+}
 
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}

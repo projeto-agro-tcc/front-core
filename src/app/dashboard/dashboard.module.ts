@@ -36,6 +36,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {BrowserModule} from "@angular/platform-browser";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule} from "ng2-charts";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ import { ChartsModule} from "ng2-charts";
     MatGridListModule,
     BrowserModule,
     BrowserAnimationsModule,
-    ChartsModule
+    ChartsModule,
+    MatMenuModule,
+    MatTooltipModule
   ],
   providers: [
     LocalstorageService,

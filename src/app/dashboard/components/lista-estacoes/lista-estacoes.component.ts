@@ -49,7 +49,9 @@ export class ListaEstacoesComponent implements OnInit {
     this.router.navigateByUrl('/dashboard/info-estacao')
   }
 
-  pageEditEstacao() {}
+  pageEditEstacao() { this.openSnackBar("Funcionalidade ainda não implementada ;)", "danger") }
+
+  pageMapaEstacao() { this.openSnackBar("Funcionalidade ainda não implementada ;)", "danger") }
 
   openSnackBar(msg: string, classe: string) {
     this.snackBar.open(msg, 'OK',{

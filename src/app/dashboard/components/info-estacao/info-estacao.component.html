@@ -11,7 +11,6 @@
   </div>
 
   <div *ngIf="showChart=='temp'" style="width: 900px; height: 750px; margin: 0 auto; overflow: auto">
-
     <canvas baseChart
             [datasets]="tempchartData"
             [chartType]="tempchartType"
@@ -20,19 +19,9 @@
             [colors]="tempChartColor"
     >
     </canvas>
-
-<!--    <mat-card class="example-card">-->
-<!--      <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
-<!--      <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
-<!--      <mat-card-content>-->
-<!--        <p style="text-align: center">para 25/11/2021</p>-->
-<!--      </mat-card-content>-->
-<!--    </mat-card>-->
-
   </div>
 
   <div *ngIf="showChart=='umid'" style="width: 900px; height: 750px; margin: 0 auto; overflow: auto">
-
     <canvas baseChart
             [datasets]="umidchartData"
             [chartType]="umidchartType"
@@ -41,57 +30,83 @@
             [colors]="umidChartColor"
 
     >
-
-    </canvas>
-
-<!--    <mat-card class="example-card">-->
-<!--      <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
-<!--      <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
-<!--      <mat-card-content>-->
-<!--        <p style="text-align: center">para 25/11/2021</p>-->
-<!--      </mat-card-content>-->
-<!--    </mat-card>-->
-
-  </div>
-
-  <div *ngIf="showChart=='vento'" style="width: 900px; height: 750px; margin: 0 auto; overflow: auto">
-
-    <canvas baseChart
-            [datasets]="ventoDirchartData"
-            [chartType]="ventoDirchartType"
-            [labels]="ventoDirchartLabels"
-            [legend]="ventoDirchartLegend"
-            [options]="ventodirchartOptions"
-    >
-
-    </canvas>
-
-<!--    <mat-card class="example-card">-->
-<!--      <mat-card-subtitle style="color: white">Previsão</mat-card-subtitle>-->
-<!--      <mat-card-title style="text-align: center">25.8 °C</mat-card-title>-->
-<!--      <mat-card-content>-->
-<!--        <p style="text-align: center">para 25/11/2021</p>-->
-<!--      </mat-card-content>-->
-<!--    </mat-card>-->
-
-
-  </div>
-
-  <div *ngIf="showChart=='vento'" style="width: 500px; height: 300px; margin: 0 auto; overflow: auto">
-    <canvas baseChart
-            [data]="doughnutChartData"
-            [chartType]="doughnutChartType"
-            [labels]="doughnutChartLabels"
-            [options]="doughnutChartOptions"
-    >
-
     </canvas>
   </div>
 
+  <div *ngIf="showChart=='vento'" style="margin-top: 10px;; overflow: auto">
 
+    <div class="grid-container">
+
+      <mat-grid-list cols="3" rowHeight="300px">
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-card class="dashboard-card">
+            <mat-card-header>
+              <mat-card-title> Pressão Atmosférica Relativa</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content">
+              <div>Gráfico de Linha</div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-card class="dashboard-card">
+            <mat-card-header>
+              <mat-card-title> Nível de Radiação </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content">
+              <div style="width: 250px; height: 250px; margin: 0 auto; overflow: auto">
+                <canvas baseChart [data]="doughnutChartData" [chartType]="doughnutChartType"
+                        [labels]="doughnutChartLabels"
+                        [options]="doughnutChartOptions"
+                        [legend]="velVentochartLegend"
+                > </canvas>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan]="2">
+          <mat-card class="dashboard-card">
+            <mat-card-header>
+              <mat-card-title> Direção do Vento </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content">
+              <div style="width: 250px; height: 250px; margin: 0 auto; overflow: auto">
+                Gráfico Radar
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-card class="dashboard-card">
+            <mat-card-header>
+              <mat-card-title> Velocidade do Vento </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content">
+              <div style="width: 250px; height: 250px; margin: 0 auto; overflow: auto">
+               Valor
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+
+    </div>
+
+  </div>
 
 </div>
 
 
 
-
+<!--<button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">-->
+<!--  <mat-icon>more_vert</mat-icon>-->
+<!--</button>-->
+<!--<mat-menu #menu="matMenu" xPosition="before">-->
+<!--  <button mat-menu-item>aa</button>-->
+<!--  <button mat-menu-item>Remove</button>-->
+<!--</mat-menu>-->

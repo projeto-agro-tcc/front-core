@@ -5,12 +5,14 @@
         <mat-card-subtitle>Fazenda Dona Maria</mat-card-subtitle>
         <mat-card-title style="text-align: center">Estação {{num}}</mat-card-title>
         <mat-card-content>
+          <img style="margin-left: 75px" src="assets/meteorology.png" alt="Logo" width="60" height="60">
           <p style="text-align: center">Cultivo atual: Milho</p>
         </mat-card-content>
         <mat-divider inset></mat-divider>
         <mat-card-actions style="text-align: center">
-          <button mat-button (click)="pageInfoEstacao()"><mat-icon>show_chart</mat-icon></button>
-          <button mat-button (click)="pageEditEstacao()"><mat-icon>edit</mat-icon></button>
+          <button mat-button (click)="pageInfoEstacao()" matTooltip="Gráficos"><img src="assets/bar-chart.png" alt="Logo" width="25" height="25"></button>
+          <button mat-button (click)="pageEditEstacao()" matTooltip="Editar"><img src="assets/edit.png" alt="Logo" width="25" height="25"></button>
+          <button mat-button (click)="pageMapaEstacao()" matTooltip="Localização"><img src="assets/placeholder.png" alt="Logo" width="25" height="25"></button>
         </mat-card-actions>
       </mat-card>
     </div>
