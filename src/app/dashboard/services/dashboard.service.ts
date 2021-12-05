@@ -33,8 +33,9 @@ export class DashboardService {
     return this.http.get(`${env.baseUrl}usuarios/`)
   }
 
-  getEstacoes(): Observable<any>{
-    return this.http.get(`${env.baseUrl}usuarios/`)
+  // Atraves do endpoint /empresas e retornado todas as estacoes que o usuario tem acesso
+  getEstacoesbyEmpresas(): Observable<any>{
+    return this.http.get(`${env.baseUrl}empresas/`)
   }
 
   // getUsuarioByUsername(username: string): Observable<any>{

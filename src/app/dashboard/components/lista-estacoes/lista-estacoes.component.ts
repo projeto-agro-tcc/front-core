@@ -7,6 +7,7 @@ import {Estacao} from "../../models/estacao.models";
 import {DashboardService} from "../../services";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
+import {Empresa} from "../../models";
 
 @Component({
   selector: 'app-lista-estacoes',
@@ -16,9 +17,10 @@ import {MatDialog} from "@angular/material/dialog";
 export class ListaEstacoesComponent implements OnInit {
 
   localUser: LocalUser
-  estacoes: Estacao[]
+  empresas: Empresa[]
   showSpinner: boolean = false
   dataSource: any
+  public estacoes: any[];
 
   constructor(
     private observer: BreakpointObserver,
@@ -26,16 +28,18 @@ export class ListaEstacoesComponent implements OnInit {
     private router: Router,
     private dashService: DashboardService,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
     this.showSpinner = true
     this.localUser = this.localStorageService.getLocalUser()
-    this.dashService.getEstacoes()
+    this.dashService.getEstacoesbyEmpresas()
       .subscribe(res => {
-          this.estacoes = res
-          this.dataSource = new MatTableDataSource(this.estacoes)
+          this.empresas = res
+          this.estacoes = this.formatEstacoes(res)
+          console.log(this.estacoes)
+          this.dataSource = new MatTableDataSource(this.empresas)
           this.showSpinner = false
           this.openSnackBar("Estações carregadas com sucesso", "success")
         },
@@ -45,13 +49,25 @@ export class ListaEstacoesComponent implements OnInit {
         })
   }
 
-  pageInfoEstacao() {
+  pageInfoEstacao(estacao_id: string) {
     this.router.navigateByUrl('/dashboard/info-estacao')
   }
 
   pageEditEstacao() { this.openSnackBar("Funcionalidade ainda não implementada ;)", "danger") }
 
   pageMapaEstacao() { this.openSnackBar("Funcionalidade ainda não implementada ;)", "danger") }
+
+  formatEstacoes(res: any) {
+    const estacoes = []
+    for (let i of res) {
+      const e = i.estacoes
+      for (let j of e) {
+        const est = {serial_number: j.serial_number, latitude: j.latitude, longitude: j.longitude, est_modelo: j.estacao_modelo, empresa: i.nome}
+        estacoes.push(est)
+      }
+    }
+    return estacoes
+  }
 
   openSnackBar(msg: string, classe: string) {
     this.snackBar.open(msg, 'OK',{
