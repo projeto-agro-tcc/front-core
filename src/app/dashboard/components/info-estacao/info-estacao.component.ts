@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Chart, ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import {ChartsModule, Label, Color, MultiDataSet} from "ng2-charts";
 import {ThemePalette} from "@angular/material/core";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-info-estacao',
@@ -15,6 +16,21 @@ export class InfoEstacaoComponent implements OnInit{
   btnColorPressao: ThemePalette = 'primary';
   btnColorVento: ThemePalette = 'primary';
   tempo: string[] = ['01-10','02-10','03-10','04-10','05-10','06-10','07-10','08-10','09-10','10-10','11-10','12-10','13-10','14-10','15-10','16-10','17-10','18-10','19-10','20-10']
+
+  constructor(private activeRouter: ActivatedRoute,) {}
+
+  ngOnInit(): void {
+    this.showChart = 'temp';
+    this.btnColorTemp = 'accent';
+
+    this.activeRouter.params.subscribe((res: any) => {
+      console.log(res.sn_endpoint)
+      let today = new Date()
+      console.log(today)
+    })
+  }
+
+  getNormalData() {}
 
   // Grafico Temperatura,
   public tempchartData: ChartDataSets[] = [{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25], label: 'Atual'},{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25,24,22,25], label: 'Previsão'}]
@@ -50,13 +66,6 @@ export class InfoEstacaoComponent implements OnInit{
   public doughnutChartType: ChartType = 'doughnut';
   public doughnutChartOptions: ChartOptions = {rotation: 1 * Math.PI, circumference: 1 * Math.PI}
   public velVentochartLegend: boolean = false
-
-  constructor() {}
-
-  ngOnInit(): void {
-    this.showChart = 'temp';
-    this.btnColorTemp = 'accent';
-  }
 
   choiceVar(v: string) {
     this.showChart = v
