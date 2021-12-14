@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit{
   }
 
   esqueceuSenha(){
-    this.openSnackBar("Funcionalidade ainda não implementada ;)", "danger")
+    this.openSnackBar("Entre em contato com o suporte ;)", "danger")
   }
 
 }
