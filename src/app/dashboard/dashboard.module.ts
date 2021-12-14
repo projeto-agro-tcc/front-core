@@ -38,6 +38,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule} from "ng2-charts";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -52,37 +54,39 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     ListaEstacoesComponent,
     InfoEstacaoComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatDividerModule,
-    MatToolbarModule,
-    MatListModule,
-    AvatarModule,
-    MatProgressSpinnerModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatButtonModule,
-    MatTableModule,
-    NgxMaskModule,
-    MatSortModule,
-    MatDialogModule,
-    MatCardModule,
-    MatProgressBarModule,
-    MatGridListModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    ChartsModule,
-    MatMenuModule,
-    MatTooltipModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatDividerModule,
+        MatToolbarModule,
+        MatListModule,
+        AvatarModule,
+        MatProgressSpinnerModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatInputModule,
+        MatSnackBarModule,
+        MatButtonModule,
+        MatTableModule,
+        NgxMaskModule,
+        MatSortModule,
+        MatDialogModule,
+        MatCardModule,
+        MatProgressBarModule,
+        MatGridListModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        ChartsModule,
+        MatMenuModule,
+        MatTooltipModule,
+        MatDatepickerModule,
+        MatNativeDateModule
+    ],
   providers: [
     LocalstorageService,
     DashboardService

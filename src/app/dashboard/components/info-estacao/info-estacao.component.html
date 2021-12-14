@@ -10,7 +10,8 @@
 
   </div>
 
-  <div *ngIf="showChart=='temp'" style="width: 900px; height: 750px; margin: 0 auto; overflow: auto">
+  <!--  Página da Temperatura-->
+  <div *ngIf="showChart=='temp'" style="width: 900px; height: 900px; margin: 0 auto; overflow: auto">
     <canvas baseChart
             [datasets]="tempchartData"
             [chartType]="tempchartType"
@@ -19,8 +20,25 @@
             [colors]="tempChartColor"
     >
     </canvas>
+
+    <mat-form-field appearance="outline" style="margin-top: 20px">
+      <mat-label>Período de Análise</mat-label>
+      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+        <input matStartDate formControlName="start" placeholder="Início">
+        <input matEndDate formControlName="end" placeholder="Fim">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+
+      <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Data inválida</mat-error>
+      <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Data inválida</mat-error>
+    </mat-form-field>
+
+    <span style=" margin-left: 5px"><button mat-raised-button (click)="getNormalData()">Buscar dados</button></span>
+
   </div>
 
+  <!--  Página da Umidade-->
   <div *ngIf="showChart=='umid'" style="width: 900px; height: 750px; margin: 0 auto; overflow: auto">
     <canvas baseChart
             [datasets]="umidchartData"
@@ -28,74 +46,23 @@
             [labels]="umidchartLabels"
             [legend]="umidchartLegend"
             [colors]="umidChartColor"
-
     >
     </canvas>
-  </div>
 
-  <div *ngIf="showChart=='vento'" style="margin-top: 10px;; overflow: auto">
+    <mat-form-field appearance="outline" style="margin-top: 20px">
+      <mat-label>Período de Análise</mat-label>
+      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+        <input matStartDate formControlName="start" placeholder="Início">
+        <input matEndDate formControlName="end" placeholder="Fim">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
 
-    <div class="grid-container">
+      <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Data inválida</mat-error>
+      <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Data inválida</mat-error>
+    </mat-form-field>
 
-      <mat-grid-list cols="3" rowHeight="300px">
-
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-card class="dashboard-card">
-            <mat-card-header>
-              <mat-card-title> Pressão Atmosférica Relativa</mat-card-title>
-            </mat-card-header>
-            <mat-card-content class="dashboard-card-content">
-              <div>Gráfico de Linha</div>
-            </mat-card-content>
-          </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-card class="dashboard-card">
-            <mat-card-header>
-              <mat-card-title> Nível de Radiação </mat-card-title>
-            </mat-card-header>
-            <mat-card-content class="dashboard-card-content">
-              <div style="width: 250px; height: 250px; margin: 0 auto; overflow: auto">
-                <canvas baseChart [data]="doughnutChartData" [chartType]="doughnutChartType"
-                        [labels]="doughnutChartLabels"
-                        [options]="doughnutChartOptions"
-                        [legend]="velVentochartLegend"
-                > </canvas>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="2" [rowspan]="2">
-          <mat-card class="dashboard-card">
-            <mat-card-header>
-              <mat-card-title> Direção do Vento </mat-card-title>
-            </mat-card-header>
-            <mat-card-content class="dashboard-card-content">
-              <div style="width: 250px; height: 250px; margin: 0 auto; overflow: auto">
-                Gráfico Radar
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-card class="dashboard-card">
-            <mat-card-header>
-              <mat-card-title> Velocidade do Vento </mat-card-title>
-            </mat-card-header>
-            <mat-card-content class="dashboard-card-content">
-              <div style="width: 250px; height: 250px; margin: 0 auto; overflow: auto">
-               Valor
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </mat-grid-tile>
-
-      </mat-grid-list>
-
-    </div>
+    <span style=" margin-left: 5px"><button mat-raised-button (click)="getNormalData()">Buscar dados</button></span>
 
   </div>
 
