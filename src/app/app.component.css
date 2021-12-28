@@ -18,7 +18,7 @@
   height: 100px;
   /*background-color: #549b54;*/
   background: rgb(84,155,84);
-  background: linear-gradient(90deg, rgba(84,155,84,1) 26%, rgba(123,183,123,1) 45%, rgba(170,223,170,1) 75%);
+  background: linear-gradient(90deg, rgba(84,155,84,1) 25%, rgba(123,183,123,1) 75%, rgba(170,223,170,1) 92%);
   color: black;
   border-style:solid;
   border-bottom-width: 3px;

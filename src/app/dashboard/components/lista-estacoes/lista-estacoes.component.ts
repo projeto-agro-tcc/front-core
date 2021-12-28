@@ -55,8 +55,6 @@ export class ListaEstacoesComponent implements OnInit {
 
   pageEditEstacao() { this.openSnackBar("Funcionalidade ainda não implementada ;)", "danger") }
 
-  pageMapaEstacao() { this.openSnackBar("Funcionalidade ainda não implementada ;)", "danger") }
-
   pagePrevisaoEstacao() { this.openSnackBar("Funcionalidade ainda não implementada ;)", "danger") }
 
   formatEstacoes(res: any) {
@@ -76,7 +74,7 @@ export class ListaEstacoesComponent implements OnInit {
       horizontalPosition: "center",
       verticalPosition: "bottom",
       panelClass: [classe],
-      duration: 2000,
+      duration: 3000,
     });
   }
 

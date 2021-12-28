@@ -37,10 +37,10 @@ export class ListUsersComponent implements OnInit {
           this.showSpinner = false
           this.dataSource = new MatTableDataSource(this.usuarios)
           this.dataSource.sort = this.sort
-          this.openSnackBar("Usuários carregadas com sucesso", "success")
+          this.openSnackBar("Usuários carregados com sucesso", "success")
         },
         error => {
-          this.openSnackBar("Problemas ao carregar usuarios", "danger")
+          this.openSnackBar("Problemas ao carregar usuários", "danger")
           this.showSpinner = false
         })
   }
