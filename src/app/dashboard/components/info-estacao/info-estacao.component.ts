@@ -2,8 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {Chart, ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import {ChartsModule, Label, Color, MultiDataSet} from "ng2-charts";
 import {ThemePalette} from "@angular/material/core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
+import {MatTableDataSource} from "@angular/material/table";
+import {BreakpointObserver} from "@angular/cdk/layout";
+import {LocalstorageService, LocalUser} from "../../../utils";
+import {DashboardService} from "../../services";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatDialog} from "@angular/material/dialog";
+import {Empresa} from "../../models";
 
 @Component({
   selector: 'app-info-estacao',
@@ -23,24 +30,52 @@ export class InfoEstacaoComponent implements OnInit{
     end: new FormControl(),
   });
 
-  mac_endpoint = '';
+  dev_id = '';
 
-  constructor(private activeRouter: ActivatedRoute,) {}
+  localUser: LocalUser
+  empresas: Empresa[]
+  showSpinner: boolean = false
+  dataSource: any
+  public estacoes: any[];
+
+  constructor(
+    private activeRouter: ActivatedRoute,
+    private observer: BreakpointObserver,
+    private localStorageService: LocalstorageService,
+    private router: Router,
+    private dashService: DashboardService,
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog,
+  ) {}
 
   ngOnInit(): void {
+
+    // Inciando chart com 7 dias anteriores
+    let a = new Date;
+    this.range.value.start = new Date()
+    a.setDate(a.getDate()-7);
+    this.range.value.end = a
+
+    // GET IOT para dados reais
+    this.getDataChart()
+
+    // Qual chart renderiza primeiro
     this.showChart = 'temp';
     this.btnColorTemp = 'accent';
 
+    // dev_id do equipamento
     this.activeRouter.params.subscribe((res: any) => {
-      this.mac_endpoint = res.sn_endpoint
+      this.dev_id = res.sn_endpoint
     })
 
   }
 
-  getNormalData() {
-    console.log(this.range.value.start)
-    console.log(this.range.value.end)
-    console.log(this.mac_endpoint)
+  // Realiza GET na API IOT para obter dados reais
+  getDataChart() {
+    let data = JSON.parse(JSON.stringify(this.range.value));
+    console.log("start: "+Math.ceil(Date.parse(data['start'])/1000))
+    console.log("end: "+Math.ceil(Date.parse(data['end'])/1000))
+    console.log("dev_id: "+this.dev_id)
   }
 
   // Grafico Temperatura,

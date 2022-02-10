@@ -50,4 +50,8 @@ export class DashboardService {
     return this.http.delete(`${env.baseUrl}usuarios/${id}`)
   }
 
+  getRealData() {
+    return this.http.get(`${env.iotURL}lstm/get_forecast_lstm`)
+  }
+
 }
