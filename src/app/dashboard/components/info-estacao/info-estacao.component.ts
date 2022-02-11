@@ -30,7 +30,7 @@ export class InfoEstacaoComponent implements OnInit{
     end: new FormControl(),
   });
 
-  dev_id = '';
+  dev_id: string
 
   localUser: LocalUser
   empresas: Empresa[]
@@ -56,9 +56,6 @@ export class InfoEstacaoComponent implements OnInit{
     a.setDate(a.getDate()-7);
     this.range.value.end = a
 
-    // GET IOT para dados reais
-    this.getDataChart()
-
     // Qual chart renderiza primeiro
     this.showChart = 'temp';
     this.btnColorTemp = 'accent';
@@ -68,14 +65,26 @@ export class InfoEstacaoComponent implements OnInit{
       this.dev_id = res.sn_endpoint
     })
 
+    // GET IOT para dados reais
+    this.getDataChart()
+
   }
 
   // Realiza GET na API IOT para obter dados reais
   getDataChart() {
     let data = JSON.parse(JSON.stringify(this.range.value));
-    console.log("start: "+Math.ceil(Date.parse(data['start'])/1000))
-    console.log("end: "+Math.ceil(Date.parse(data['end'])/1000))
-    console.log("dev_id: "+this.dev_id)
+    let start = Math.ceil(Date.parse(data['start'])/1000)
+    let end = Math.ceil(Date.parse(data['end'])/1000)
+
+    this.localUser = this.localStorageService.getLocalUser()
+    this.dashService.getRealData(start,end,this.dev_id)
+      .subscribe(res => {
+          console.log(res)
+        },
+        error => {
+          console.log("erro iot")
+        })
+
   }
 
   // Grafico Temperatura,
