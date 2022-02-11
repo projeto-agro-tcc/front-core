@@ -50,8 +50,8 @@ export class DashboardService {
     return this.http.delete(`${env.baseUrl}usuarios/${id}`)
   }
 
-  getRealData(timetostart: number, timetoend: number, dev_id: string) {
-    let s = "?timetostart="+timetostart+"&timetoend="+timetoend+"&dev_id="+dev_id
+  getRealData(timetostart: number, timetoend: number, dev_id: string, v: string) {
+    let s = "?timetostart="+timetostart+"&timetoend="+timetoend+"&dev_id="+dev_id+"&var="+v
     return this.http.get(`${env.iotURL}lstm/teste`+s)
   }
 

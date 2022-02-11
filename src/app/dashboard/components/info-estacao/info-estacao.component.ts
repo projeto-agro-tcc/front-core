@@ -18,6 +18,7 @@ import {Empresa} from "../../models";
   styleUrls: ['./info-estacao.component.css']
 })
 export class InfoEstacaoComponent implements OnInit{
+  firstTimePage: boolean = true
   showChart: string
   btnColorTemp: ThemePalette = 'primary';
   btnColorUmid: ThemePalette = 'primary';
@@ -57,8 +58,10 @@ export class InfoEstacaoComponent implements OnInit{
     this.range.value.end = a
 
     // Qual chart renderiza primeiro
-    this.showChart = 'temp';
-    this.btnColorTemp = 'accent';
+    if (this.firstTimePage) {
+      this.showChart = 'temp';
+      this.btnColorTemp = 'accent';
+    }
 
     // dev_id do equipamento
     this.activeRouter.params.subscribe((res: any) => {
@@ -77,7 +80,7 @@ export class InfoEstacaoComponent implements OnInit{
     let end = Math.ceil(Date.parse(data['end'])/1000)
 
     this.localUser = this.localStorageService.getLocalUser()
-    this.dashService.getRealData(start,end,this.dev_id)
+    this.dashService.getRealData(start,end,this.dev_id,this.showChart)
       .subscribe(res => {
           console.log(res)
         },
@@ -130,25 +133,26 @@ export class InfoEstacaoComponent implements OnInit{
       this.btnColorPressao = 'primary';
       this.btnColorVento = 'primary';
     }
-    else if (v == 'umid') {
+    else if (v == 'humid') {
       this.btnColorTemp = 'primary'
       this.btnColorUmid = 'accent';
       this.btnColorPressao = 'primary';
       this.btnColorVento = 'primary';
     }
-    else if (v == 'pressao') {
+    else if (v == 'pressure') {
       this.btnColorTemp = 'primary'
       this.btnColorUmid = 'primary';
       this.btnColorPressao = 'accent';
       this.btnColorVento = 'primary';
     }
-    else if (v == 'vento') {
+    else if (v == 'wind') {
       this.btnColorTemp = 'primary'
       this.btnColorUmid = 'primary';
       this.btnColorPressao = 'primary';
       this.btnColorVento = 'accent';
     }
-
+    this.firstTimePage = false
+    this.ngOnInit()
   }
 
 
