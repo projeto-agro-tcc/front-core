@@ -19,7 +19,7 @@ import {Empresa} from "../../models";
 })
 export class InfoEstacaoComponent implements OnInit{
   firstTimePage: boolean = true
-  showChart: string
+  wichVarChart: string
   btnColorTemp: ThemePalette = 'primary';
   btnColorUmid: ThemePalette = 'primary';
   btnColorPressao: ThemePalette = 'primary';
@@ -59,33 +59,35 @@ export class InfoEstacaoComponent implements OnInit{
 
     // Qual chart renderiza primeiro
     if (this.firstTimePage) {
-      this.showChart = 'temp';
+      this.wichVarChart = 'temp';
       this.btnColorTemp = 'accent';
     }
 
     // dev_id do equipamento
     this.activeRouter.params.subscribe((res: any) => {
-      this.dev_id = res.sn_endpoint
+      this.dev_id = res.dev_id
     })
 
     // GET IOT para dados reais
-    this.getDataChart()
+    this.getDataChart('auto')
 
   }
 
   // Realiza GET na API IOT para obter dados reais
-  getDataChart() {
-    let data = JSON.parse(JSON.stringify(this.range.value));
-    let start = Math.ceil(Date.parse(data['start'])/1000)
-    let end = Math.ceil(Date.parse(data['end'])/1000)
+  getDataChart(type: string) {
+
+    let date = JSON.parse(JSON.stringify(this.range.value));
+    let start = Math.ceil(Date.parse(date['start'])/1000)
+    let end = Math.ceil(Date.parse(date['end'])/1000)
 
     this.localUser = this.localStorageService.getLocalUser()
-    this.dashService.getRealData(start,end,this.dev_id,this.showChart)
+    this.dashService.getRealData(start,end,this.dev_id,this.wichVarChart)
       .subscribe(res => {
           console.log(res)
+          this.plotDataChart(this.wichVarChart)
         },
         error => {
-          console.log("erro iot")
+          this.openSnackBar("Problemas ao carregar dados", "danger")
         })
 
   }
@@ -104,29 +106,12 @@ export class InfoEstacaoComponent implements OnInit{
   public umidchartLegend: boolean = true
   public umidChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
-  // Grafico Vento Direção
-  public ventoDirchartData: ChartDataSets[] = [{data: [0,0,0,1], label: 'Graus'}]
-  public ventoDirchartType: ChartType =   'radar'
-  public ventoDirchartLabels: Label[] = ['Leste','Sul','Oeste','Norte']
-  public ventoDirchartLegend: boolean = false
-  public ventodirchartOptions: ChartOptions = {
-    responsive: true,
-    legend: {
-      display: false,
-    }
-  };
-
-  // Grafico velocidade
-  public doughnutChartLabels: Label[] = ['Atual', 'Máxima'];
-  public doughnutChartData: MultiDataSet = [
-    [100, 450]
-  ];
-  public doughnutChartType: ChartType = 'doughnut';
-  public doughnutChartOptions: ChartOptions = {rotation: 1 * Math.PI, circumference: 1 * Math.PI}
-  public velVentochartLegend: boolean = false
+  plotDataChart(v: string) {
+    // Realiza a configuração das variáveis dos graficos
+  }
 
   choiceVar(v: string) {
-    this.showChart = v
+    this.wichVarChart = v
     if (v == 'temp') {
       this.btnColorTemp = 'accent'
       this.btnColorUmid = 'primary';
@@ -155,7 +140,14 @@ export class InfoEstacaoComponent implements OnInit{
     this.ngOnInit()
   }
 
-
+  openSnackBar(msg: string, classe: string) {
+    this.snackBar.open(msg, 'OK',{
+      horizontalPosition: "center",
+      verticalPosition: "bottom",
+      panelClass: [classe],
+      duration: 3000,
+    });
+  }
 
 
 

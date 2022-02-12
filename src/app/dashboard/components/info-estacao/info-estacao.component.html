@@ -12,7 +12,7 @@
   </div>
 
   <!--  Página da Temperatura-->
-  <div *ngIf="showChart=='temp'" style="width: 900px; height: 500px; margin: 0 auto; overflow: auto">
+  <div *ngIf="wichVarChart=='temp'" style="width: 900px; height: 500px; margin: 0 auto; overflow: auto">
 
     <canvas baseChart
             [datasets]="tempchartData"
@@ -26,7 +26,7 @@
   </div>
 
   <!--  Página da Umidade-->
-  <div *ngIf="showChart=='humid'" style="width: 900px; height: 500px; margin: 0 auto; overflow: auto">
+  <div *ngIf="wichVarChart=='humid'" style="width: 900px; height: 500px; margin: 0 auto; overflow: auto">
     <canvas baseChart
             [datasets]="umidchartData"
             [chartType]="umidchartType"
@@ -52,7 +52,7 @@
       <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Data inválida</mat-error>
     </mat-form-field>
 
-    <span style=" margin-left: 5px"><button mat-raised-button (click)="getDataChart()">Buscar dados</button></span>
+    <span style=" margin-left: 5px"><button mat-raised-button (click)="getDataChart('manual')">Buscar dados</button></span>
 
   </div>
 
