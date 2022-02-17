@@ -47,8 +47,7 @@ export class DashboardService {
 
   getRealData6hour(timetostart: number, timetoend: number, dev_id: string, v: string) {
     let s = "?timetostart="+timetostart+"&timetoend="+timetoend+"&dev_id="+dev_id+"&var="+v
-    let u2 = 'http://backend-core-env.eba-tm9q638y.sa-east-1.elasticbeanstalk.com/emw/findbyparams'+s
-    return this.http.get(u2)
+    return this.http.get(`${env.baseUrl}emw/samples`+s)
   }
 
 }
