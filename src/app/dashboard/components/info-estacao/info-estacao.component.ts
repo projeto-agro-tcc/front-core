@@ -19,17 +19,24 @@ import {Empresa} from "../../models";
   styleUrls: ['./info-estacao.component.css']
 })
 export class InfoEstacaoComponent implements OnInit{
+
   firstTimePage: boolean = true
   wichVarChart: string
   btnColorTemp: ThemePalette = 'primary';
   btnColorUmid: ThemePalette = 'primary';
   btnColorPressao: ThemePalette = 'primary';
   btnColorVento: ThemePalette = 'primary';
-  tempo: string[] = ['01-10','02-10','03-10','04-10','05-10','06-10','07-10','08-10','09-10','10-10','11-10','12-10','13-10','14-10','15-10','16-10','17-10','18-10','19-10','20-10']
-
   time: string[] = []
   value: number[] = []
 
+  // Grafico Temperatura,
+  //public tempchartData: ChartDataSets[] = [{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25], label: 'Atual'},{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25,24,22,25], label: 'Previsão'}]
+  public tempchartData: ChartDataSets[] = [{data: this.value, label: 'Atual'}]
+  public tempchartType: ChartType =   'line'
+  public tempchartLabels: Label[] = this.time
+  public tempchartLegend: boolean = true
+  public tempChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
+    { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
   range = new FormGroup({
     start: new FormControl(),
@@ -37,7 +44,6 @@ export class InfoEstacaoComponent implements OnInit{
   });
 
   dev_id: string
-
   localUser: LocalUser
   empresas: Empresa[]
   showSpinner: boolean = false
@@ -62,24 +68,23 @@ export class InfoEstacaoComponent implements OnInit{
     a.setDate(a.getDate()-7);
     this.range.value.end = a
 
-    // Qual chart renderiza primeiro
-    if (this.firstTimePage) {
-      this.wichVarChart = 'temp';
-      this.btnColorTemp = 'accent';
-    }
-
     // dev_id do equipamento
     this.activeRouter.params.subscribe((res: any) => {
       this.dev_id = res.dev_id
     })
 
-    // GET IOT para dados reais
-    this.getDataChart('auto')
+    // Qual chart renderiza primeiro
+    if (this.firstTimePage) {
+      this.wichVarChart = 'temp';
+      this.btnColorTemp = 'accent';
+      this.getDataChart()
+    }
+
 
   }
 
   // Realiza GET na API IOT para obter dados reais
-  getDataChart(type: string) {
+  getDataChart() {
 
     let date = JSON.parse(JSON.stringify(this.range.value));
     let start = Math.ceil(Date.parse(date['start'])/1000)
@@ -88,15 +93,22 @@ export class InfoEstacaoComponent implements OnInit{
     this.localUser = this.localStorageService.getLocalUser()
     this.dashService.getRealData(start,end,this.dev_id,this.wichVarChart)
       .subscribe(res => {
-          // console.log(typeof(res[0]['value']))
 
-          console.log('passou')
-          for (let i = 0; i < Object.keys(res).length; i++) {
-            this.time.push(res[i]['time']);
-            this.value.push(res[i]['value']-273.15);
+          if (Object.keys(this.time).length > 0) {
+            this.time.splice(0, Object.keys(this.time).length);
+            this.value.splice(0, Object.keys(this.time).length);
           }
 
-          //this.plotDataChart(this.wichVarChart)
+          for (let i = 0; i < Object.keys(res).length; i++) {
+              this.time.push(res[i]['time']);
+              if (this.wichVarChart=='temp') {
+                this.value.push(res[i]['value']-273.15);
+              } else {
+                this.value.push(res[i]['value']);
+              }
+
+          }
+
         },
         error => {
           this.openSnackBar("Problemas ao carregar dados", "danger")
@@ -104,24 +116,6 @@ export class InfoEstacaoComponent implements OnInit{
 
   }
 
-  // Grafico Temperatura,
-  //public tempchartData: ChartDataSets[] = [{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25], label: 'Atual'},{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25,24,22,25], label: 'Previsão'}]
-  public tempchartData: ChartDataSets[] = [{data: this.value, label: 'Atual'}]
-  public tempchartType: ChartType =   'line'
-  public tempchartLabels: Label[] = this.time
-  public tempchartLegend: boolean = true
-  public tempChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
-
-  // Grafico Umidade
-  public umidchartData: ChartDataSets[] = [{data: [80,85,82,80,90,80,85,70,92,91,88,85,88,75,89,90,93], label: 'Atual'},{data: [80,85,82,80,90,80,85,70,92,91,88,85,88,75,89,90,93,80,85,82,90], label: 'Previsão'}]
-  public umidchartType: ChartType =   'line'
-  public umidchartLabels: Label[] = this.tempo
-  public umidchartLegend: boolean = true
-  public umidChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
-
-  plotDataChart(v: string) {
-    // Realiza a configuração das variáveis dos graficos
-  }
 
   choiceVar(v: string) {
     this.wichVarChart = v

@@ -26,16 +26,16 @@
   </div>
 
   <!--  Página da Umidade-->
-  <div *ngIf="wichVarChart=='humid'" style="width: 900px; height: 500px; margin: 0 auto; overflow: auto">
-    <canvas baseChart
-            [datasets]="umidchartData"
-            [chartType]="umidchartType"
-            [labels]="umidchartLabels"
-            [legend]="umidchartLegend"
-            [colors]="umidChartColor"
-    >
-    </canvas>
-  </div>
+<!--  <div *ngIf="wichVarChart=='humid'" style="width: 900px; height: 500px; margin: 0 auto; overflow: auto">-->
+<!--    <canvas baseChart-->
+<!--            [datasets]="umidchartData"-->
+<!--            [chartType]="umidchartType"-->
+<!--            [labels]="umidchartLabels"-->
+<!--            [legend]="umidchartLegend"-->
+<!--            [colors]="umidChartColor"-->
+<!--    >-->
+<!--    </canvas>-->
+<!--  </div>-->
 
   <div fxLayout="row wrap" fxLayoutAlign="center center">
 
@@ -52,7 +52,7 @@
       <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Data inválida</mat-error>
     </mat-form-field>
 
-    <span style=" margin-left: 5px"><button mat-raised-button (click)="getDataChart('manual')">Buscar dados</button></span>
+    <span style=" margin-left: 5px"><button mat-raised-button (click)="getDataChart()">Buscar dados</button></span>
 
   </div>
 
