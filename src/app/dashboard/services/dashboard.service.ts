@@ -33,14 +33,9 @@ export class DashboardService {
     return this.http.get(`${env.baseUrl}usuarios/`)
   }
 
-  // Atraves do endpoint /empresas e retornado todas as estacoes que o usuario tem acesso
   getEstacoesbyEmpresas(): Observable<any>{
     return this.http.get(`${env.baseUrl}empresas/`)
   }
-
-  // getUsuarioByUsername(username: string): Observable<any>{
-  //   console.log("Get usuário by username " + username)
-  // }
 
   getUsuariosByEmpresa(id_empresa: string){
     console.log("get usuarios by empresa")
@@ -50,11 +45,10 @@ export class DashboardService {
     return this.http.delete(`${env.baseUrl}usuarios/${id}`)
   }
 
-  // ESSE ENDPOINT DEVE SER NO CORE
-  getRealData(timetostart: number, timetoend: number, dev_id: string, v: string) {
-    let u = 'http://localhost:8000/emw/samples?timetostart=1644701760&timetoend=1644838937&dev_id=f803320100027b40&var=temp'
+  getRealData6hour(timetostart: number, timetoend: number, dev_id: string, v: string) {
     let s = "?timetostart="+timetostart+"&timetoend="+timetoend+"&dev_id="+dev_id+"&var="+v
-    return this.http.get(u)
+    let u2 = 'http://backend-core-env.eba-tm9q638y.sa-east-1.elasticbeanstalk.com/emw/findbyparams'+s
+    return this.http.get(u2)
   }
 
 }

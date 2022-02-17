@@ -64,9 +64,9 @@ export class InfoEstacaoComponent implements OnInit{
 
     // Inciando chart com 7 dias anteriores
     let a = new Date;
-    this.range.value.start = new Date()
+    this.range.value.end = new Date()
     a.setDate(a.getDate()-7);
-    this.range.value.end = a
+    this.range.value.start = a
 
     // dev_id do equipamento
     this.activeRouter.params.subscribe((res: any) => {
@@ -90,16 +90,19 @@ export class InfoEstacaoComponent implements OnInit{
     let start = Math.ceil(Date.parse(date['start'])/1000)
     let end = Math.ceil(Date.parse(date['end'])/1000)
 
+    console.log(start, end)
+
     this.localUser = this.localStorageService.getLocalUser()
-    this.dashService.getRealData(start,end,this.dev_id,this.wichVarChart)
+    this.dashService.getRealData6hour(start,end,this.dev_id,this.wichVarChart)
       .subscribe(res => {
 
-          if (Object.keys(this.time).length > 0) {
-            this.time.splice(0, Object.keys(this.time).length);
-            this.value.splice(0, Object.keys(this.time).length);
-          }
+          if (Object.keys(res).length > 0){
+            if (Object.keys(this.time).length > 0) {
+              this.time.splice(0, Object.keys(this.time).length);
+              this.value.splice(0, Object.keys(this.time).length);
+            }
 
-          for (let i = 0; i < Object.keys(res).length; i++) {
+            for (let i = 0; i < Object.keys(res).length; i++) {
               this.time.push(res[i]['time']);
               if (this.wichVarChart=='temp') {
                 this.value.push(res[i]['value']-273.15);
@@ -107,6 +110,9 @@ export class InfoEstacaoComponent implements OnInit{
                 this.value.push(res[i]['value']);
               }
 
+            }
+          } else {
+            console.log("Nenhum dado retornado")
           }
 
         },
