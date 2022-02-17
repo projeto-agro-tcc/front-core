@@ -12,6 +12,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {Empresa} from "../../models";
 
+
 @Component({
   selector: 'app-info-estacao',
   templateUrl: './info-estacao.component.html',
@@ -25,6 +26,10 @@ export class InfoEstacaoComponent implements OnInit{
   btnColorPressao: ThemePalette = 'primary';
   btnColorVento: ThemePalette = 'primary';
   tempo: string[] = ['01-10','02-10','03-10','04-10','05-10','06-10','07-10','08-10','09-10','10-10','11-10','12-10','13-10','14-10','15-10','16-10','17-10','18-10','19-10','20-10']
+
+  time: string[] = []
+  value: number[] = []
+
 
   range = new FormGroup({
     start: new FormControl(),
@@ -83,8 +88,15 @@ export class InfoEstacaoComponent implements OnInit{
     this.localUser = this.localStorageService.getLocalUser()
     this.dashService.getRealData(start,end,this.dev_id,this.wichVarChart)
       .subscribe(res => {
-          console.log(res)
-          this.plotDataChart(this.wichVarChart)
+          // console.log(typeof(res[0]['value']))
+
+          console.log('passou')
+          for (let i = 0; i < Object.keys(res).length; i++) {
+            this.time.push(res[i]['time']);
+            this.value.push(res[i]['value']-273.15);
+          }
+
+          //this.plotDataChart(this.wichVarChart)
         },
         error => {
           this.openSnackBar("Problemas ao carregar dados", "danger")
@@ -93,9 +105,10 @@ export class InfoEstacaoComponent implements OnInit{
   }
 
   // Grafico Temperatura,
-  public tempchartData: ChartDataSets[] = [{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25], label: 'Atual'},{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25,24,22,25], label: 'Previsão'}]
+  //public tempchartData: ChartDataSets[] = [{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25], label: 'Atual'},{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25,24,22,25], label: 'Previsão'}]
+  public tempchartData: ChartDataSets[] = [{data: this.value, label: 'Atual'}]
   public tempchartType: ChartType =   'line'
-  public tempchartLabels: Label[] = this.tempo
+  public tempchartLabels: Label[] = this.time
   public tempchartLegend: boolean = true
   public tempChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 

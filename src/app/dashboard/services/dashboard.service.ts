@@ -50,9 +50,11 @@ export class DashboardService {
     return this.http.delete(`${env.baseUrl}usuarios/${id}`)
   }
 
+  // ESSE ENDPOINT DEVE SER NO CORE
   getRealData(timetostart: number, timetoend: number, dev_id: string, v: string) {
+    let u = 'http://localhost:8000/emw/samples?timetostart=1644701760&timetoend=1644838937&dev_id=f803320100027b40&var=temp'
     let s = "?timetostart="+timetostart+"&timetoend="+timetoend+"&dev_id="+dev_id+"&var="+v
-    return this.http.get(`${env.iotURL}lstm/teste`+s)
+    return this.http.get(u)
   }
 
 }
