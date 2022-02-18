@@ -25,7 +25,7 @@
 
   </div>
 
-<!--    Página da Umidade-->
+  <!--    Página da Umidade-->
   <div *ngIf="wichVarChart=='humid'" style="width: 900px; height: 500px; margin: 0 auto; overflow: auto">
     <canvas baseChart
             [datasets]="umidchartData"
@@ -33,6 +33,30 @@
             [labels]="umidchartLabels"
             [legend]="umidchartLegend"
             [colors]="umidChartColor"
+    >
+    </canvas>
+  </div>
+
+  <!--    Página da Pressão-->
+  <div *ngIf="wichVarChart=='pressure'" style="width: 900px; height: 500px; margin: 0 auto; overflow: auto">
+    <canvas baseChart
+            [datasets]="pressaochartData"
+            [chartType]="pressaochartType"
+            [labels]="pressaochartLabels"
+            [legend]="pressaochartLegend"
+            [colors]="pressaoChartColor"
+    >
+    </canvas>
+  </div>
+
+  <!--    Página da Velocidade do vento-->
+  <div *ngIf="wichVarChart=='wind'" style="width: 900px; height: 500px; margin: 0 auto; overflow: auto">
+    <canvas baseChart
+            [datasets]="velventochartData"
+            [chartType]="velventochartType"
+            [labels]="velventochartLabels"
+            [legend]="velventochartLegend"
+            [colors]="velventoChartColor"
     >
     </canvas>
   </div>

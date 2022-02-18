@@ -46,6 +46,22 @@ export class InfoEstacaoComponent implements OnInit{
   public umidChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
     { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
+  // Grafico Pressao,
+  public pressaochartData: ChartDataSets[] = [{data: this.value, label: 'Atual'}]
+  public pressaochartType: ChartType =   'line'
+  public pressaochartLabels: Label[] = this.time
+  public pressaochartLegend: boolean = true
+  public pressaoChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
+    { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
+
+  // Grafico Velocidade do vento,
+  public velventochartData: ChartDataSets[] = [{data: this.value, label: 'Atual'}]
+  public velventochartType: ChartType =   'line'
+  public velventochartLabels: Label[] = this.time
+  public velventochartLegend: boolean = true
+  public velventoChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
+    { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
+
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl(),
