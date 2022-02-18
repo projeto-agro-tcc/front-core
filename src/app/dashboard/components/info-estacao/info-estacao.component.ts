@@ -38,6 +38,14 @@ export class InfoEstacaoComponent implements OnInit{
   public tempChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
     { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
+  // Grafico Umidade,
+  public umidchartData: ChartDataSets[] = [{data: this.value, label: 'Atual'}]
+  public umidchartType: ChartType =   'line'
+  public umidchartLabels: Label[] = this.time
+  public umidchartLegend: boolean = true
+  public umidChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
+    { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
+
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl(),
@@ -80,7 +88,10 @@ export class InfoEstacaoComponent implements OnInit{
       this.wichVarChart = 'temp';
       this.btnColorTemp = 'accent';
       this.getDataChart()
+    } else {
+      this.getDataChart()
     }
+
 
 
   }
@@ -101,7 +112,7 @@ export class InfoEstacaoComponent implements OnInit{
           if (Object.keys(res).length > 0){
             if (Object.keys(this.time).length > 0) {
               this.time.splice(0, Object.keys(this.time).length);
-              this.value.splice(0, Object.keys(this.time).length);
+              this.value.splice(0, Object.keys(this.value).length);
             }
 
             for (let i = 0; i < Object.keys(res).length; i++) {
@@ -113,6 +124,7 @@ export class InfoEstacaoComponent implements OnInit{
               }
 
             }
+
           } else {
             console.log("Nenhum dado retornado")
           }
@@ -127,6 +139,10 @@ export class InfoEstacaoComponent implements OnInit{
 
   choiceVar(v: string) {
     this.wichVarChart = v
+    if (Object.keys(this.time).length > 0) {
+      this.time.splice(0, Object.keys(this.time).length);
+      this.value.splice(0, Object.keys(this.value).length);
+    }
     if (v == 'temp') {
       this.btnColorTemp = 'accent'
       this.btnColorUmid = 'primary';

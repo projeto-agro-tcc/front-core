@@ -46,6 +46,7 @@ export class DashboardService {
   }
 
   getRealData6hour(timetostart: number, timetoend: number, dev_id: string, v: string) {
+    console.log(v)
     let s = "?timetostart="+timetostart+"&timetoend="+timetoend+"&dev_id="+dev_id+"&var="+v
     return this.http.get(`${env.baseUrl}emw/samples`+s)
   }
