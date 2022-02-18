@@ -49,8 +49,8 @@ export class ListaEstacoesComponent implements OnInit {
         })
   }
 
-  pageInfoEstacao(estacao_id: string) {
-    this.router.navigate(['/dashboard/info-estacao', {dev_id:estacao_id}])
+  pageInfoEstacao(estacao_id: string, estacao_empresa: string) {
+    this.router.navigate(['/dashboard/info-estacao', {dev_id:estacao_id, dev_empresa:estacao_empresa}])
   }
 
   pageEditEstacao() { this.openSnackBar("Funcionalidade ainda não implementada ;)", "danger") }

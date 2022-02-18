@@ -44,6 +44,7 @@ export class InfoEstacaoComponent implements OnInit{
   });
 
   dev_id: string
+  dev_empresa: string
   localUser: LocalUser
   empresas: Empresa[]
   showSpinner: boolean = false
@@ -71,6 +72,7 @@ export class InfoEstacaoComponent implements OnInit{
     // dev_id do equipamento
     this.activeRouter.params.subscribe((res: any) => {
       this.dev_id = res.dev_id
+      this.dev_empresa = res.dev_empresa
     })
 
     // Qual chart renderiza primeiro
@@ -105,7 +107,7 @@ export class InfoEstacaoComponent implements OnInit{
             for (let i = 0; i < Object.keys(res).length; i++) {
               this.time.push(res[i]['time']);
               if (this.wichVarChart=='temp') {
-                this.value.push(res[i]['value']-273.15);
+                this.value.push( Math.round((res[i]['value']-273.15) * 100) / 100);
               } else {
                 this.value.push(res[i]['value']);
               }
