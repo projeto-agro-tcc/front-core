@@ -55,7 +55,9 @@ export class ListaEstacoesComponent implements OnInit {
 
   pageEditEstacao() { this.openSnackBar("Funcionalidade ainda não implementada ;)", "danger") }
 
-  pagePrevisaoEstacao() { this.openSnackBar("Funcionalidade ainda não implementada ;)", "danger") }
+  pageAIEstacao() {
+    this.router.navigate(['/dashboard/ai-estacao', {}])
+  }
 
   formatEstacoes(res: any) {
     const estacoes = []

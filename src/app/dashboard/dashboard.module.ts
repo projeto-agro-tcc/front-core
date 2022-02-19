@@ -26,7 +26,8 @@ import { CadastroEmpresaComponent,
   DashComponent,
   ProfileComponent,
   ListaEstacoesComponent,
-  InfoEstacaoComponent} from './components';
+  InfoEstacaoComponent, } from './components';
+import { AiEstacaoComponent } from './components/ai-estacao/ai-estacao.component';
 import { NgxMaskModule } from "ngx-mask";
 import { MatSortModule } from "@angular/material/sort";
 import { MatDialogModule } from "@angular/material/dialog";
@@ -52,7 +53,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     ProfileEmpresaComponent,
     ProfileEmpresaComponent,
     ListaEstacoesComponent,
-    InfoEstacaoComponent
+    InfoEstacaoComponent,
+    AiEstacaoComponent
   ],
     imports: [
         CommonModule,
