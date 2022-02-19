@@ -11,7 +11,7 @@
         <mat-divider inset></mat-divider>
         <mat-card-actions style="text-align: center">
           <button mat-button (click)="pageInfoEstacao(e.serial_number,e.empresa)" matTooltip="Gráficos"><img src="assets/bar-chart.png" alt="Logo" width="25" height="25"></button>
-          <button mat-button (click)="pageAIEstacao()" matTooltip="Inteligência Artificial"><img src="assets/inteligencia-artificial.png" alt="Logo" width="25" height="25"></button>
+          <button mat-button (click)="pageAIEstacao(e.serial_number,e.empresa)" matTooltip="Inteligência Artificial"><img src="assets/inteligencia-artificial.png" alt="Logo" width="25" height="25"></button>
           <button mat-button (click)="pageEditEstacao()" matTooltip="Editar"><img src="assets/edit.png" alt="Logo" width="25" height="25"></button>
         </mat-card-actions>
       </mat-card>

@@ -46,9 +46,13 @@ export class DashboardService {
   }
 
   getRealData6hour(timetostart: number, timetoend: number, dev_id: string, v: string) {
-    console.log(v)
     let s = "?timetostart="+timetostart+"&timetoend="+timetoend+"&dev_id="+dev_id+"&var="+v
     return this.http.get(`${env.baseUrl}emw/samples`+s)
+  }
+
+  getForecast2daysLSTM(timetoend: number, dev_id: string, v: string, typeforescast: string) {
+    let s = "?timetoend="+timetoend+"&dev_id="+dev_id+"&var="+v+"&typeforecast="+typeforescast
+    return this.http.get(`${env.baseUrl}emw/prediction`+s)
   }
 
 }

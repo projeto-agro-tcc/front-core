@@ -136,7 +136,7 @@ export class InfoEstacaoComponent implements OnInit{
               if (this.wichVarChart=='temp') {
                 this.value.push( Math.round((res[i]['value']-273.15) * 100) / 100);
               } else {
-                this.value.push(res[i]['value']);
+                this.value.push(Math.round(res[i]['value'] * 100) / 100);
               }
 
             }
