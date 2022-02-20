@@ -22,6 +22,10 @@ import { DialogDeleteEmpresaComponent,
   AuthInterceptorProviders,
   LocalstorageService} from './utils';
 import { AvatarModule } from "ngx-avatar";
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 
@@ -51,6 +55,10 @@ import { AvatarModule } from "ngx-avatar";
     MatButtonModule,
     MatSidenavModule,
     AvatarModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    LayoutModule,
   ],
   providers: [
     LocalstorageService,

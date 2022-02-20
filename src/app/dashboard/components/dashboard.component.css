@@ -14,7 +14,9 @@ mat-sidenav {
   width: 250px;
   height: 850px;
   border-right: none;
-  background: #549b54;
+  /*background: #549b54;*/
+  background: rgb(84,155,84);
+  background: linear-gradient(180deg, rgba(84,155,84,1) 25%, rgba(123,183,123,1) 53%, rgba(170,223,170,1) 88%);
   color: white;
   border-radius: 10px;
   padding: 16px;
@@ -52,8 +54,9 @@ mat-sidenav-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: 1.75rem;
-  color: #000000;
+  font-size: 3rem;
+  /*color: #000000;*/
+  color: white;
   cursor: pointer;
   margin-left: -40px;
   margin-top: 50px;

@@ -25,16 +25,21 @@ import { CadastroEmpresaComponent,
   DashboardComponent,
   ProfileComponent,
   ListaEstacoesComponent,
-  InfoEstacaoComponent} from './components';
+  InfoEstacaoComponent, } from './components';
+import { AiEstacaoComponent } from './components/ai-estacao/ai-estacao.component';
 import { NgxMaskModule } from "ngx-mask";
 import { MatSortModule } from "@angular/material/sort";
 import { MatDialogModule } from "@angular/material/dialog";
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatGridListModule} from "@angular/material/grid-list";
-import {NgxChartsModule} from "@swimlane/ngx-charts";
-
-
+import {BrowserModule} from "@angular/platform-browser";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsModule} from "ng2-charts";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -46,35 +51,42 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
     ProfileEmpresaComponent,
     ProfileEmpresaComponent,
     ListaEstacoesComponent,
-    InfoEstacaoComponent
+    InfoEstacaoComponent,
+    AiEstacaoComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatDividerModule,
-    MatToolbarModule,
-    MatListModule,
-    AvatarModule,
-    MatProgressSpinnerModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatButtonModule,
-    MatTableModule,
-    NgxMaskModule,
-    MatSortModule,
-    MatDialogModule,
-    MatCardModule,
-    MatProgressBarModule,
-    MatGridListModule,
-    NgxChartsModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatDividerModule,
+        MatToolbarModule,
+        MatListModule,
+        AvatarModule,
+        MatProgressSpinnerModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatInputModule,
+        MatSnackBarModule,
+        MatButtonModule,
+        MatTableModule,
+        NgxMaskModule,
+        MatSortModule,
+        MatDialogModule,
+        MatCardModule,
+        MatProgressBarModule,
+        MatGridListModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        ChartsModule,
+        MatMenuModule,
+        MatTooltipModule,
+        MatDatepickerModule,
+        MatNativeDateModule
+    ],
   providers: [
     LocalstorageService,
     DashboardService

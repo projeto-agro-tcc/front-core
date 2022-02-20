@@ -9,6 +9,7 @@ import {CadastroEmpresaComponent} from "./components";
 import {ProfileEmpresaComponent} from "./components";
 import {ListaEstacoesComponent} from "./components";
 import {InfoEstacaoComponent} from "./components";
+import {AiEstacaoComponent} from "./components/ai-estacao/ai-estacao.component";
 
 export const DashRoutes: Routes = [
   {
@@ -21,7 +22,8 @@ export const DashRoutes: Routes = [
       { path: 'cadastro-empresa', component: CadastroEmpresaComponent },
       { path: 'profile-empresa', component: ProfileEmpresaComponent},
       { path: 'lista-estacoes', component: ListaEstacoesComponent},
-      { path: 'info-estacao', component: InfoEstacaoComponent}
+      { path: 'info-estacao', component: InfoEstacaoComponent},
+      { path: 'ai-estacao', component: AiEstacaoComponent}
     ]
   }
 ]

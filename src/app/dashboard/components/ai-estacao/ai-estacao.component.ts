@@ -1,24 +1,22 @@
-import {Component, OnInit} from '@angular/core';
-import {Chart, ChartDataSets, ChartOptions, ChartType} from 'chart.js';
-import {ChartsModule, Label, Color, MultiDataSet} from "ng2-charts";
-import {ThemePalette} from "@angular/material/core";
+import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {ThemePalette} from "@angular/material/core";
+import {ChartDataSets, ChartType} from "chart.js";
+import {Color, Label} from "ng2-charts";
 import {FormControl, FormGroup} from "@angular/forms";
-import {MatTableDataSource} from "@angular/material/table";
-import {BreakpointObserver} from "@angular/cdk/layout";
 import {LocalstorageService, LocalUser} from "../../../utils";
+import {Empresa} from "../../models";
+import {BreakpointObserver} from "@angular/cdk/layout";
 import {DashboardService} from "../../services";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
-import {Empresa} from "../../models";
-
 
 @Component({
-  selector: 'app-info-estacao',
-  templateUrl: './info-estacao.component.html',
-  styleUrls: ['./info-estacao.component.css']
+  selector: 'app-ai-estacao',
+  templateUrl: './ai-estacao.component.html',
+  styleUrls: ['./ai-estacao.component.css']
 })
-export class InfoEstacaoComponent implements OnInit{
+export class AiEstacaoComponent implements OnInit {
 
   firstTimePage: boolean = true
   wichVarChart: string
@@ -28,26 +26,28 @@ export class InfoEstacaoComponent implements OnInit{
   btnColorVento: ThemePalette = 'primary';
   time: string[] = []
   value: number[] = []
+  time_prev: string[] = []
+  value_prev: number[] = []
 
   // Grafico Temperatura,
-  //public tempchartData: ChartDataSets[] = [{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25], label: 'Atual'},{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25,24,22,25], label: 'Previsão'}]
-  public tempchartData: ChartDataSets[] = [{data: this.value, label: 'Real'}]
-  public tempchartType: ChartType =   'line'
+  public tempchartData: ChartDataSets[] = [{data: this.value, label: 'Real'},{data: this.value_prev, label: 'Previsão'}]
+  //public tempchartData: ChartDataSets[] = [{data: this.value, label: 'Atual'}]
+  public tempchartType: ChartType = 'line'
   public tempchartLabels: Label[] = this.time
   public tempchartLegend: boolean = true
-  public tempChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
-    { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
+  public tempChartColor: Color[] = [{backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
+    {backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
   // Grafico Umidade,
-  public umidchartData: ChartDataSets[] = [{data: this.value, label: 'Real'}]
-  public umidchartType: ChartType =   'line'
+  public umidchartData: ChartDataSets[] = [{data: this.value, label: 'Real'},{data: this.value_prev, label: 'Previsão'}]
+  public umidchartType: ChartType = 'line'
   public umidchartLabels: Label[] = this.time
   public umidchartLegend: boolean = true
-  public umidChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
-    { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
+  public umidChartColor: Color[] = [{backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
+    {backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
   // Grafico Pressao,
-  public pressaochartData: ChartDataSets[] = [{data: this.value, label: 'Real'}]
+  public pressaochartData: ChartDataSets[] = [{data: this.value, label: 'Real'},{data: this.value_prev, label: 'Previsão'}]
   public pressaochartType: ChartType =   'line'
   public pressaochartLabels: Label[] = this.time
   public pressaochartLegend: boolean = true
@@ -55,12 +55,13 @@ export class InfoEstacaoComponent implements OnInit{
     { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
   // Grafico Velocidade do vento,
-  public velventochartData: ChartDataSets[] = [{data: this.value, label: 'Real'}]
+  public velventochartData: ChartDataSets[] = [{data: this.value, label: 'Real'},{data: this.value_prev, label: 'Previsão'}]
   public velventochartType: ChartType =   'line'
   public velventochartLabels: Label[] = this.time
   public velventochartLegend: boolean = true
   public velventoChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
     { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
+
 
   range = new FormGroup({
     start: new FormControl(),
@@ -83,14 +84,15 @@ export class InfoEstacaoComponent implements OnInit{
     private dashService: DashboardService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
 
     // Inciando chart com 7 dias anteriores
     let a = new Date;
     this.range.value.end = new Date()
-    a.setDate(a.getDate()-7);
+    a.setDate(a.getDate() - 7);
     this.range.value.start = a
 
     // dev_id do equipamento
@@ -109,35 +111,44 @@ export class InfoEstacaoComponent implements OnInit{
     }
 
 
-
   }
 
   // Realiza GET na API IOT para obter dados reais
   getDataChart() {
 
-    let date = JSON.parse(JSON.stringify(this.range.value));
-    let start = Math.ceil(Date.parse(date['start'])/1000)
-    let end = Math.ceil(Date.parse(date['end'])/1000)
-
-    console.log(start, end)
-
     this.localUser = this.localStorageService.getLocalUser()
-    this.dashService.getRealData6hour(start,end,"f803320100027b40",this.wichVarChart)
+    this.dashService.getForecast2daysLSTM(Math.ceil(Date.parse(this.range.value.end)/1000), "f803320100027b40", this.wichVarChart, "samples")
       .subscribe(res => {
 
-          if (Object.keys(res).length > 0){
+          if (Object.keys(res).length > 0) {
+
             if (Object.keys(this.time).length > 0) {
               this.time.splice(0, Object.keys(this.time).length);
               this.value.splice(0, Object.keys(this.value).length);
+              this.time_prev.splice(0, Object.keys(this.time_prev).length);
+              this.value_prev.splice(0, Object.keys(this.value_prev).length);
             }
 
             for (let i = 0; i < Object.keys(res).length; i++) {
-              this.time.push(res[i]['time']);
-              if (this.wichVarChart=='temp') {
-                this.value.push( Math.round((res[i]['value']-273.15) * 100) / 100);
+
+              if (i<95) {
+                this.time.push(res[i]['time']);
+                if (this.wichVarChart == 'temp') {
+                  this.value.push(Math.round((res[i]['value']) * 100) / 100);
+                  this.value_prev.push(Math.round((res[i]['value']) * 100) / 100);
+                } else {
+                  this.value.push(Math.round(res[i]['value'] * 100) / 100);
+                  this.value_prev.push(Math.round((res[i]['value']) * 100) / 100);
+                }
               } else {
-                this.value.push(Math.round(res[i]['value'] * 100) / 100);
+                this.time.push(res[i]['time']);
+                if (this.wichVarChart == 'temp') {
+                  this.value_prev.push(Math.round((res[i]['value']) * 100) / 100);
+                } else {
+                  this.value_prev.push(Math.round(res[i]['value'] * 100) / 100);
+                }
               }
+
 
             }
 
@@ -159,6 +170,8 @@ export class InfoEstacaoComponent implements OnInit{
     if (Object.keys(this.time).length > 0) {
       this.time.splice(0, Object.keys(this.time).length);
       this.value.splice(0, Object.keys(this.value).length);
+      this.time_prev.splice(0, Object.keys(this.time_prev).length);
+      this.value_prev.splice(0, Object.keys(this.value_prev).length);
     }
 
     if (v == 'temp') {
@@ -166,20 +179,17 @@ export class InfoEstacaoComponent implements OnInit{
       this.btnColorUmid = 'primary';
       this.btnColorPressao = 'primary';
       this.btnColorVento = 'primary';
-    }
-    else if (v == 'humid') {
+    } else if (v == 'humid') {
       this.btnColorTemp = 'primary'
       this.btnColorUmid = 'accent';
       this.btnColorPressao = 'primary';
       this.btnColorVento = 'primary';
-    }
-    else if (v == 'pressure') {
+    } else if (v == 'pressure') {
       this.btnColorTemp = 'primary'
       this.btnColorUmid = 'primary';
       this.btnColorPressao = 'accent';
       this.btnColorVento = 'primary';
-    }
-    else if (v == 'wind') {
+    } else if (v == 'wind') {
       this.btnColorTemp = 'primary'
       this.btnColorUmid = 'primary';
       this.btnColorPressao = 'primary';
@@ -190,105 +200,11 @@ export class InfoEstacaoComponent implements OnInit{
   }
 
   openSnackBar(msg: string, classe: string) {
-    this.snackBar.open(msg, 'OK',{
+    this.snackBar.open(msg, 'OK', {
       horizontalPosition: "center",
       verticalPosition: "bottom",
       panelClass: [classe],
       duration: 3000,
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // private map: L.Map;
-  // private centroid: L.LatLngExpression = [42.3601, -71.0589]; //
-  //
-  // private initMap(): void {
-  //   this.map = L.map('map', {
-  //     center: this.centroid,
-  //     zoom: 12
-  //   });
-  //
-  //   const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  //     maxZoom: 18,
-  //     minZoom: 10,
-  //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  //   });
-  //
-  //   // create 5 random jitteries and add them to map
-  //   const jittery = Array(5).fill(this.centroid).map(
-  //     x => [x[0] + (Math.random() - .5)/10, x[1] + (Math.random() - .5)/10 ]
-  //   ).map(
-  //     x => L.marker(x as L.LatLngExpression)
-  //   ).forEach(
-  //     x => x.addTo(this.map)
-  //   );
-  //
-  //   tiles.addTo(this.map);
-  //
-  // }
-  //
-  //
-  // ngOnInit(): void {
-  //   this.initMap();
-  // }
-  // public multi: any[];
-  // public view: any[] = [700, 300];
-  //
-  // // options
-  // legend: boolean = false;
-  // showLabels: boolean = true;
-  // animations: boolean = true;
-  // xAxis: boolean = true;
-  // yAxis: boolean = true;
-  // showYAxisLabel: boolean = true;
-  // showXAxisLabel: boolean = true;
-  // xAxisLabel: string = 'Dia';
-  // yAxisLabel: string = 'Temperatura';
-  // timeline: boolean = true;
-  //
-  // colorScheme = {
-  //   domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
-  // };
-  //
-  // constructor() {
-  //   Object.assign(this, { multi });
-  // }
-  //
-  // onSelect(data): void {
-  //   console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  // }
-  //
-  // onActivate(data): void {
-  //   console.log('Activate', JSON.parse(JSON.stringify(data)));
-  // }
-  //
-  // onDeactivate(data): void {
-  //   console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  // }
-
-
 }

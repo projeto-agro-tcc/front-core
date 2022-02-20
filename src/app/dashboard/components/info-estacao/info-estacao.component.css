@@ -1,0 +1,46 @@
+.example-card {
+  width: 300px;
+  height: 250px;
+  /*margin-left: 600px;*/
+  background-color: whitesmoke;
+  color: white;
+  /*margin: auto;*/
+}
+
+.example-card-2 {
+  width: 100px;
+  height: 100px;
+  /*margin-left: 600px;*/
+  background-color: green;
+  color: white;
+  /*margin: auto;*/
+}
+
+.div-graficos-dash {
+  height: 900px;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  /*margin-top: 30px;*/
+}
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}

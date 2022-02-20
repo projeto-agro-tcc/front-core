@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit{
       .subscribe(response => {
         this.loginService.successfulLogin(response.body)
         this.showSpinner = false
-        this.router.navigateByUrl('/dashboard')
+        this.router.navigateByUrl('/dashboard/lista-estacoes')
       },
         error => {
         console.log(error)
@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit{
   }
 
   esqueceuSenha(){
-    this.openSnackBar("Funcionalidade ainda não implementada ;)", "danger")
+    this.openSnackBar("Entre em contato com o suporte ;)", "danger")
   }
 
 }
