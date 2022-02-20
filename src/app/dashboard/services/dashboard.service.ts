@@ -51,6 +51,7 @@ export class DashboardService {
   }
 
   getForecast2daysLSTM(timetoend: number, dev_id: string, v: string, typeforescast: string) {
+    //let teste = Number('1645300275')
     let s = "?timetoend="+timetoend+"&dev_id="+dev_id+"&var="+v+"&typeforecast="+typeforescast
     return this.http.get(`${env.baseUrl}emw/prediction`+s)
   }
