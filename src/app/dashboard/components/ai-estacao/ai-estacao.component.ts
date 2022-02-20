@@ -39,7 +39,7 @@ export class AiEstacaoComponent implements OnInit {
     {backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
   // Grafico Umidade,
-  public umidchartData: ChartDataSets[] = [{data: this.value, label: 'Atual'}]
+  public umidchartData: ChartDataSets[] = [{data: this.value, label: 'Atual'},{data: this.value_prev, label: 'Previsão'}]
   public umidchartType: ChartType = 'line'
   public umidchartLabels: Label[] = this.time
   public umidchartLegend: boolean = true

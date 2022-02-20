@@ -25,6 +25,18 @@
 
   </div>
 
+  <!--    Página da Umidade-->
+  <div *ngIf="wichVarChart=='humid'" style="width: 900px; height: 500px; margin: 0 auto; overflow: auto">
+    <canvas baseChart
+            [datasets]="umidchartData"
+            [chartType]="umidchartType"
+            [labels]="umidchartLabels"
+            [legend]="umidchartLegend"
+            [colors]="umidChartColor"
+    >
+    </canvas>
+  </div>
+
 <!--  <div fxLayout="row wrap" fxLayoutAlign="center center">-->
 
 <!--    <mat-form-field appearance="outline" style="margin-top: 10px; overflow: auto">-->

@@ -122,7 +122,7 @@ export class InfoEstacaoComponent implements OnInit{
     console.log(start, end)
 
     this.localUser = this.localStorageService.getLocalUser()
-    this.dashService.getRealData6hour(start,end,this.dev_id,this.wichVarChart)
+    this.dashService.getRealData6hour(start,end,"f803320100027b40",this.wichVarChart)
       .subscribe(res => {
 
           if (Object.keys(res).length > 0){
