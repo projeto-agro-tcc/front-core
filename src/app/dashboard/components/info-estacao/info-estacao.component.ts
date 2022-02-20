@@ -31,7 +31,7 @@ export class InfoEstacaoComponent implements OnInit{
 
   // Grafico Temperatura,
   //public tempchartData: ChartDataSets[] = [{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25], label: 'Atual'},{data: [21,20,18,22,23,19,20,21,16,24,23,22,18,20,20,18,25,24,22,25], label: 'Previsão'}]
-  public tempchartData: ChartDataSets[] = [{data: this.value, label: 'Atual'}]
+  public tempchartData: ChartDataSets[] = [{data: this.value, label: 'Real'}]
   public tempchartType: ChartType =   'line'
   public tempchartLabels: Label[] = this.time
   public tempchartLegend: boolean = true
@@ -39,7 +39,7 @@ export class InfoEstacaoComponent implements OnInit{
     { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
   // Grafico Umidade,
-  public umidchartData: ChartDataSets[] = [{data: this.value, label: 'Atual'}]
+  public umidchartData: ChartDataSets[] = [{data: this.value, label: 'Real'}]
   public umidchartType: ChartType =   'line'
   public umidchartLabels: Label[] = this.time
   public umidchartLegend: boolean = true
@@ -47,7 +47,7 @@ export class InfoEstacaoComponent implements OnInit{
     { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
   // Grafico Pressao,
-  public pressaochartData: ChartDataSets[] = [{data: this.value, label: 'Atual'}]
+  public pressaochartData: ChartDataSets[] = [{data: this.value, label: 'Real'}]
   public pressaochartType: ChartType =   'line'
   public pressaochartLabels: Label[] = this.time
   public pressaochartLegend: boolean = true
@@ -55,7 +55,7 @@ export class InfoEstacaoComponent implements OnInit{
     { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
   // Grafico Velocidade do vento,
-  public velventochartData: ChartDataSets[] = [{data: this.value, label: 'Atual'}]
+  public velventochartData: ChartDataSets[] = [{data: this.value, label: 'Real'}]
   public velventochartType: ChartType =   'line'
   public velventochartLabels: Label[] = this.time
   public velventochartLegend: boolean = true
@@ -155,10 +155,12 @@ export class InfoEstacaoComponent implements OnInit{
 
   choiceVar(v: string) {
     this.wichVarChart = v
+
     if (Object.keys(this.time).length > 0) {
       this.time.splice(0, Object.keys(this.time).length);
       this.value.splice(0, Object.keys(this.value).length);
     }
+
     if (v == 'temp') {
       this.btnColorTemp = 'accent'
       this.btnColorUmid = 'primary';

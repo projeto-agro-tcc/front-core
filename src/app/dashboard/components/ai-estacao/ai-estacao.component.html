@@ -1,12 +1,12 @@
 <div class="div-graficos-dash">
-  <p style="text-align: center">Estação {{dev_id}} localizada na Fazenda {{dev_empresa}}</p>
+  <p style="text-align: center">Estação {{dev_id}} localizada em {{dev_empresa}}</p>
 
   <!--  Botões para seleção de gráfico-->
   <div fxLayout="row wrap" fxLayoutAlign="center center">
 
     <span style=" margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button [color]="btnColorTemp" (click)="choiceVar('temp')">Temperatura</button></span>
     <span style="margin-left: 10px; margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button [color]="btnColorUmid" (click)="choiceVar('humid')">Umidade</button></span>
-    <span style="margin-left: 10px; margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button [color]="btnColorPressao" (click)="choiceVar('pressure')">Pressão</button></span>
+<!--    <span style="margin-left: 10px; margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button [color]="btnColorPressao" (click)="choiceVar('pressure')">Pressão</button></span>-->
     <span style="margin-left: 10px;  margin-top: 5px; margin-bottom: 5px;"><button mat-raised-button [color]="btnColorVento" (click)="choiceVar('wind')">Vento</button></span>
 
   </div>
@@ -37,25 +37,29 @@
     </canvas>
   </div>
 
-<!--  <div fxLayout="row wrap" fxLayoutAlign="center center">-->
+  <!--    Página da Pressão-->
+  <div *ngIf="wichVarChart=='pressure'" style="width: 900px; height: 500px; margin: 0 auto; overflow: auto">
+    <canvas baseChart
+            [datasets]="pressaochartData"
+            [chartType]="pressaochartType"
+            [labels]="pressaochartLabels"
+            [legend]="pressaochartLegend"
+            [colors]="pressaoChartColor"
+    >
+    </canvas>
+  </div>
 
-<!--    <mat-form-field appearance="outline" style="margin-top: 10px; overflow: auto">-->
-<!--      <mat-label>Período de Análise</mat-label>-->
-<!--      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">-->
-<!--        <input matStartDate formControlName="start" placeholder="Início">-->
-<!--        <input matEndDate formControlName="end" placeholder="Fim">-->
-<!--      </mat-date-range-input>-->
-<!--      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-<!--      <mat-date-range-picker #picker></mat-date-range-picker>-->
-
-<!--      <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Data inválida</mat-error>-->
-<!--      <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Data inválida</mat-error>-->
-<!--    </mat-form-field>-->
-
-<!--    <span style=" margin-left: 5px"><button mat-raised-button (click)="getDataChart()">Buscar dados</button></span>-->
-
-<!--  </div>-->
-
+  <!--    Página da Velocidade do vento-->
+  <div *ngIf="wichVarChart=='wind'" style="width: 900px; height: 500px; margin: 0 auto; overflow: auto">
+    <canvas baseChart
+            [datasets]="velventochartData"
+            [chartType]="velventochartType"
+            [labels]="velventochartLabels"
+            [legend]="velventochartLegend"
+            [colors]="velventoChartColor"
+    >
+    </canvas>
+  </div>
 
 </div>
 

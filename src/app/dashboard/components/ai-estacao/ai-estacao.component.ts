@@ -30,7 +30,7 @@ export class AiEstacaoComponent implements OnInit {
   value_prev: number[] = []
 
   // Grafico Temperatura,
-  public tempchartData: ChartDataSets[] = [{data: this.value, label: 'Atual'},{data: this.value_prev, label: 'Previsão'}]
+  public tempchartData: ChartDataSets[] = [{data: this.value, label: 'Real'},{data: this.value_prev, label: 'Previsão'}]
   //public tempchartData: ChartDataSets[] = [{data: this.value, label: 'Atual'}]
   public tempchartType: ChartType = 'line'
   public tempchartLabels: Label[] = this.time
@@ -39,12 +39,28 @@ export class AiEstacaoComponent implements OnInit {
     {backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
   // Grafico Umidade,
-  public umidchartData: ChartDataSets[] = [{data: this.value, label: 'Atual'},{data: this.value_prev, label: 'Previsão'}]
+  public umidchartData: ChartDataSets[] = [{data: this.value, label: 'Real'},{data: this.value_prev, label: 'Previsão'}]
   public umidchartType: ChartType = 'line'
   public umidchartLabels: Label[] = this.time
   public umidchartLegend: boolean = true
   public umidChartColor: Color[] = [{backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
     {backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
+
+  // Grafico Pressao,
+  public pressaochartData: ChartDataSets[] = [{data: this.value, label: 'Real'},{data: this.value_prev, label: 'Previsão'}]
+  public pressaochartType: ChartType =   'line'
+  public pressaochartLabels: Label[] = this.time
+  public pressaochartLegend: boolean = true
+  public pressaoChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
+    { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
+
+  // Grafico Velocidade do vento,
+  public velventochartData: ChartDataSets[] = [{data: this.value, label: 'Real'},{data: this.value_prev, label: 'Previsão'}]
+  public velventochartType: ChartType =   'line'
+  public velventochartLabels: Label[] = this.time
+  public velventochartLegend: boolean = true
+  public velventoChartColor: Color[] = [{ backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#FF6666'},
+    { backgroundColor: 'rgba(224, 224, 224, 0.1)', borderColor: '#99CCFF'}]
 
 
   range = new FormGroup({
@@ -136,14 +152,6 @@ export class AiEstacaoComponent implements OnInit {
 
             }
 
-            //this.time = this.time.slice(48)
-            // this.value_prev = this.value.slice(-48)
-            // this.value = this.value.slice(48)
-            //
-            // console.log(this.value)
-            // console.log(this.value_prev)
-            //this.time_prev = this.time.slice(-48)
-
           } else {
             console.log("Nenhum dado retornado")
           }
@@ -158,12 +166,14 @@ export class AiEstacaoComponent implements OnInit {
 
   choiceVar(v: string) {
     this.wichVarChart = v
+
     if (Object.keys(this.time).length > 0) {
       this.time.splice(0, Object.keys(this.time).length);
       this.value.splice(0, Object.keys(this.value).length);
       this.time_prev.splice(0, Object.keys(this.time_prev).length);
       this.value_prev.splice(0, Object.keys(this.value_prev).length);
     }
+
     if (v == 'temp') {
       this.btnColorTemp = 'accent'
       this.btnColorUmid = 'primary';
