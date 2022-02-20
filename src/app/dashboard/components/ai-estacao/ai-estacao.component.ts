@@ -117,7 +117,7 @@ export class AiEstacaoComponent implements OnInit {
   getDataChart() {
 
     this.localUser = this.localStorageService.getLocalUser()
-    this.dashService.getForecast2daysLSTM(Math.ceil(Date.parse(this.range.value.end)/1000), "f803320100027b40", this.wichVarChart, "samples")
+    this.dashService.getForecast2daysLSTM(Math.ceil(Date.parse(this.range.value.end)/1000), this.dev_id, this.wichVarChart, "samples")
       .subscribe(res => {
 
           if (Object.keys(res).length > 0) {
