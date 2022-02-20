@@ -1,31 +1,55 @@
 
 <div class="content mat-h1">
   <h3 style="margin-left: 20px; margin-top: 20px; padding-top: 20px">Profile Empresa</h3>
-  <div class="formulario mat-elevation-z8">
-    <div class="info">
-      <div class="row_1 mat-h1">
-        <h6>Razão Social: </h6>
-        <h3>{{empresa.razao_social}}</h3>
-
-        <h6>Nome Fantasia:</h6>
-        <h3>{{empresa.nome}}</h3>
-
-<!--        id: "",-->
-<!--        email: "",-->
-<!--        cnpj: "",-->
-<!--        web_site: "",-->
-
-      </div>
-      <div>
-        <h6>Nome Fantasia:</h6>
-        <h3>{{empresa.nome}}</h3>
-      </div>
-      <div class="row_2 mat-h1">
-        <h3>Razão Social:</h3>
-        <h4>teste3</h4>
-      </div>
-
+  <div class="formulario" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="info01" fxFlex="20%">
+      <h6 style="margin-bottom: -25px">Razão Social:</h6>
+      <h5>{{empresa.razao_social}}</h5>
     </div>
+    <div fxFlex="20%">
+      <h6 style="margin-bottom: -25px">Nome:</h6>
+      <h5>{{empresa.nome}}</h5>
+    </div>
+    <div fxFlex="20%">
+      <h6 style="margin-bottom: -25px">Email:</h6>
+      <h5>{{empresa.email}}</h5>
+    </div>
+    <div fxFlex="20%">
+      <h6 style="margin-bottom: -25px">WebSite:</h6>
+      <h5>{{empresa.web_site}}</h5>
+    </div>
+  </div>
+
+
+  <!--
+  cnpj?: string,
+  web_site?: string,
+  telefone?: Telefone,
+  endereco?: Endereco -->
+
+<!--    <div class="info">-->
+<!--      <div class="row_1 mat-h1">-->
+
+
+<!--&lt;!&ndash;        <h6>Nome Fantasia:</h6>&ndash;&gt;-->
+<!--&lt;!&ndash;        <h3>{{empresa.nome}}</h3>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        id: "",&ndash;&gt;-->
+<!--&lt;!&ndash;        email: "",&ndash;&gt;-->
+<!--&lt;!&ndash;        cnpj: "",&ndash;&gt;-->
+<!--&lt;!&ndash;        web_site: "",&ndash;&gt;-->
+
+<!--      </div>-->
+<!--      <div>-->
+<!--        <h6>Nome Fantasia:</h6>-->
+<!--        <h3>{{empresa.nome}}</h3>-->
+<!--      </div>-->
+<!--      <div class="row_2 mat-h1">-->
+<!--        <h3>Razão Social:</h3>-->
+<!--        <h4>teste3</h4>-->
+<!--      </div>-->
+
+<!--    </div>-->
 
 
 
@@ -142,7 +166,6 @@
   <!--                    (click)="cadastrarEmpresa()">Cadastrar</button>-->
   <!--          </mat-list-item>-->
   <!--        </mat-list-item>-->
-  </div>
 </div>
 
 

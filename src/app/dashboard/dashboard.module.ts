@@ -23,7 +23,6 @@ import { CadastroEmpresaComponent,
   ListUsersComponent,
   ListEmpresasComponent,
   DashboardComponent,
-  DashComponent,
   ProfileComponent,
   ListaEstacoesComponent,
   InfoEstacaoComponent, } from './components';
@@ -45,7 +44,6 @@ import {MatNativeDateModule} from "@angular/material/core";
 @NgModule({
   declarations: [
     DashboardComponent,
-    DashComponent,
     ProfileComponent,
     ListUsersComponent,
     ListEmpresasComponent,

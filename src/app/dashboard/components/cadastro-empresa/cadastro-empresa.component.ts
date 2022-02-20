@@ -4,7 +4,7 @@ import {CnpjValidator, EnderecoDto, ViaCepService} from "../../../utils";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {DashboardService} from "../../services";
-import {CadastroPj} from "../../models/cadastro-pj.models";
+import {CadastroPj} from "../../models";
 
 @Component({
   selector: 'app-cadastro-empresa',
